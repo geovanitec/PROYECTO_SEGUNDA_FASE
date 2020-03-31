@@ -1,0 +1,1 @@
+Drop database nomina_sql;
