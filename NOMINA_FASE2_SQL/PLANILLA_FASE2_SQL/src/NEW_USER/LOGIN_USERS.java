@@ -5,7 +5,7 @@
  */
 package NEW_USER;
 
-import ACCESO_USUARIOS.VISTA_USUARIOS;
+import ACCESO_ADMINISTRADOR.VISTA_ADMINISTRADOR;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -104,7 +104,7 @@ public class LOGIN_USERS extends javax.swing.JFrame {
 
         fondo.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NEW_USER/fondo_ingreso_users.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 300));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NEW_USER/fondo login users.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 620, 140));
@@ -150,14 +150,18 @@ public class LOGIN_USERS extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null, "Bienvenido" + "     " +rs.getString("Usuario"));
                                 
                                 
-                VISTA_USUARIOS VentanaUsuario = new VISTA_USUARIOS();
-                VentanaUsuario.setVisible(true);
+                VISTA_ADMINISTRADOR VentanaAdministrador = new VISTA_ADMINISTRADOR();
+                VentanaAdministrador.setVisible(true);
                 this.dispose();
                 
                 }
                         
             } else {
                 JOptionPane.showMessageDialog(null, "No registrado.");
+                txtUsuario.setText("");
+                txtPass.setText("");
+                
+                
             }
         
         

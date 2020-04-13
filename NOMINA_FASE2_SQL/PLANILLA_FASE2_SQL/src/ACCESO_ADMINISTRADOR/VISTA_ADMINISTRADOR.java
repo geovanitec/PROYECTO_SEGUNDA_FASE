@@ -5,6 +5,12 @@
  */
 package ACCESO_ADMINISTRADOR;
 
+import NEW_USER.LOGIN_ADMI;
+import NEW_USER.LOGIN_USERS;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author Geovani
@@ -50,14 +56,22 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
         txt_SueldoOrdinario = new javax.swing.JTextField();
         txt_OtrosDescuentos = new javax.swing.JTextField();
         btn_Modificar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         btn_Buscar = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
         PANTALLA_TRASERA = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Guardar.setText("GUARDAR");
+        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GuardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 90, 140, 40));
 
         jLabel1.setText("CALCULOS PLANILLA");
@@ -106,15 +120,40 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
         btn_Modificar.setText("MODIFICAR");
         getContentPane().add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 140, 40));
 
+        btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 130, 40));
+
         btn_Buscar.setText("BUSCAR");
         getContentPane().add(btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 193, 140, 40));
 
         btn_Eliminar.setText("ELIMNAR");
         getContentPane().add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 140, 40));
-        getContentPane().add(PANTALLA_TRASERA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 677, 480));
+        getContentPane().add(PANTALLA_TRASERA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 660, 460));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, 210, 30));
+
+        jLabel12.setText("Total");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        LOGIN_USERS regreso = new LOGIN_USERS();
+        regreso.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btn_GuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +192,7 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel PANTALLA_TRASERA;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btn_Buscar;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Guardar;
@@ -160,6 +200,7 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -168,6 +209,7 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txt_Anticipos;
     private javax.swing.JTextField txt_Bonificacion;
     private javax.swing.JTextField txt_Comision;
