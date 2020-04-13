@@ -5,6 +5,13 @@
  */
 package NEW_USER;
 
+import ACCESO_USUARIOS.VISTA_USUARIOS;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Geovani
@@ -116,6 +123,85 @@ public class LOGIN_USERS extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
+        
+        try{
+        
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/NUEVOS_USUARIOS", "root", "compromiso");
+        
+        
+        PreparedStatement pst = cn.prepareStatement("select * from nuevo_usuario where Usuario = ?");
+        
+        pst.setString(1, txtUsuario.getText().trim());
+        ResultSet rs = pst.executeQuery();
+        
+        PreparedStatement pst2 = cn.prepareStatement("select * from nuevo_usuario where Pass = ?");
+        
+        pst2.setString(1, txtPass.getText().trim());
+        ResultSet rs2 = pst2.executeQuery();
+        
+        
+                
+                
+        
+        
+        if(rs.next()){
+            
+                if(rs2.next()){
+                                JOptionPane.showMessageDialog(null, "Bienvenido" + "     " +rs.getString("Usuario"));
+                                
+                                
+                VISTA_USUARIOS VentanaUsuario = new VISTA_USUARIOS();
+                VentanaUsuario.setVisible(true);
+                this.dispose();
+                
+                }
+                        
+            } else {
+                JOptionPane.showMessageDialog(null, "No registrado.");
+            }
+        
+        
+        
+        
+        /*
+        
+        
+        pst.setString(1, txtnombreI.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            
+            PreparedStatement pst2 = cn.prepareStatement("select * from registros where contraseña = ?");
+            
+            
+            pst2.setString(1, txtcontraseniaI.getText().trim());
+            ResultSet rs2 = pst2.executeQuery();
+            
+            if(rs.next()){
+                
+                txtnombre.setText(rs.getString("nombreusuario"));
+                
+                if(rs2.next()){
+                
+                txtcontrasenia.setText(rs.getString("contraseña"));
+                
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "No registrado.");
+            }
+        
+        
+        
+        */
+        
+        }catch(Exception e){
+            
+            
+            
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
