@@ -167,35 +167,7 @@ public class LOGIN_USERS extends javax.swing.JFrame {
         
         
         
-        /*
-        
-        
-        pst.setString(1, txtnombreI.getText().trim());
-            ResultSet rs = pst.executeQuery();
-            
-            PreparedStatement pst2 = cn.prepareStatement("select * from registros where contraseña = ?");
-            
-            
-            pst2.setString(1, txtcontraseniaI.getText().trim());
-            ResultSet rs2 = pst2.executeQuery();
-            
-            if(rs.next()){
-                
-                txtnombre.setText(rs.getString("nombreusuario"));
-                
-                if(rs2.next()){
-                
-                txtcontrasenia.setText(rs.getString("contraseña"));
-                
-                }
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "No registrado.");
-            }
-        
-        
-        
-        */
+       
         
         }catch(Exception e){
             
