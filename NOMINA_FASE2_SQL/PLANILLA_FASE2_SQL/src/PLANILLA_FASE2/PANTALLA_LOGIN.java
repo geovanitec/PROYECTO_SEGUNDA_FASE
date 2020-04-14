@@ -6,6 +6,7 @@
 package PLANILLA_FASE2;
 
 import NEW_USER.LOGIN_ADMI;
+import NEW_USER.LOGIN_USERS;
 
 /**
  *
@@ -37,6 +38,7 @@ public class PANTALLA_LOGIN extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuIngresoAdmi = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,22 +47,26 @@ public class PANTALLA_LOGIN extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         btnSalir.setText("salir");
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, 140, 50));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo.jpg")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 180, 340));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondoIngreso.jpg")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 340));
 
-        jMenu1.setText("LOGIN ADMINISTRADOR");
+        jMenu1.setText("Ingresar");
 
-        jMenuIngresoAdmi.setText("INGRESAR");
+        jMenuIngresoAdmi.setText("Administrador");
         jMenuIngresoAdmi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuIngresoAdmiActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuIngresoAdmi);
+
+        jMenuItem1.setText("Usuarios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -78,6 +84,13 @@ public class PANTALLA_LOGIN extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuIngresoAdmiActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        LOGIN_USERS ingreso = new LOGIN_USERS();
+        ingreso.setVisible(true);
+        this.dispose(); 
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,5 +134,6 @@ public class PANTALLA_LOGIN extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuIngresoAdmi;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

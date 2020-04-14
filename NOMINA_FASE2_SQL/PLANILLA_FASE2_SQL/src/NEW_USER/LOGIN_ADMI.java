@@ -87,15 +87,17 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("PASSWORD");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 140, 40));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("USER NAME ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 140, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo2.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo2.jpg")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 340));
 
         btnRegresar.setText("REGRESAR");
@@ -114,10 +116,10 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 220, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo3.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo3.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 410, 340));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo.jpg")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 750, 150));
 
         pack();
