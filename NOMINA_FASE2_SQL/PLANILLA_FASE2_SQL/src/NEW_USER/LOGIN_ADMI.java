@@ -5,7 +5,13 @@
  */
 package NEW_USER;
 
+import ACCESO_ADMINISTRADOR.VISTA_ADMINISTRADOR;
 import PLANILLA_FASE2.PANTALLA_LOGIN;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -97,7 +103,7 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
         jLabel5.setText("USER NAME ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 140, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo2.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo2.jpg")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 340));
 
         btnRegresar.setText("REGRESAR");
@@ -116,10 +122,10 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 220, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo3.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo3.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 410, 340));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo.jpg")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 750, 150));
 
         pack();
@@ -127,10 +133,69 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
+         if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
+            
+            txtUsuario.setText("");
+            txtPass.setText("");
+        }
+        else {
+        try{
+        
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/NUEVOS_USUARIOS", "rex", "polloloco900");
+        
+        
+        PreparedStatement pst = cn.prepareStatement("select * from usuario_administrador where Usuario = ?");
+        
+        pst.setString(1, txtUsuario.getText().trim());
+        ResultSet rs = pst.executeQuery();
+        
+        PreparedStatement pst2 = cn.prepareStatement("select * from usuario_administrador where Pass = ?");
+        
+        pst2.setString(1, txtPass.getText().trim());
+        ResultSet rs2 = pst2.executeQuery();
+       
+        if(rs.next()){
+            
+                if(rs2.next()){
+                                JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
+                                
+                                
+                VISTA_ADMINISTRADOR VentanaAdministrador = new VISTA_ADMINISTRADOR();
+                VentanaAdministrador.setVisible(true);
+                this.dispose();
+                
+                }
+                        
+            } else {
+                JOptionPane.showMessageDialog(null, "ESTE USUARIO NO EXISTE");
+                txtUsuario.setText("");
+                txtPass.setText("");
+                
+                
+            }
+        
+        
+        
+        
+      
+        
+        }catch(Exception e){
+            
+            
+            
+        }
+        //
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresar1ActionPerformed
         // TODO add your handling code here:
+        
+       
+        
+        
     }//GEN-LAST:event_btnIngresar1ActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

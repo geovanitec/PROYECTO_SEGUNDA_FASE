@@ -154,7 +154,7 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SEBAS\Desktop\Proyecto_SegundaFase\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo2.jpg"/>
+          <Image iconType="2" name="C:\Users\Geovani\Desktop\PROYECTOFASE2\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo2.jpg"/>
         </Property>
       </Properties>
       <Constraints>
@@ -192,7 +192,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SEBAS\Desktop\Proyecto_SegundaFase\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo3.png"/>
+          <Image iconType="2" name="C:\Users\Geovani\Desktop\PROYECTOFASE2\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo3.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -204,7 +204,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SEBAS\Desktop\Proyecto_SegundaFase\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo.jpg"/>
+          <Image iconType="2" name="C:\Users\Geovani\Desktop\PROYECTOFASE2\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo.jpg"/>
         </Property>
       </Properties>
       <Constraints>

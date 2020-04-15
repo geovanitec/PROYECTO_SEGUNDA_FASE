@@ -66,9 +66,9 @@
                               <Component id="jLabel2" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="48" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_Password" min="-2" pref="311" max="-2" attributes="0"/>
-                              <Component id="txt_User" min="-2" pref="399" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txt_User" pref="399" max="32767" attributes="0"/>
+                              <Component id="txt_Password" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="54" max="32767" attributes="0"/>
                       </Group>

@@ -124,9 +124,18 @@ public class LOGIN_USERS extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         
+        if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
+            
+            txtUsuario.setText("");
+            txtPass.setText("");
+        }
+        else {
+        
         try{
         
-        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/NUEVOS_USUARIOS", "root", "compromiso");
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/NUEVOS_USUARIOS", "rex", "polloloco900");
         
         
         PreparedStatement pst = cn.prepareStatement("select * from nuevo_usuario where Usuario = ?");
@@ -138,16 +147,11 @@ public class LOGIN_USERS extends javax.swing.JFrame {
         
         pst2.setString(1, txtPass.getText().trim());
         ResultSet rs2 = pst2.executeQuery();
-        
-        
-                
-                
-        
-        
+       
         if(rs.next()){
             
                 if(rs2.next()){
-                                JOptionPane.showMessageDialog(null, "Bienvenido" + "     " +rs.getString("Usuario"));
+                                JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
                                 
                                 
                 VISTA_ADMINISTRADOR VentanaAdministrador = new VISTA_ADMINISTRADOR();
@@ -167,39 +171,11 @@ public class LOGIN_USERS extends javax.swing.JFrame {
         
         
         
-        /*
-        
-        
-        pst.setString(1, txtnombreI.getText().trim());
-            ResultSet rs = pst.executeQuery();
-            
-            PreparedStatement pst2 = cn.prepareStatement("select * from registros where contraseña = ?");
-            
-            
-            pst2.setString(1, txtcontraseniaI.getText().trim());
-            ResultSet rs2 = pst2.executeQuery();
-            
-            if(rs.next()){
-                
-                txtnombre.setText(rs.getString("nombreusuario"));
-                
-                if(rs2.next()){
-                
-                txtcontrasenia.setText(rs.getString("contraseña"));
-                
-                }
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "No registrado.");
-            }
-        
-        
-        
-        */
+      
         
         }catch(Exception e){
             
-            
+        }
             
         }
         
