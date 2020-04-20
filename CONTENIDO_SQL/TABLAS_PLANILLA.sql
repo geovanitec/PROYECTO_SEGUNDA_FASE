@@ -114,3 +114,9 @@ foreign key(ControlDevengados) references DEVENGADOS(IdDevengados)
 
 )Engine = InnoDB Default charset = Latin1 ;
 
+create table usuario_administrador
+(
+Usuario varchar (60) primary key,
+pass varchar (60) not null
+
+)engine=InnoDB Default charset = Latin1 ;
