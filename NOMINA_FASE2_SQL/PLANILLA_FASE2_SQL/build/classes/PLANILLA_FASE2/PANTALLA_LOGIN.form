@@ -64,11 +64,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Geovani\Desktop\PROYECTOFASE2\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondo.jpg"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="640" y="10" width="180" height="340"/>
@@ -78,7 +73,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Geovani\Desktop\PROYECTOFASE2\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondoIngreso.jpg"/>
+          <Image iconType="2" name="C:\Users\SEBAS\Desktop\Proyecto_SegundaFase\NOMINA_FASE2_SQL\PLANILLA_FASE2_SQL\src\PLANILLA_FASE2\fondoIngreso.jpg"/>
         </Property>
       </Properties>
       <Constraints>

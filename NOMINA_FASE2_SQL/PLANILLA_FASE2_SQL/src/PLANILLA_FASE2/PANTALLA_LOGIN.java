@@ -45,11 +45,9 @@ public class PANTALLA_LOGIN extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         btnSalir.setText("salir");
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, 140, 50));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondo.jpg")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 180, 340));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\PROYECTOFASE2\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondoIngreso.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\SEBAS\\Desktop\\Proyecto_SegundaFase\\NOMINA_FASE2_SQL\\PLANILLA_FASE2_SQL\\src\\PLANILLA_FASE2\\fondoIngreso.jpg")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 340));
 
         jMenu1.setText("LOGIN ADMINISTRADOR");
