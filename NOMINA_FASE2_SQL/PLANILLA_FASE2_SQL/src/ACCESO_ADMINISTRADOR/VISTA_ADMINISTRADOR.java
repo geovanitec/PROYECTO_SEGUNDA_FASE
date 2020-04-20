@@ -35,35 +35,34 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
 
         btn_Guardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txt_Puesto = new javax.swing.JTextField();
         txt_Nombre = new javax.swing.JTextField();
         txt_SueldoExtraOrdinario = new javax.swing.JTextField();
         txt_Bonificacion = new javax.swing.JTextField();
         txt_Comision = new javax.swing.JTextField();
         txt_OtrosDevengados = new javax.swing.JTextField();
-        txt_Anticipos = new javax.swing.JTextField();
-        txt_DescuentosJudiciales = new javax.swing.JTextField();
-        txt_SueldoOrdinario = new javax.swing.JTextField();
-        txt_OtrosDescuentos = new javax.swing.JTextField();
         btn_Modificar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btn_Buscar = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
-        PANTALLA_TRASERA = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTotalDevengados = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        txtCodPuesto = new javax.swing.JTextField();
+        txtCodDepartamento = new javax.swing.JTextField();
+        PANTALLA_TRASERA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(7);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Guardar.setText("GUARDAR");
@@ -72,53 +71,39 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
                 btn_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 90, 140, 40));
+        getContentPane().add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 100, 40));
 
         jLabel1.setText("CALCULOS PLANILLA");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 300, 60));
-
-        jLabel2.setText("DESCUENTOS JUDICIALES");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 160, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 110, 60));
 
         jLabel4.setText("SUELDO EXTRAORDINARIO");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 160, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 160, 30));
 
         jLabel5.setText("BONIFICACION");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 160, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 160, 30));
 
         jLabel6.setText("COMISIONES");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 160, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 160, 30));
 
         jLabel7.setText("OTROS DEVENGADOS");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 160, 30));
-
-        jLabel8.setText("ANTICIPOS");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 160, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 160, 30));
 
         jLabel9.setText("SUELDO ORDINARIO");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 160, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 160, 30));
 
         jLabel10.setText("NOMBRE");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 160, 30));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 30));
 
-        jLabel11.setText("PUESTO");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 160, 30));
-
-        jLabel3.setText("OTROS DESCUENTOS");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 160, 30));
-        getContentPane().add(txt_Puesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 210, 30));
-        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 210, 30));
-        getContentPane().add(txt_SueldoExtraOrdinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 210, 30));
-        getContentPane().add(txt_Bonificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 210, 30));
-        getContentPane().add(txt_Comision, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 210, 30));
-        getContentPane().add(txt_OtrosDevengados, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 210, 30));
-        getContentPane().add(txt_Anticipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 30));
-        getContentPane().add(txt_DescuentosJudiciales, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, 30));
-        getContentPane().add(txt_SueldoOrdinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 30));
-        getContentPane().add(txt_OtrosDescuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 210, 30));
+        jLabel11.setText("COD. PUESTO");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, 30));
+        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 210, 30));
+        getContentPane().add(txt_SueldoExtraOrdinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 210, 30));
+        getContentPane().add(txt_Bonificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 210, 30));
+        getContentPane().add(txt_Comision, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 210, 30));
+        getContentPane().add(txt_OtrosDevengados, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 210, 30));
 
         btn_Modificar.setText("MODIFICAR");
-        getContentPane().add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 140, 40));
+        getContentPane().add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 90, 40));
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
@@ -127,18 +112,28 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 130, 40));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 100, 40));
 
         btn_Buscar.setText("BUSCAR");
-        getContentPane().add(btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 193, 140, 40));
+        getContentPane().add(btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 100, 40));
 
         btn_Eliminar.setText("ELIMNAR");
-        getContentPane().add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 140, 40));
-        getContentPane().add(PANTALLA_TRASERA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 660, 460));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, 210, 30));
+        getContentPane().add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 90, 40));
+        getContentPane().add(txtTotalDevengados, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 210, 30));
 
-        jLabel12.setText("Total");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 120, 30));
+        jLabel12.setText("TOTAL DEVENGADOS");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 120, 30));
+
+        jLabel13.setText("COD. DEPARTAMENTO");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel15.setText("ESTADO");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 60, 30));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 210, 30));
+        getContentPane().add(txtCodPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, 30));
+        getContentPane().add(txtCodDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 90, 30));
+        getContentPane().add(PANTALLA_TRASERA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 660, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +147,10 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
 
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        
        
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
@@ -201,24 +200,22 @@ public class VISTA_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField txt_Anticipos;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtCodDepartamento;
+    private javax.swing.JTextField txtCodPuesto;
+    private javax.swing.JTextField txtTotalDevengados;
     private javax.swing.JTextField txt_Bonificacion;
     private javax.swing.JTextField txt_Comision;
-    private javax.swing.JTextField txt_DescuentosJudiciales;
     private javax.swing.JTextField txt_Nombre;
-    private javax.swing.JTextField txt_OtrosDescuentos;
     private javax.swing.JTextField txt_OtrosDevengados;
-    private javax.swing.JTextField txt_Puesto;
     private javax.swing.JTextField txt_SueldoExtraOrdinario;
-    private javax.swing.JTextField txt_SueldoOrdinario;
     // End of variables declaration//GEN-END:variables
 }

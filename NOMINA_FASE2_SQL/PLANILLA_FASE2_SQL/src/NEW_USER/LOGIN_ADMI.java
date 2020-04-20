@@ -5,7 +5,13 @@
  */
 package NEW_USER;
 
+import ACCESO_ADMINISTRADOR.VISTA_ADMINISTRADOR;
 import PLANILLA_FASE2.PANTALLA_LOGIN;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -87,11 +93,13 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("PASSWORD");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 140, 40));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("USER NAME ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 140, 40));
 
@@ -125,10 +133,69 @@ public class LOGIN_ADMI extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
+         if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
+            
+            txtUsuario.setText("");
+            txtPass.setText("");
+        }
+        else {
+        try{
+        
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/NUEVOS_USUARIOS", "rex", "polloloco900");
+        
+        
+        PreparedStatement pst = cn.prepareStatement("select * from usuario_administrador where Usuario = ?");
+        
+        pst.setString(1, txtUsuario.getText().trim());
+        ResultSet rs = pst.executeQuery();
+        
+        PreparedStatement pst2 = cn.prepareStatement("select * from usuario_administrador where Pass = ?");
+        
+        pst2.setString(1, txtPass.getText().trim());
+        ResultSet rs2 = pst2.executeQuery();
+       
+        if(rs.next()){
+            
+                if(rs2.next()){
+                                JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
+                                
+                                
+                VISTA_ADMINISTRADOR VentanaAdministrador = new VISTA_ADMINISTRADOR();
+                VentanaAdministrador.setVisible(true);
+                this.dispose();
+                
+                }
+                        
+            } else {
+                JOptionPane.showMessageDialog(null, "ESTE USUARIO NO EXISTE");
+                txtUsuario.setText("");
+                txtPass.setText("");
+                
+                
+            }
+        
+        
+        
+        
+      
+        
+        }catch(Exception e){
+            
+            
+            
+        }
+        //
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresar1ActionPerformed
         // TODO add your handling code here:
+        
+       
+        
+        
     }//GEN-LAST:event_btnIngresar1ActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
