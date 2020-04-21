@@ -50,7 +50,6 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
         txtPass = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
         btnCerrar1 = new javax.swing.JButton();
-        btnRegistrar1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -155,13 +154,6 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRegistrar1.setText("REGISTRAR USUARIO NUEVO");
-        btnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrar1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,9 +169,7 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                         .addGap(34, 34, 34)
                         .addComponent(btnRegresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(btnCerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,11 +179,10 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 127, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRegresar1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(btnCerrar1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addGap(0, 131, Short.MAX_VALUE))
         );
 
         pack();
@@ -267,21 +256,11 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCerrar1ActionPerformed
 
-    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
-
-        Form_Logiin_Users siguiente = new Form_Logiin_Users();
-        siguiente.setVisible(true);
-        this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrar1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar1;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnIngresar1;
-    private javax.swing.JButton btnRegistrar1;
     private javax.swing.JButton btnRegresar1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

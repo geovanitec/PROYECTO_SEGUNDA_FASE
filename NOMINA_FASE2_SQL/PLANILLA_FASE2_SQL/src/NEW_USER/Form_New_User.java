@@ -86,6 +86,15 @@ public class Form_New_User extends javax.swing.JInternalFrame {
             }
         });
 
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnRegister, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnClose, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txt_Password, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txt_User, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnRegreso, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -135,14 +144,6 @@ public class Form_New_User extends javax.swing.JInternalFrame {
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnRegister, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnClose, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txt_Password, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txt_User, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnRegreso, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,7 +206,6 @@ public class Form_New_User extends javax.swing.JInternalFrame {
                     pst.executeUpdate();
                     Form_Logiin_Users usuario = new Form_Logiin_Users();
                     usuario.setVisible(true);
-                    this.dispose();
 
                     txt_User.setText("");
                     txt_Password.setText("");

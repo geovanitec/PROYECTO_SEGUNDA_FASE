@@ -19,166 +19,214 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="676" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="300" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel10" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_Nombre" min="-2" pref="210" max="-2" attributes="0"/>
-                          <EmptySpace min="73" pref="73" max="-2" attributes="0"/>
-                          <Component id="btn_Guardar" min="-2" pref="140" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel11" min="-2" pref="160" max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" pref="160" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" pref="160" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_Puesto" min="-2" pref="210" max="-2" attributes="0"/>
-                              <Component id="txt_SueldoOrdinario" min="-2" pref="210" max="-2" attributes="0"/>
-                              <Component id="txt_SueldoExtraOrdinario" min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btn_Modificar" min="-2" pref="140" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="btn_Buscar" min="-2" pref="140" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel3" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txt_OtrosDescuentos1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_TotalDesc" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="txtTotal" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel5" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_Bonificacion" min="-2" pref="210" max="-2" attributes="0"/>
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Component id="btn_Eliminar" min="-2" pref="140" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel6" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_Comision" min="-2" pref="210" max="-2" attributes="0"/>
-                          <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                          <Component id="btnSalir" min="-2" pref="130" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel7" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_OtrosDevengados" min="-2" pref="210" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel8" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_Anticipos" min="-2" pref="210" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_DescuentosJudiciales" min="-2" pref="210" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="txt_OtrosDescuentos" min="-2" pref="210" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" pref="120" max="-2" attributes="0"/>
-                          <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txt_DescuentosJudiciales" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel9" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txt_SueldoOrdinario" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel11" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_Nombre" min="-2" pref="278" max="-2" attributes="0"/>
+                                  <Component id="txt_Puesto" min="-2" pref="210" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel8" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtTotalDev" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="txt_Anticipos" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="txt_OtrosDevengados" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="txt_Bonificacion" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="txt_SueldoExtraOrdinario" min="-2" pref="210" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel6" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txt_Comision" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnBuscar" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="txtIdEmp" min="-2" pref="88" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="btnLimpiar" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btn_Eliminar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btn_Modificar" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="btn_Guardar" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="btnSalir" min="-2" pref="140" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="548" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel10" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txt_Nombre" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="btn_Guardar" min="-2" pref="40" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel11" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" pref="30" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jLabel1" min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel11" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_Puesto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="txt_Puesto" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="txt_SueldoOrdinario" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="txt_SueldoExtraOrdinario" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_SueldoOrdinario" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="btn_Modificar" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
-                          <Component id="btn_Buscar" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_DescuentosJudiciales" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btn_Eliminar" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="txt_Bonificacion" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txt_OtrosDescuentos1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_TotalDesc" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel12" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txtTotal" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel6" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txt_Comision" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="btnSalir" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txt_Nombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txt_SueldoExtraOrdinario" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtIdEmp" min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <Component id="btnBuscar" min="-2" pref="53" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btn_Guardar" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btn_Modificar" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btn_Eliminar" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="btnLimpiar" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnSalir" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txt_Bonificacion" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txt_Comision" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txt_OtrosDevengados" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTotalDev" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel8" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="txt_Anticipos" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel7" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txt_OtrosDevengados" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel8" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txt_Anticipos" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txt_DescuentosJudiciales" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txt_OtrosDescuentos" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel12" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -222,11 +270,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_SueldoOrdinario">
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_Buscar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="BUSCAR"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -284,21 +327,58 @@
         <Property name="text" type="java.lang.String" value="DESCUENTOS JUDICIALES"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_DescuentosJudiciales">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="OTROS DESCUENTOS"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_OtrosDescuentos">
+    <Component class="javax.swing.JTextField" name="txt_TotalDesc">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total"/>
+        <Property name="text" type="java.lang.String" value="TOTAL"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TOTAL DEVENGADOS"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TOTAL DESCUENTOS"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Buscar Empleado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdEmp">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTotal">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTotalDev">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_OtrosDescuentos1">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBuscar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="BUSCAR"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLimpiar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LIMPIAR CELDAS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_DescuentosJudiciales">
     </Component>
   </SubComponents>
 </Form>

@@ -39,8 +39,6 @@
                       <Component id="btnRegresar1" min="-2" pref="190" max="-2" attributes="0"/>
                       <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
                       <Component id="btnCerrar1" min="-2" pref="190" max="-2" attributes="0"/>
-                      <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnRegistrar1" min="-2" pref="220" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -55,12 +53,11 @@
                   <Component id="jLabel3" alignment="1" min="-2" pref="308" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnRegresar1" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnCerrar1" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnRegistrar1" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnRegresar1" alignment="0" pref="50" max="32767" attributes="0"/>
+                  <Component id="btnCerrar1" alignment="0" pref="50" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="127" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="131" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -230,14 +227,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrar1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnRegistrar1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="REGISTRAR USUARIO NUEVO"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrar1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 /**
  *
@@ -25,7 +26,7 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
     
-    private Form_New_User ventanaNuevoUsuario;
+   
     /**
      * Creates new form Form_Logiin_Users
      */
@@ -42,6 +43,7 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -57,6 +59,7 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setVisible(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
@@ -106,43 +109,55 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 67, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtPass, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(fondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnRegresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnIngresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
@@ -151,17 +166,19 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(fondo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(90, 90, 90)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(123, 123, 123))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,8 +246,9 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
 
-        ventanaNuevoUsuario = new Form_New_User();
-        ventanaNuevoUsuario.setVisible(true);
+        Form_New_User  ventanausuario = new Form_New_User();
+        jDesktopPane1.add(ventanausuario);
+        
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -242,6 +260,7 @@ public class Form_Logiin_Users extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton3;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField txtPass;

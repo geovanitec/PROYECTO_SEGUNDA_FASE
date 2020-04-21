@@ -72,16 +72,16 @@ foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
 
 create table SUELDOS
 (
-IdSueldos int primary key auto_increment,
 CodigoEmpleado int not null,
 NombreEmpleado varchar(80),
-larioOrdinario float not null,
+IdPuesto int primary key,
+IdSueldos int primary key auto_increment,
+SalarioOrdinario float not null,
 SalarioExtraordinario float not null,
 Bonificacion float not null,
 Comision float not null,
 OtrosDescuentos float not null,
 TotalDevengado float not null,
-
 IdDescuentos int primary key,
 #Igss float not null,
 #Isr float not null,
@@ -89,7 +89,9 @@ Anticipos float not null,
 DescuentosJudiciales float not null,
 OtrosDescuentos float not null,
 TotalDescuentos float not null,
-foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
+TotalLiquido float not null,
+foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado),
+foreign key(IdPuesto) references PUESTO(IdPuesto)
 )Engine = InnoDB Default charset = Latin1 ;
 
 
