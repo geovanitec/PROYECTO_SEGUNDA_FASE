@@ -175,26 +175,7 @@ public class New_User extends javax.swing.JFrame {
             pst.setString(1, "0");
             pst.setString(2, txt_User.getText().trim());
             pst.setString(3, txt_Password.getText().trim());
-            
-          //  pst.setString(4, txt_ConfirmPassword.getText().trim());
-            
-            /*if (txt_Password != txt_ConfirmPassword){
-               
-               JOptionPane.showMessageDialog(null, " LOS CAMPOS NO SON IGUALES");
-             // JOptionPane.showMessageDialog(null, " USUARIO REGISTRADO CORRECTAMENTE");
-               txt_Password.setText("");
-                txt_ConfirmPassword.setText("");
-               //dispose();
-               
-            }else  {
-                    //(txt_Password == txt_ConfirmPassword){
-                
-                JOptionPane.showMessageDialog(null, " USUARIO REGISTRADO CORRECTAMENTE");
-             dispose();
-                //JOptionPane.showMessageDialog(null, " LOS CAMPOS NO SON IGUALES");
-               // txt_Password.setText("");
-               // txt_ConfirmPassword.setText("");
-            }*/
+           
             
             // aca ejecuta el qvery
            JOptionPane.showMessageDialog(null, " USUARIO REGISTRADO CORRECTAMENTE");
