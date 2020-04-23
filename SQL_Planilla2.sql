@@ -11,20 +11,20 @@ NombrePuesto varchar (30) not null
 )Engine = InnoDB Default charset = Latin1 ;
 
 create table USUARIOS(
-IdUsuario int primary key,
+IdUsuario int primary key auto_increment,
 NombreUsuario varchar (30) not null,
-FechaIngreso date not null
-)Engine = InnoDB Default charset = Latin1 ;
+FechaIngreso varchar(12) not null
+)Engine = InnoDB Default charset = Latin1;
 
 create table DEPARTAMENTO
 (
-IdDepartamento int primary key,
+IdDepartamento int primary key auto_increment,
 NombreDepartamento varchar (30) not null
 )Engine = InnoDB Default charset = Latin1 ;
 
 create table CONCEPTOS
 (
-Id_Concepto int primary key,
+Id_Concepto int primary key auto_increment,
 NombreConcepto varchar (20) not null, /*si es igss o es isr */
 AfectaConcepto varchar (1) not null,  /*A quienes afecta A= TODOS , B=algunos , C= excepcion */
 valorConcepto float not null,   #promedio de cuanto es el igss o isr
@@ -35,12 +35,9 @@ TipoConcepto varchar(1) not null # A : por porcentaje , B : por cuota
 
 )Engine = InnoDB Default charset = Latin1 ;
 
-
-
-
 create table DATOS_EMPLEADO
 (
-Id_Empleado int primary key,
+Id_Empleado int primary key auto_increment,
 CodigoPuesto int not null,
 CodigoDepartamento int not null,
 NombreEmpleado varchar (20) not null,
@@ -54,7 +51,7 @@ foreign key(CodigoPuesto) references PUESTO (IdPuesto)
 )Engine = InnoDB Default charset = Latin1 ;
 
 create table APLICAR_CONCEPTO(
-Id_Aplicar int primary key,
+Id_Aplicar int primary key auto_increment,
 Id_Empleado int not null,
 Id_Concepto int not null,
 foreign key(Id_Empleado) references DATOS_EMPLEADO(Id_Empleado),
@@ -63,7 +60,7 @@ foreign key(Id_Concepto) references CONCEPTOS (Id_Concepto)
 )Engine = InnoDB Default charset = Latin1 ;
 
 create table REGISTROS(
-IdRegristro int primary key,
+IdRegristro int primary key auto_increment,
 FechaRegistro date not null,
 CodigoUsuario int not null,
 CodigoEmpleado int not null,
@@ -73,21 +70,18 @@ foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
 
 )Engine = InnoDB Default charset = Latin1 ;
 
-create table DEVENGADOS
+create table SUELDOS
 (
-IdDevengados int primary key,
+CodigoEmpleado int not null,
+NombreEmpleado varchar(80),
+IdPuesto int primary key,
+IdSueldos int primary key auto_increment,
 SalarioOrdinario float not null,
 SalarioExtraordinario float not null,
 Bonificacion float not null,
 Comision float not null,
 OtrosDescuentos float not null,
 TotalDevengado float not null,
-CodigoEmpleado int not null,
-foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
-)Engine = InnoDB Default charset = Latin1 ;
-
-create table DESCUENTOS 
-(
 IdDescuentos int primary key,
 #Igss float not null,
 #Isr float not null,
@@ -95,9 +89,12 @@ Anticipos float not null,
 DescuentosJudiciales float not null,
 OtrosDescuentos float not null,
 TotalDescuentos float not null,
-CodigoEmpleado int not null,
-foreign key (CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
+TotalLiquido float not null,
+foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado),
+foreign key(IdPuesto) references PUESTO(IdPuesto)
 )Engine = InnoDB Default charset = Latin1 ;
+
+
 
 create table CONTABILIDAD 
 (
@@ -116,7 +113,10 @@ foreign key(ControlDevengados) references DEVENGADOS(IdDevengados)
 
 create table usuario_administrador
 (
-Usuario varchar (60) primary key,
+Id_Admin int primary key auto_increment,
+Usuario_Admin varchar (60) not null,
 pass varchar (60) not null
 
 )engine=InnoDB Default charset = Latin1 ;
+
+#drop database NOMINA_SALARIO;
