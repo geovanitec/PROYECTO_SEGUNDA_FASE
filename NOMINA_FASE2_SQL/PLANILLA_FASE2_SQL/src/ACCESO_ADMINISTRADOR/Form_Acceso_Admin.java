@@ -20,11 +20,11 @@ public class Form_Acceso_Admin extends javax.swing.JInternalFrame {
 
     
    
-    public static String db = "NOMINA_SALARIO";
-    public static String user = "rex";
-    public static String password = "polloloco900";
-    public static String host = "localhost";
-    public static String server = "jdbc:mysql://"+ host + "/" +db; 
+    private static String db = "NOMINA_SALARIO";
+    private static String user = "root";
+    private static String password = "Cagada1234";
+    private static String host = "localhost";
+    private static String server = "jdbc:mysql://"+ host + "/" +db;  
     
     /**
      * Creates new form Form_Acceso_Admin

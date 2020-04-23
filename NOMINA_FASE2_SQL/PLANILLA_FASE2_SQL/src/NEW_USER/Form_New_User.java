@@ -19,8 +19,8 @@ public class Form_New_User extends javax.swing.JInternalFrame {
 
     
     private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
+    private static String user = "root";
+    private static String password = "Cagada1234";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
     /**
@@ -177,7 +177,7 @@ public class Form_New_User extends javax.swing.JInternalFrame {
 
             try{
                 Connection cn = DriverManager.getConnection(server, user, password);
-                PreparedStatement pst = cn.prepareStatement("insert into nuevo_usuario values(?,?,?)");
+                PreparedStatement pst = cn.prepareStatement("insert into USUARIOS values(?,?,?)");
                 //en la variables pst de tipo coneccion a base de datos inserte
                 // pst.setString(1, "0");
                 pst.setString(1, "0");
@@ -193,6 +193,7 @@ public class Form_New_User extends javax.swing.JInternalFrame {
                     txt_User.setText("");
                     txt_Password.setText("");
                     
+                    this.dispose();
                      }catch (Exception e){
 
                 }

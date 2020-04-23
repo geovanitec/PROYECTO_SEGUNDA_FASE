@@ -5,9 +5,9 @@
  */
 package NEW_USER;
 
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
+/*import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
 import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.server;
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;
+import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;*/
 import ACCESO_USUARIOS.VISTA_USUARIO;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,11 +22,11 @@ import javax.swing.JOptionPane;
 public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
 
     
-     public static String db = "NOMINA_SALARIO";
-    public static String user = "rex";
-    public static String password = "polloloco900";
-    public static String host = "localhost";
-    public static String server = "jdbc:mysql://"+ host + "/" +db;
+    private static String db = "NOMINA_SALARIO";
+    private static String user = "root";
+    private static String password = "Cagada1234";
+    private static String host = "localhost";
+    private static String server = "jdbc:mysql://"+ host + "/" +db; 
     
     
     
@@ -210,12 +210,12 @@ if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
 
                 Connection cn = DriverManager.getConnection(server, user, password);
 
-                PreparedStatement pst = cn.prepareStatement("select * from nuevo_usuario where Usuario = ?");
+                PreparedStatement pst = cn.prepareStatement("select * from USUARIOS where NombreUsuario = ?");
 
                 pst.setString(1, txtUsuario.getText().trim());
                 ResultSet rs = pst.executeQuery();
 
-                PreparedStatement pst2 = cn.prepareStatement("select * from nuevo_usuario where Pass = ?");
+                PreparedStatement pst2 = cn.prepareStatement("select * from USUARIOS where Pass = ?");
 
                 pst2.setString(1, txtPass.getText().trim());
                 ResultSet rs2 = pst2.executeQuery();
@@ -223,7 +223,7 @@ if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
                 if(rs.next()){
 
                     if(rs2.next()){
-                        JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
+                        JOptionPane.showMessageDialog(null, "Bienvenido" + "    " + rs.getString("Usuario"));
 
                        VISTA_USUARIO ventana = new VISTA_USUARIO();
                        
