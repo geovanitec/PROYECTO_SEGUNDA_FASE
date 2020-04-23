@@ -1,3 +1,4 @@
+
 create database NOMINA_SALARIO;
 use NOMINA_SALARIO;
 
@@ -120,3 +121,8 @@ Usuario varchar (60) primary key,
 pass varchar (60) not null
 
 )engine=InnoDB Default charset = Latin1 ;
+
+insert into usuario_administrador(Usuario,Pass) values ("geovani","planilla2");
+
+select * from 	usuario_administrador;
+#drop database NOMINA_SALARIO;
