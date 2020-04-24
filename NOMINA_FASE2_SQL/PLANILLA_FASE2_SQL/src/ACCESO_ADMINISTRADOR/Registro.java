@@ -204,9 +204,7 @@ public class Registro extends javax.swing.JInternalFrame {
              Connection cn = DriverManager.getConnection(server, user, password);
              PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?,?,?)");
             
-            
-            
-            pst.setString(1, "0");
+                       pst.setString(1, "0");
             pst.setString(2, txtCodPuesto.getText().trim());
             pst.setString(3, txtCodigoDep.getText().trim());
             pst.setString(4, txtNombre.getText().trim());
@@ -219,8 +217,8 @@ public class Registro extends javax.swing.JInternalFrame {
             
             txtCodPuesto.setText("");
             txtCodigoDep.setText("");
-            txtNombre.setText("");
             txtApellido.setText("");
+            txtNombre.setText("");
             txtEdad.setText("");
             txtEstado.setText("");
             txtSalario.setText("");
