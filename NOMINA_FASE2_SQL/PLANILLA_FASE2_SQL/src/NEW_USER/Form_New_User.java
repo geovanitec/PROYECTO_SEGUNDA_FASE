@@ -18,14 +18,13 @@ import javax.swing.JOptionPane;
 public class Form_New_User extends javax.swing.JInternalFrame {
 
     
+   
     private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
+    private static String user = "root";
+    private static String password = "Cagada1234";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
-    /**
-     * Creates new form Form_New_User
-     */
+    
     public Form_New_User() {
         initComponents();
     }
@@ -177,22 +176,23 @@ public class Form_New_User extends javax.swing.JInternalFrame {
 
             try{
                 Connection cn = DriverManager.getConnection(server, user, password);
-                PreparedStatement pst = cn.prepareStatement("insert into nuevo_usuario values(?,?,?)");
+                PreparedStatement pst = cn.prepareStatement("insert into USUARIOS values(?,?,?)");
                 //en la variables pst de tipo coneccion a base de datos inserte
                 // pst.setString(1, "0");
                 pst.setString(1, "0");
                 pst.setString(2, txt_User.getText().trim());
                 pst.setString(3, txt_Password.getText().trim());
-                
+                pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, " USUARIO REGISTRADO CORRECTAMENTE");
                 
-                pst.executeUpdate();
+                
                     LOGIN_USUARIOS ventana = new LOGIN_USUARIOS();
                     jDesktopPane1.add(ventana);
 
                     txt_User.setText("");
                     txt_Password.setText("");
                     
+                    this.dispose();
                      }catch (Exception e){
 
                 }

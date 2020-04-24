@@ -5,10 +5,11 @@
  */
 package NEW_USER;
 
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
+/*import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
 import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.server;
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;
+import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;*/
 import ACCESO_USUARIOS.VISTA_USUARIO;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,12 +23,12 @@ import javax.swing.JOptionPane;
 public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
 
     
-     public static String db = "NOMINA_SALARIO";
-    public static String user = "rex";
-    public static String password = "polloloco900";
-    public static String host = "localhost";
-    public static String server = "jdbc:mysql://"+ host + "/" +db;
-    
+
+    private static String db = "NOMINA_SALARIO";
+    private static String user = "root";
+    private static String password = "Cagada1234";
+    private static String host = "localhost";
+    private static String server = "jdbc:mysql://"+ host + "/" +db; 
     
     
     
@@ -58,8 +59,8 @@ public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
         btnNuevoUsuario = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -91,17 +92,17 @@ public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
 
         txtUsuario.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
 
-        btnIngresar.setText("INGRESAR");
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
-            }
-        });
-
         btnNuevoUsuario.setText("NUEVO USUARIO");
         btnNuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("INGRESAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -129,9 +130,9 @@ public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
                                 .addGap(50, 50, 50)
                                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addGap(94, 94, 94)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
                         .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
@@ -160,9 +161,9 @@ public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
                         .addContainerGap())
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -172,8 +173,8 @@ public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtPass, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnIngresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnNuevoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,10 +195,22 @@ public class LOGIN_USUARIOS extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    private void btnNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioActionPerformed
 
         
-if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
+Form_New_User ventana = new Form_New_User();
+jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoUsuarioActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
 
             JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
 
@@ -210,12 +223,12 @@ if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
 
                 Connection cn = DriverManager.getConnection(server, user, password);
 
-                PreparedStatement pst = cn.prepareStatement("select * from nuevo_usuario where Usuario = ?");
+                PreparedStatement pst = cn.prepareStatement("select * from USUARIOS where Usuario = ?");
 
                 pst.setString(1, txtUsuario.getText().trim());
                 ResultSet rs = pst.executeQuery();
 
-                PreparedStatement pst2 = cn.prepareStatement("select * from nuevo_usuario where Pass = ?");
+                PreparedStatement pst2 = cn.prepareStatement("select * from USUARIOS where pass = ?");
 
                 pst2.setString(1, txtPass.getText().trim());
                 ResultSet rs2 = pst2.executeQuery();
@@ -223,11 +236,11 @@ if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
                 if(rs.next()){
 
                     if(rs2.next()){
-                        JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
+                        JOptionPane.showMessageDialog(null, "Bienvenido" + "    " + rs.getString("Usuario"));
 
                        VISTA_USUARIO ventana = new VISTA_USUARIO();
+                       ventana.setVisible(true);
                        
-                       jDesktopPane1.add(ventana);
 
                     }
 
@@ -242,40 +255,13 @@ if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
 
             }
 
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void btnNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioActionPerformed
-
-        
-Form_New_User ventana = new Form_New_User();
-jDesktopPane1.add(ventana);
-
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnNuevoUsuarioActionPerformed
-
+    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnNuevoUsuario;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;

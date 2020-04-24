@@ -5,13 +5,14 @@
  */
 package ACCESO_ADMINISTRADOR;
 
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
+/*-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
 import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.server;
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;
+import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;*/
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,11 +23,11 @@ public class Registro extends javax.swing.JInternalFrame {
 
     
   
-    public static String db = "NOMINA_SALARIO";
-    public static String user = "rex";
-    public static String password = "polloloco900";
-    public static String host = "localhost";
-    public static String server = "jdbc:mysql://"+ host + "/" +db;
+    private static String db = "NOMINA_SALARIO";
+    private static String user = "root";
+    private static String password = "Cagada1234";
+    private static String host = "localhost";
+    private static String server = "jdbc:mysql://"+ host + "/" +db; 
     
     
     /**
@@ -47,14 +48,12 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtCodPuesto = new javax.swing.JTextField();
-        txtCodigoDep = new javax.swing.JTextField();
+        txtPuesto = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
@@ -64,6 +63,9 @@ public class Registro extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtCodigoPuesto = new javax.swing.JTextField();
+        btnBuscarCodigo = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -73,9 +75,7 @@ public class Registro extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Registro de empleados");
 
-        jLabel3.setText("Condigo Puesto:");
-
-        jLabel4.setText("Codigo Departamento:");
+        jLabel3.setText("Puesto");
 
         jLabel5.setText("Nombres:");
 
@@ -86,6 +86,12 @@ public class Registro extends javax.swing.JInternalFrame {
         jLabel8.setText("Estado:");
 
         jLabel9.setText("Salario:");
+
+        txtPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuestoActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +111,15 @@ public class Registro extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setText("Codigo Puesto");
+
+        btnBuscarCodigo.setText("Buscar Codigo");
+        btnBuscarCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCodigoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,24 +130,36 @@ public class Registro extends javax.swing.JInternalFrame {
                         .addGap(161, 161, 161)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNombre)
                             .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                            .addComponent(txtCodigoDep)
-                            .addComponent(txtCodPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEdad)
                             .addComponent(txtEstado)
-                            .addComponent(txtSalario)))
+                            .addComponent(txtSalario)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPuesto)
+                                .addGap(79, 79, 79))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCodigoPuesto)
+                                .addGap(62, 62, 62)
+                                .addComponent(btnBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(btnGuardar)
@@ -142,48 +169,53 @@ public class Registro extends javax.swing.JInternalFrame {
                         .addComponent(btnEliminar)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCodPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtCodigoDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnModificar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnSalir))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnModificar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnSalir)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnBuscarCodigo)))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,23 +234,23 @@ public class Registro extends javax.swing.JInternalFrame {
         try{
             
              Connection cn = DriverManager.getConnection(server, user, password);
-             PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?,?,?)");
+             PreparedStatement pst = cn.prepareStatement("insert into DATOS_EMPLEADO values(?,?,?,?,?,?,?)");
             
             
             
             pst.setString(1, "0");
-            pst.setString(2, txtCodPuesto.getText().trim());
-            pst.setString(3, txtCodigoDep.getText().trim());
-            pst.setString(4, txtNombre.getText().trim());
-            pst.setString(5, txtApellido.getText().trim());
-            pst.setString(6, txtEdad.getText().trim());
-            pst.setString(7, txtEstado.getText().trim());
-            pst.setString(8, txtSalario.getText().trim());
+            pst.setString(2, txtPuesto.getText().trim());
+     
+            pst.setString(3, txtNombre.getText().trim());
+            pst.setString(4, txtApellido.getText().trim());
+            pst.setString(5, txtEdad.getText().trim());
+            pst.setString(6, txtEstado.getText().trim());
+            pst.setString(7, txtSalario.getText().trim());
             pst.executeUpdate();
             
             
-            txtCodPuesto.setText("");
-            txtCodigoDep.setText("");
+            txtPuesto.setText("");
+           // txtCodigoDep.setText("");
             txtNombre.setText("");
             txtApellido.setText("");
             txtEdad.setText("");
@@ -235,26 +267,56 @@ public class Registro extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void txtPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuestoActionPerformed
+
+    private void btnBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCodigoActionPerformed
+  try{
+
+            Connection cn = DriverManager.getConnection(server, user, password);
+            PreparedStatement pst = cn.prepareStatement("select * from PUESTO where IdPuesto = ?");
+
+            pst.setString(1, txtCodigoPuesto.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+              
+                txtPuesto.setText(rs.getString("NombrePuesto"));
+                
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe puesto.");
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, " ERROR INTENDO.");
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarCodigoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarCodigo;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCodPuesto;
-    private javax.swing.JTextField txtCodigoDep;
+    private javax.swing.JTextField txtCodigoPuesto;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPuesto;
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }

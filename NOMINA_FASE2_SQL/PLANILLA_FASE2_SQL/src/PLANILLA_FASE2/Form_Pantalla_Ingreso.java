@@ -151,10 +151,10 @@ public class Form_Pantalla_Ingreso extends javax.swing.JFrame {
         // TODO add your handling code here:
        LOGIN_USUARIOS ventanaLoginUsuarios = new LOGIN_USUARIOS();
         jDesktopPane1.add(ventanaLoginUsuarios);
-       // Dimension desktopSize = jDesktopPane2.getSize();
-        //Dimension FrameSize = ventanaLoginUsuarios.getSize();
-        //ventanaLoginUsuarios.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
-        //ventanaLoginUsuarios.show();
+       Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventanaLoginUsuarios.getSize();
+        ventanaLoginUsuarios.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventanaLoginUsuarios.show();
 
     }//GEN-LAST:event_jMenuUsuariosActionPerformed
 

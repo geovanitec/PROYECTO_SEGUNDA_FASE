@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package NEW_USER;
-import ACCESO_ADMINISTRADOR.ACCIONES;
+import ACCESO_ADMINISTRADOR.ACCION;
 
 import ACCESO_ADMINISTRADOR.Form_Acceso_Admin;
 import ACCESO_ADMINISTRADOR.Registro;
@@ -22,8 +22,8 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
     
     
     private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
+    private static String user = "root";
+    private static String password = "Cagada1234";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
     
@@ -122,14 +122,19 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(272, Short.MAX_VALUE)
-                .addComponent(btnIngresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(248, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnIngresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(172, 172, 172))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 105, Short.MAX_VALUE)
@@ -140,10 +145,7 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
-                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(130, 130, 130)
-                            .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 105, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -153,7 +155,9 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                 .addComponent(btnIngresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 104, Short.MAX_VALUE)
@@ -162,13 +166,16 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(50, 50, 50)
-                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 44, Short.MAX_VALUE)))
+                    .addGap(0, 134, Short.MAX_VALUE)))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NEW_USER/fondo2.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
+
+        jDesktopPane1.setLayer(btnRegresar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnCerrar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -185,7 +192,7 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                         .addGap(55, 55, 55)
                         .addComponent(btnCerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,10 +206,6 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                     .addComponent(btnRegresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
-        jDesktopPane1.setLayer(btnRegresar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnCerrar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,7 +255,7 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                 pst.setString(1, txtUsuario.getText().trim());
                 ResultSet rs = pst.executeQuery();
 
-                PreparedStatement pst2 = cn.prepareStatement("select * from usuario_administrador where Pass = ?");
+                PreparedStatement pst2 = cn.prepareStatement("select * from usuario_administrador where pass = ?");
 
                 pst2.setString(1, txtPass.getText().trim());
                 ResultSet rs2 = pst2.executeQuery();
@@ -262,9 +265,15 @@ public class Form_Login_Admin extends javax.swing.JInternalFrame {
                     if(rs2.next()){
                         JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
 
-                        ACCIONES VentanaAdministrador = new ACCIONES();
-                        jDesktopPane1.add(VentanaAdministrador);
+                        ACCION VentanaAdministrador = new ACCION();
+
+                        //jDesktopPane1.add(VentanaAdministrador);
+
+                        VentanaAdministrador.setVisible(true);
                         
+                        txtUsuario.setText("");
+                        txtPass.setText("");
+
 
                     }
 
