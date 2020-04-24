@@ -5,9 +5,9 @@
  */
 package ACCESO_ADMINISTRADOR;
 
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
+/*-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.password;
 import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.server;
-import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;
+import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;*/
 
 import java.sql.Connection;
 import java.sql.DriverManager;
