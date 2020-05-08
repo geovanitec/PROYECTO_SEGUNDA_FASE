@@ -16,9 +16,10 @@ import javax.swing.JOptionPane;
  * @author SEBAS
  */
 public class LoginAdmin extends javax.swing.JFrame {
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "root";
-    private static String password = "Cagada1234";
+ 
+     private static String db = "NOMINA_SALARIO";
+    private static String user = "rex";
+    private static String password = "polloloco900";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
     

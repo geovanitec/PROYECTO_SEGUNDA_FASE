@@ -21,8 +21,8 @@ import javax.swing.JOptionPane;
 public class MantenimientoPuestos extends javax.swing.JInternalFrame {
 
     private static String db = "NOMINA_SALARIO";
-    private static String user = "root";
-    private static String password = "Cagada1234";
+    private static String user = "rex";
+    private static String password = "polloloco900";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
     /**
@@ -53,8 +53,6 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtDepartamento = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -106,8 +104,6 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("INGRESE EL CODIGO DEL PUESTO");
 
-        jLabel5.setText("Departamento");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,11 +122,6 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(96, 96, 96))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(8, 8, 8)
-                        .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,11 +168,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,20 +198,20 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
               
                 try{
             Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst2 = cn.prepareStatement("insert into PUESTO values(?,?,?)");
+            PreparedStatement pst2 = cn.prepareStatement("insert into PUESTO values(?,?)");
             
             
             
             pst2.setString(1, txtid.getText().trim());
              pst2.setString(2, txtNombre.getText().trim());
-              pst2.setString(3, txtDepartamento.getText().trim());
+           
             pst2.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Registro exitoso");
             
             txtid.setText("");
             txtNombre.setText("");
-            txtDepartamento.setText("");
+            
             
         }catch (Exception e){
             
@@ -243,18 +230,18 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
             String IdPuesto = txtBuscar.getText().trim();
             
             Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("update PUESTO set IdPuesto = ?,NombrePuesto = ?,Departamentos = ? where IdPuesto = " + IdPuesto);
+            PreparedStatement pst = cn.prepareStatement("update PUESTO set IdPuesto = ?,NombrePuesto = ? where IdPuesto = " + IdPuesto);
             
             pst.setString(1, txtid.getText().trim());
              pst.setString(2, txtNombre.getText().trim());
-             pst.setString(3, txtDepartamento.getText().trim());
+            
             pst.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Registro Modificado");
             
             txtid.setText("");
             txtNombre.setText("");
-            txtDepartamento.setText("");
+            
             
         } catch (Exception e) {
         }
@@ -274,7 +261,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
             if(rs.next()){
                 txtid.setText(rs.getString("IdPuesto"));
                 txtNombre.setText(rs.getString("NombrePuesto"));
-                txtDepartamento.setText(rs.getString("Departamentos"));
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Alumno no registrado.");
             }
@@ -296,7 +283,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
             
             txtid.setText("");
             txtNombre.setText("");
-            txtDepartamento.setText("");
+           
             
             
         } catch (Exception e) {
@@ -315,9 +302,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtDepartamento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables

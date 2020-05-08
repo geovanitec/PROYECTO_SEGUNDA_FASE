@@ -12,6 +12,7 @@ import ACCESO_ADMINISTRADOR.MantenimientoDepartamentos;
 import ACCESO_ADMINISTRADOR.MantenimientoEmpleados;
 import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
+import ACCESO_USUARIOS.ConsultaPuestos;
 import NEW_USER.Form_New_User;
 
 
@@ -109,6 +110,11 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenu9.add(jMenuItem3);
 
         jMenuItem4.setText("Puestos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem4);
 
         jMenuItem2.setText("Conceptos");
@@ -301,6 +307,14 @@ public class IngresoAdmin extends javax.swing.JFrame {
         ConsultaEmpleados ventana = new ConsultaEmpleados();
         jDesktopPane1.add(ventana);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+
+        ConsultaPuestos ventana = new ConsultaPuestos();
+          jDesktopPane1.add(ventana);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
