@@ -122,7 +122,7 @@ public class ConsultaEmpleados extends javax.swing.JInternalFrame {
         modelo.addColumn("EstadoEmpleado");
         modelo.addColumn("SalarioEmpleado");
         
-            rs2.next();
+            if (rs2.next()){
                 
                 Object[] filas = new Object[cantidadcol];
                 
@@ -137,7 +137,12 @@ public class ConsultaEmpleados extends javax.swing.JInternalFrame {
             
             
             tblEmpleados.setModel(modelo);
+            }else{
             
+            JOptionPane.showMessageDialog(null," NO SE ENCONTRO EL REGISTRO");
+            
+            txtBuscar.setText("");
+            }
             
         }catch(Exception e){
             
