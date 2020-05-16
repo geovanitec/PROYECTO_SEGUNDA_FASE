@@ -126,18 +126,8 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="fondo1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Geovani\Desktop\ProyectoFase3\NOMINA_FASE2\PLANILLA_FASE2_SQL\Usuario_anonimo.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="Fondo2">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Geovani\Desktop\ProyectoFase3\NOMINA_FASE2\PLANILLA_FASE2_SQL\FondoGIf.gif"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
