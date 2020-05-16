@@ -87,6 +87,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         jLabel5.setText("USER NAME ");
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        txtUsuario.setMargin(new java.awt.Insets(0, 0, 1, 0));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N

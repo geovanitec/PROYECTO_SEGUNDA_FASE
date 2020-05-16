@@ -16,6 +16,7 @@ public class Seleccion extends javax.swing.JFrame {
      */
     public Seleccion() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

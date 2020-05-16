@@ -33,6 +33,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
      */
     public LoginUsuarios() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -44,6 +45,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txt_Nombre = new javax.swing.JTextField();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -54,6 +56,17 @@ public class LoginUsuarios extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         btnNuevoUsuario = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        txt_Nombre1 = new javax.swing.JTextField();
+
+        txt_Nombre.setBackground(new Color(0,0,0,0));
+        txt_Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txt_Nombre.setOpaque(false);
+        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +109,16 @@ public class LoginUsuarios extends javax.swing.JFrame {
             }
         });
 
+        txt_Nombre1.setBackground(new Color(0,0,0,0));
+        txt_Nombre1.setForeground(new java.awt.Color(255, 255, 255));
+        txt_Nombre1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txt_Nombre1.setOpaque(false);
+        txt_Nombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Nombre1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -123,7 +146,10 @@ public class LoginUsuarios extends javax.swing.JFrame {
                         .addGap(94, 94, 94)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
-                        .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(txt_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -154,6 +180,8 @@ public class LoginUsuarios extends javax.swing.JFrame {
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(txt_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -165,6 +193,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
         jDesktopPane1.setLayer(txtUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnNuevoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txt_Nombre1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,21 +217,23 @@ public class LoginUsuarios extends javax.swing.JFrame {
 
         Form_New_User ventana = new Form_New_User();
         jDesktopPane1.add(ventana);
+        
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         ventana.show();
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoUsuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
+        if ( txt_Nombre1.getText().isEmpty() || txtPass.getText().isEmpty()){
 
             JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
 
-            txtUsuario.setText("");
+            txt_Nombre1.setText("");
             txtPass.setText("");
         }
         else {
@@ -213,7 +244,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
 
                 PreparedStatement pst = cn.prepareStatement("select * from USUARIOS where Usuario = ?");
 
-                pst.setString(1, txtUsuario.getText().trim());
+                pst.setString(1, txt_Nombre1.getText().trim());
                 ResultSet rs = pst.executeQuery();
 
                 PreparedStatement pst2 = cn.prepareStatement("select * from USUARIOS where Pass = ?");
@@ -233,7 +264,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No registrado.");
-                    txtUsuario.setText("");
+                    txt_Nombre1.setText("");
                     txtPass.setText("");
 
                 }
@@ -242,7 +273,16 @@ public class LoginUsuarios extends javax.swing.JFrame {
 
             }
     }//GEN-LAST:event_jButton1ActionPerformed
-    }
+/*
+    private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NombreActionPerformed
+
+    private void txt_Nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Nombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Nombre1ActionPerformed
+   */
+}
     /**
      * @param args the command line arguments
      */
@@ -289,5 +329,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txt_Nombre;
+    private javax.swing.JTextField txt_Nombre1;
     // End of variables declaration//GEN-END:variables
 }
