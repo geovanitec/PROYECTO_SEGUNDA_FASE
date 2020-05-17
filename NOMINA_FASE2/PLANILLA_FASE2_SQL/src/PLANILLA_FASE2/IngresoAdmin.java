@@ -98,6 +98,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
+        jMenu5.setBackground(new java.awt.Color(102, 204, 255));
         jMenu5.setText("Archivo");
 
         jMenu9.setText("Informes");
