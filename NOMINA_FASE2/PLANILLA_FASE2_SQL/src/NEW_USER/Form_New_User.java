@@ -6,7 +6,7 @@
 package NEW_USER;
 
 
-import PLANILLA_FASE2.LoginUsuarios;
+import PLANILLA_FASE2.LoginUsers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -187,7 +187,7 @@ public class Form_New_User extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, " USUARIO REGISTRADO CORRECTAMENTE");
                 
                 
-                    LoginUsuarios ventana = new LoginUsuarios();
+                    LoginUsers ventana = new LoginUsers();
                     jDesktopPane1.add(ventana);
 
                     txt_User.setText("");
