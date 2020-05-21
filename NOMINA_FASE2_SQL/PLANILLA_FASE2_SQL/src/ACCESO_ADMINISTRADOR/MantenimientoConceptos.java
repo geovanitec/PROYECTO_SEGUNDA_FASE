@@ -8,6 +8,7 @@ package ACCESO_ADMINISTRADOR;
 /*import static ACCESO_ADMINISTRADOR.Registro.password;
 import static ACCESO_ADMINISTRADOR.Registro.server;
 import static ACCESO_ADMINISTRADOR.Registro.user;*/
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,11 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "root";
-    private static String password = "Cagada1234";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+   
    
     /**
      * Creates new form CONCEPTO
@@ -308,7 +305,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try{
-            Connection cn = DriverManager.getConnection(server, user, password);
+              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from CONCEPTOS where Id_Concepto = ?");
             pst.setString(1, txtBuscar.getText().trim());
 
@@ -338,7 +335,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         try {
             String ID = txtBuscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection(server, user, password);
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update CONCEPTOS set Id_Concepto = ?,NombreConcepto = ?, AfectaConcepto = ?, valorConcepto = ?, TipoConcepto = ?, ValorMax = ?, ValorMin = ? where Id_Concepto = " + ID);
 
             pst.setString(1, txtId.getText().trim());
@@ -367,7 +364,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
             
            
             try{
-                Connection cn = DriverManager.getConnection(server, user, password);
+               Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
                 PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?)");
 
                 pst.setString(1, txtId.getText().trim());
@@ -400,7 +397,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         //Codigo que permite borrar registros en la base de datos
 
         try {
-           Connection cn = DriverManager.getConnection(server, user, password);
+             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from CONCEPTOS where Id_Concepto = ?");
 
             pst.setString(1, txtBuscar.getText().trim());

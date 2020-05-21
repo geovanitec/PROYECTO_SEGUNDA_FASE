@@ -6,7 +6,7 @@
 package PLANILLA_FASE2;
 
 
-import NEW_USER.NuevoRegistro;
+import NEW_USER.NuevoUsuario;
 
 
 import java.awt.Dimension;
@@ -25,7 +25,7 @@ public class IngresoUsuario extends javax.swing.JFrame {
      * Creates new form Form_Pantalla_Ingreso
      */
         
-    private NuevoRegistro ventanaNuevoUsuario;
+    private NuevoUsuario ventanaNuevoUsuario;
   //  private Form_Logiin_Users ventanaLoginUsuarios;
     private LoginAdmin ventanaLoginAdmin;
     

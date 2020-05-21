@@ -185,7 +185,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Geovani\Desktop\Dise&#xf1;oPlanilla\PLANILLA_FASE2_SQL\Usuario_anonimo.png"/>
+              <Image iconType="3" name="/Imagenes/Usuario_anonimo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
@@ -193,7 +193,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/PLANILLA_FASE2/FondoGIf.gif"/>
+              <Image iconType="3" name="/Imagenes/FondoGIf.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&apos;"/>
           </Properties>

@@ -8,6 +8,7 @@ package ACCESO_ADMINISTRADOR;
 /*import static ACCESO_ADMINISTRADOR.Registro.password;
 import static ACCESO_ADMINISTRADOR.Registro.server;
 import static ACCESO_ADMINISTRADOR.Registro.user;*/
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,11 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class MantenimientoPuestos extends javax.swing.JInternalFrame {
 
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+ 
     /**
      * Creates new form IngresoPuestos
      */
@@ -197,7 +194,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
                 
               
                 try{
-            Connection cn = DriverManager.getConnection(server, user, password);
+              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst2 = cn.prepareStatement("insert into PUESTO values(?,?)");
             
             
@@ -229,7 +226,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
          try {
             String IdPuesto = txtBuscar.getText().trim();
             
-            Connection cn = DriverManager.getConnection(server, user, password);
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update PUESTO set IdPuesto = ?,NombrePuesto = ? where IdPuesto = " + IdPuesto);
             
             pst.setString(1, txtid.getText().trim());
@@ -252,7 +249,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try{
-            Connection cn = DriverManager.getConnection(server, user, password);
+              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from PUESTO where IdPuesto = ?");
             pst.setString(1, txtBuscar.getText().trim());
             
@@ -275,7 +272,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         try {
-             Connection cn = DriverManager.getConnection(server, user, password);
+               Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from PUESTO where IdPuesto = ?");
             
             pst.setString(1, txtBuscar.getText().trim());

@@ -5,6 +5,7 @@
  */
 package ACCESO_USUARIOS;
 
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,11 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author SEBAS
  */
 public class ConsultaEmpleados extends javax.swing.JInternalFrame {
-     private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+  
     /**
      * Creates new form ConsultaEmpleados
      */
@@ -105,7 +102,7 @@ public class ConsultaEmpleados extends javax.swing.JInternalFrame {
         
         try{
                         
-        Connection cn = DriverManager.getConnection(server, user, password);
+         Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
         PreparedStatement pst2 = cn.prepareStatement("select * from DATOS_EMPLEADO where Id_Empleado = ?");
         pst2.setString(1, txtBuscar.getText().trim());
         

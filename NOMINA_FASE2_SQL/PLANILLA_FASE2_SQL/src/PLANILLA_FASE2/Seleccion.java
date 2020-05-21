@@ -14,6 +14,12 @@ import java.util.Set;
  */
 public class Seleccion extends javax.swing.JFrame {
 
+    
+    public static String BD = "jdbc:mysql://localhost/NOMINA_SALARIO";
+    public static String Usuario = "rex";
+    public static String Contraseña = "polloloco900";
+    
+    
     /**
      * Creates new form Seleccion
      */
@@ -105,10 +111,10 @@ public class Seleccion extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\DiseñoPlanilla\\PLANILLA_FASE2_SQL\\Usuario_anonimo.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Usuario_anonimo.png"))); // NOI18N
         jLabel2.setText("-");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PLANILLA_FASE2/FondoGIf.gif"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGIf.gif"))); // NOI18N
         jLabel3.setText("'");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -156,7 +162,7 @@ public class Seleccion extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        LoginUsers ventana = new LoginUsers();
+        LoginUsuarios ventana = new LoginUsuarios();
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

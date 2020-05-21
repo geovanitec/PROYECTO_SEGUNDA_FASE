@@ -6,6 +6,7 @@
 package ACCESO_ADMINISTRADOR;
 
 
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,11 +22,6 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
     private double pIsr, pIgss, Igss, Isr;
     private double SueldoOrd, SueldoExt, Bonif, Comis, OtrosDev, TotDev, Ant, DesJud,OtrosDes,TotalDes,TotalLiq;
     public static String strnombreEmpleado="";
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "root";
-    private static String password = "Cagada1234";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db;  
     
     /**
      * Creates new form Form_Acceso_Admin
@@ -420,7 +416,7 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
         else {
             try{
 
-                Connection cn = DriverManager.getConnection(server, user, password);
+                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
                 
                 //int IdE = 0;
                 
@@ -509,7 +505,7 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
 
         try{
 
-            Connection cn = DriverManager.getConnection(server, user, password);
+              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from SUELDOS where IdSueldos = ?");
 
             pst.setString(1, txtIdEmp.getText().trim());
@@ -690,7 +686,7 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
     private void txtBuscarCodigoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCodigoEmpleadoActionPerformed
        
         try{
-        Connection cn = DriverManager.getConnection(server, user, password);
+          Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
              PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO where Id_Empleado = ?");
 
             pst.setString(1, txt_Codigo.getText().trim());

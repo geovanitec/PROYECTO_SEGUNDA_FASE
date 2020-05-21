@@ -17,11 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class LoginAdmin extends javax.swing.JFrame {
  
-     private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+   
     
     /**
      * Creates new form LoginAdmin
@@ -258,7 +254,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         else {
             try{
 
-                Connection cn = DriverManager.getConnection(server, user, password);
+                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
 
                 PreparedStatement pst = cn.prepareStatement("select * from usuario_administrador where Usuario = ?");
 

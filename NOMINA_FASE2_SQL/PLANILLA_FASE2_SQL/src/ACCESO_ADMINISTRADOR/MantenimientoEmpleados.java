@@ -9,6 +9,7 @@ package ACCESO_ADMINISTRADOR;
 import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.server;
 import static ACCESO_ADMINISTRADOR.Form_Acceso_Admin.user;*/
 
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,11 +24,7 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
 
     
   
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+    
     
     
     /**
@@ -247,7 +244,7 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
         
         try{
             
-             Connection cn = DriverManager.getConnection(server, user, password);
+               Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
              PreparedStatement pst = cn.prepareStatement("insert into DATOS_EMPLEADO values(?,?,?,?,?,?,?)");
             
             
@@ -288,7 +285,7 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
     private void btnBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCodigoActionPerformed
   try{
 
-            Connection cn = DriverManager.getConnection(server, user, password);
+              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from PUESTO where IdPuesto = ?");
 
             pst.setString(1, txtCodigoPuesto.getText().trim());
