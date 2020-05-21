@@ -14,7 +14,7 @@ import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
 import ACCESO_USUARIOS.ConsultaPuestos;
-import NEW_USER.NuevoRegistro;
+import NEW_USER.NuevoUsuario;
 
 
 import java.awt.Dimension;
@@ -33,13 +33,15 @@ public class IngresoAdmin extends javax.swing.JFrame {
      * Creates new form Form_Pantalla_Ingreso
      */
         
-    private NuevoRegistro ventanaNuevoUsuario;
+    private NuevoUsuario ventanaNuevoUsuario;
   //  private Form_Logiin_Users ventanaLoginUsuarios;
     private LoginAdmin ventanaLoginAdmin;
     
     
     public IngresoAdmin() {
         initComponents();
+        jDesktopPane1.setBorder( new ImagenFondo());
+        this.setExtendedState(IngresoAdmin.MAXIMIZED_BOTH);
     }
 
     /**

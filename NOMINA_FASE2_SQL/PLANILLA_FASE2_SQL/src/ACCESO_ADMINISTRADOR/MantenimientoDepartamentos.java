@@ -5,6 +5,7 @@
  */
 package ACCESO_ADMINISTRADOR;
 
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,11 +17,7 @@ import javax.swing.JOptionPane;
  * @author SEBAS
  */
 public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "root";
-    private static String password = "compromiso";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+  
     
     /**
      * Creates new form MantenimientoDepartamentos
@@ -186,7 +183,7 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
         try {
             String IdPuesto = txtBuscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection(server, user, password);
+              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update DEPARTAMENTO set IdDepartamento = ?,NombreDepartamento = ? where IdDepartamento = " + IdPuesto);
 
             pst.setString(1, txtid.getText().trim());
@@ -207,7 +204,7 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         try {
-            Connection cn = DriverManager.getConnection(server, user, password);
+             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from DEPARTAMENTO where IdDepartamento = ?");
 
             pst.setString(1, txtBuscar.getText().trim());
@@ -237,7 +234,7 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
         else {
 
             try{
-                Connection cn = DriverManager.getConnection(server, user, password);
+                  Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
                 PreparedStatement pst2 = cn.prepareStatement("insert into DEPARTAMENTO values(?,?)");
 
                 pst2.setString(1, txtid.getText().trim());
@@ -259,7 +256,7 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try{
-            Connection cn = DriverManager.getConnection(server, user, password);
+             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from DEPARTAMENTO where IdDepartamento = ?");
             pst.setString(1, txtBuscar.getText().trim());
 

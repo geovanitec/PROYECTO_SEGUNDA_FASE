@@ -5,6 +5,7 @@
  */
 package ACCESO_ADMINISTRADOR;
 
+import PLANILLA_FASE2.Seleccion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,11 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CalculoImpuestos extends javax.swing.JInternalFrame {
 
- private static String db = "NOMINA_SALARIO";
-    private static String user = "rex";
-    private static String password = "polloloco900";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db; 
+
     /**
      * Creates new form ADMIN_CONCEPTOS
      */
@@ -293,7 +290,7 @@ public class CalculoImpuestos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
 
-            Connection cn = DriverManager.getConnection(server, user, password);
+             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from SUELDOS where IdSueldos = ?");
 
             pst.setString(1, txtCodigoEmpleado.getText().trim());
