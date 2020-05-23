@@ -105,7 +105,6 @@ public class Seleccion extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Geovani\\Desktop\\DiseñoPlanilla\\PLANILLA_FASE2_SQL\\Usuario_anonimo.png")); // NOI18N
         jLabel2.setText("-");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PLANILLA_FASE2/FondoGIf.gif"))); // NOI18N
