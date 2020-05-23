@@ -184,9 +184,6 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Geovani\Desktop\Dise&#xf1;oPlanilla\PLANILLA_FASE2_SQL\Usuario_anonimo.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
         </Component>
