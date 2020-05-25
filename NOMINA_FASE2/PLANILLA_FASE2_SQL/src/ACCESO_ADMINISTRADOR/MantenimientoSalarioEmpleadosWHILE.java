@@ -133,6 +133,12 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
 
         jLabel15.setText("Buscar Empleado");
 
+        txtTotalDev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalDevActionPerformed(evt);
+            }
+        });
+
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,17 +190,12 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_TotalDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtTotalDev, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,10 +220,6 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblCodigoPuesto))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_OtrosDevengados, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_DescuentosJudiciales, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,47 +230,58 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_Anticipos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTotalDev, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_Comision, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(txt_Anticipos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(44, 44, 44)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_TotalDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txt_Comision, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txt_OtrosDevengados, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel17))
+                        .addGap(152, 152, 152)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnCalcular)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(71, 71, 71))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(txtIdEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(98, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel17))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(39, 39, 39)
+                                                .addComponent(txtIsr, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(31, 31, 31)
+                                                .addComponent(txtIgss, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(btnCalcular))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(txtIdEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addComponent(btnCalucularTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,6 +291,22 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel15)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -298,38 +322,23 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_SueldoExtraOrdinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Bonificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Comision, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_OtrosDevengados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Comision, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTotalDev, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel15)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(43, 43, 43)
+                            .addComponent(jLabel13)
+                            .addComponent(txtTotalDev, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +371,7 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_TotalDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel14))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,76 +387,79 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         // TODO add your handling code here:
 
-        
-            try {
+        try {
 
-                Connection cn = DriverManager.getConnection(server, user, password);
+            Connection cn = DriverManager.getConnection(server, user, password);
 
-                //int IdE = 0;
-                PreparedStatement pst2 = cn.prepareStatement("insert into SUELDOS values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("select * from datos_empleado where CodigoPuesto = ?");
+            pst.setString(1, lblCodigoPuesto.getText().trim());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
 
-               // ResultSet rs = pst2.executeQuery();
+                PreparedStatement pst2 = cn.prepareStatement("insert into SUELDOS values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                // ResultSet rs = pst2.executeQuery();
                 Double SueldoOrd, SueldoExt, Bonif, Comis, OtrosDev, TotDev, Ant, DesJud, OtrosDes, TotalDes, TotalLiq;
 
-           // IdE = Integer.parseInt(txtIdEmp.getText().trim());
+                // IdE = Integer.parseInt(txtIdEmp.getText().trim());
                 pst2.setString(1, "0");
-               // pst2.setString(2, txt_Codigo.getText().trim());
-                //pst2.setString(3, txt_Nombre.getText().trim());
-               // pst2.setString(4, txt_Puesto.getText().trim());
-                //pst2.setString(4, "0");
-                pst2.setString(5, txt_SueldoOrdinario.getText().trim());
+                pst2.setString(2, rs.getString("Id_Empleado"));
+                pst2.setString(3, lblCodigoPuesto.getText().trim());
+                pst2.setString(4, txt_SueldoOrdinario.getText().trim());
                 SueldoOrd = Double.parseDouble(txt_SueldoOrdinario.getText().trim());
-                pst2.setString(6, txt_SueldoExtraOrdinario.getText().trim());
+                pst2.setString(5, txt_SueldoExtraOrdinario.getText().trim());
                 SueldoExt = Double.parseDouble(txt_SueldoExtraOrdinario.getText().trim());
-                pst2.setString(7, txt_Bonificacion.getText().trim());
+                pst2.setString(6, txt_Bonificacion.getText().trim());
                 Bonif = Double.parseDouble(txt_Bonificacion.getText().trim());
-                pst2.setString(8, txt_Comision.getText().trim());
+                pst2.setString(7, txt_Comision.getText().trim());
                 Comis = Double.parseDouble(txt_Comision.getText().trim());
-                pst2.setString(9, txt_OtrosDevengados.getText().trim());
+                pst2.setString(8, txt_OtrosDevengados.getText().trim());
                 OtrosDev = Double.parseDouble(txt_OtrosDevengados.getText().trim());
                 TotDev = SueldoOrd + SueldoExt + Bonif + Comis + OtrosDev;
                 txtTotalDev.setText("" + TotDev);
-                pst2.setString(10, txtTotalDev.getText().trim());
+                pst2.setString(9, txtTotalDev.getText().trim());
                 //pst2.setString(10, "0");
-                pst2.setString(11, txtIgss.getText().trim());
-                pst2.setString(12, txtIsr.getText().trim());
-                pst2.setString(13, txt_Anticipos.getText().trim());
+                pst2.setString(10, txtIgss.getText().trim());
+                pst2.setString(11, txtIsr.getText().trim());
+                pst2.setString(12, txt_Anticipos.getText().trim());
                 Ant = Double.parseDouble(txt_Anticipos.getText().trim());
-                pst2.setString(14, txt_DescuentosJudiciales.getText().trim());
+                pst2.setString(13, txt_DescuentosJudiciales.getText().trim());
                 DesJud = Double.parseDouble(txt_DescuentosJudiciales.getText().trim());
-                pst2.setString(15, txt_OtrosDescuentos1.getText().trim());
+                pst2.setString(14, txt_OtrosDescuentos1.getText().trim());
                 OtrosDes = Double.parseDouble(txt_OtrosDescuentos1.getText().trim());
                 TotalDes = Ant + DesJud + OtrosDes;
                 txt_TotalDesc.setText("" + TotalDes);
-                pst2.setString(16, txt_TotalDesc.getText().trim());
+                pst2.setString(15, txt_TotalDesc.getText().trim());
                 TotalLiq = TotDev - TotalDes;
                 txtTotal.setText("" + TotalLiq);
-                pst2.setString(17, txtTotal.getText().trim());
+                pst2.setString(16, txtTotal.getText().trim());
                 pst2.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Guardado con exito.");
-
-                txtIdEmp.setText("");
-               // txt_Codigo.setText("");
-                //txt_Puesto.setText("");
-                txt_SueldoOrdinario.setText("");
-                txt_SueldoExtraOrdinario.setText("");
-                txt_Bonificacion.setText("");
-                txt_Comision.setText("");
-                txt_OtrosDevengados.setText("");
-                txtTotalDev.setText("");
-                txt_Anticipos.setText("");
-                txt_DescuentosJudiciales.setText("");
-                txt_OtrosDescuentos1.setText("");
-                txt_TotalDesc.setText("");
-                txtTotal.setText("");
-                txtIsr.setText("");
-                txtIgss.setText("");
-
-            } catch (Exception e) {
+                
 
             }
+                //int IdE = 0;
+            JOptionPane.showMessageDialog(null, "Guardado con exito.");
+            txtIdEmp.setText("");
+            // txt_Codigo.setText("");
+            cbxPuestos.setSelectedItem(0);
+            txt_SueldoOrdinario.setText("");
+            txt_SueldoExtraOrdinario.setText("");
+            txt_Bonificacion.setText("");
+            txt_Comision.setText("");
+            txt_OtrosDevengados.setText("");
+            txtTotalDev.setText("");
+            txt_Anticipos.setText("");
+            txt_DescuentosJudiciales.setText("");
+            txt_OtrosDescuentos1.setText("");
+            txt_TotalDesc.setText("");
+            txtTotal.setText("");
+            txtIsr.setText("");
+            txtIgss.setText("");
 
-        
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
 
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
@@ -470,7 +482,6 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-
 
                 txt_SueldoOrdinario.setText(rs.getString("SalarioOrdinario"));
                 txt_SueldoExtraOrdinario.setText(rs.getString("SalarioExtraordinario"));
@@ -499,7 +510,7 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
         // TODO add your handling code here:
 
         txtIdEmp.setText("");
-       // txt_Codigo.setText("");
+        // txt_Codigo.setText("");
         //txt_Puesto.setText("");
         txt_SueldoOrdinario.setText("");
         txt_SueldoExtraOrdinario.setText("");
@@ -623,8 +634,8 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
         JOptionPane.showMessageDialog(null, "Totales calculados con éxito");
     }//GEN-LAST:event_btnCalucularTotalesActionPerformed
 
-    public void puestos(){
-         try {
+    public void puestos() {
+        try {
             Connection cn = DriverManager.getConnection(server, user, password);
             PreparedStatement pst = cn.prepareStatement("select NombrePuesto from puesto;");
 
@@ -642,11 +653,11 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
         } catch (Exception e) {
 
         }
-    
+
     }
     private void cbxPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPuestosActionPerformed
         // TODO add your handling code here:
-                try {
+        try {
             Connection cn = DriverManager.getConnection(server, user, password);
             PreparedStatement pst = cn.prepareStatement("select IdPuesto from puesto where NombrePuesto=?");
             pst.setString(1, cbxPuestos.getSelectedItem().toString());
@@ -663,13 +674,17 @@ public class MantenimientoSalarioEmpleadosWHILE extends javax.swing.JInternalFra
         } catch (Exception e) {
 
         }
-      
+
     }//GEN-LAST:event_cbxPuestosActionPerformed
 
     private void cbxPuestosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxPuestosMouseClicked
         // TODO add your handling code here:
-   
+
     }//GEN-LAST:event_cbxPuestosMouseClicked
+
+    private void txtTotalDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalDevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalDevActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

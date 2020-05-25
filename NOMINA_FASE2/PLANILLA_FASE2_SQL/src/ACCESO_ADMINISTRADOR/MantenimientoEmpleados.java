@@ -52,13 +52,11 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         txtPuesto = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
         txtEstado = new javax.swing.JTextField();
-        txtSalario = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -88,8 +86,6 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
         jLabel7.setText("Edad:");
 
         jLabel8.setText("Estado:");
-
-        jLabel9.setText("Salario:");
 
         txtPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,15 +164,13 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
+                                    .addComponent(jLabel8))
                                 .addGap(39, 39, 39)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtApellido)
                                     .addComponent(txtEdad)
                                     .addComponent(txtEstado)
-                                    .addComponent(txtNombre)
-                                    .addComponent(txtSalario)))
+                                    .addComponent(txtNombre)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -246,11 +240,7 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnModificar)
@@ -275,18 +265,18 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
         try{
             
              Connection cn = DriverManager.getConnection(server, user, password);
-             PreparedStatement pst = cn.prepareStatement("insert into DATOS_EMPLEADO values(?,?,?,?,?,?,?,?)");
+             PreparedStatement pst = cn.prepareStatement("insert into DATOS_EMPLEADO values(?,?,?,?,?,?,?)");
             
             
             
-            pst.setString(1, txtIdEmpleado.getText().trim());
+            pst.setString(1, "0");
             pst.setString(2, txtPuesto.getText().trim());
             pst.setString(3, txtDepartamento.getText().trim());
             pst.setString(4, txtNombre.getText().trim());
             pst.setString(5, txtApellido.getText().trim());
             pst.setString(6, txtEdad.getText().trim());
             pst.setString(7, txtEstado.getText().trim());
-            pst.setString(8, txtSalario.getText().trim());
+         
             pst.executeUpdate();
             
             
@@ -297,7 +287,6 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
             txtApellido.setText("");
             txtEdad.setText("");
             txtEstado.setText("");
-            txtSalario.setText("");
             
             JOptionPane.showMessageDialog(null, "Empleado Registrado.");
             
@@ -372,7 +361,6 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCodigoPuesto;
     private javax.swing.JTextField txtDepartamento;
@@ -381,6 +369,5 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtIdEmpleado;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPuesto;
-    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
