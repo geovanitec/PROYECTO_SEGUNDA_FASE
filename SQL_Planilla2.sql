@@ -2,13 +2,6 @@ create database NOMINA_SALARIO;
 use NOMINA_SALARIO;
 
 
-create table PUESTO
-(
-IdPuesto int primary key,
-NombrePuesto varchar (30) not null
-
-
-)Engine = InnoDB Default charset = Latin1 ;
 
 create table USUARIOS(
 IdUsuario int primary key auto_increment,
@@ -21,6 +14,16 @@ create table DEPARTAMENTO
 IdDepartamento int primary key auto_increment,
 NombreDepartamento varchar (30) not null
 )Engine = InnoDB Default charset = Latin1 ;
+
+-- drop table puesto;
+create table PUESTO
+(
+IdPuesto int primary key,
+NombrePuesto varchar (30) not null,
+CodigoDepartamento varchar (30),
+foreign key(CodigoDepartamento) references DEPARTAMENTO (IdDepartamento)
+)Engine = InnoDB Default charset = Latin1 ;
+
 
 create table CONCEPTOS
 (
