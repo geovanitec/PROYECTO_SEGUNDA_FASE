@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
     private static String db = "NOMINA_SALARIO";
     private static String user = "root";
-    private static String password = "compromiso";
+    private static String password = "Cagada1234";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
     
