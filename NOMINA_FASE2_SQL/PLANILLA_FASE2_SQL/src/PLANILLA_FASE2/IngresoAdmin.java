@@ -6,11 +6,12 @@
 package PLANILLA_FASE2;
 
 
-import ACCESO_ADMINISTRADOR.CalculoImpuestos;
+
 import ACCESO_ADMINISTRADOR.MantenimientoConceptos;
 import ACCESO_ADMINISTRADOR.MantenimientoDepartamentos;
 import ACCESO_ADMINISTRADOR.MantenimientoEmpleados;
 import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
+import ACCESO_ADMINISTRADOR.MantenimientoSalarioEmpleadosWHILE;
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
 import ACCESO_USUARIOS.ConsultaPuestos;
@@ -72,6 +73,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
+        jMenuIngresoSalario = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -189,6 +191,15 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuBar3.add(jMenu7);
 
         jMenu8.setText("Procesos");
+
+        jMenuIngresoSalario.setText("Ingreso Salarios");
+        jMenuIngresoSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIngresoSalarioActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuIngresoSalario);
+
         jMenuBar3.add(jMenu8);
 
         jMenu10.setText("Herramientas");
@@ -301,12 +312,12 @@ public class IngresoAdmin extends javax.swing.JFrame {
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-       CalculoImpuestos ventanaLoginUsuarios = new CalculoImpuestos();
+      /* CalculoImpuestos ventanaLoginUsuarios = new CalculoImpuestos();
         jDesktopPane1.add(ventanaLoginUsuarios);
        Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventanaLoginUsuarios.getSize();
         ventanaLoginUsuarios.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
-        ventanaLoginUsuarios.show();
+        ventanaLoginUsuarios.show();*/
 
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
@@ -330,6 +341,18 @@ public class IngresoAdmin extends javax.swing.JFrame {
         ConsultaDepartamentos dep = new ConsultaDepartamentos();
         jDesktopPane1.add(dep);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuIngresoSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIngresoSalarioActionPerformed
+
+        MantenimientoSalarioEmpleadosWHILE ventana = new MantenimientoSalarioEmpleadosWHILE ();
+        jDesktopPane1.add(ventana);
+
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuIngresoSalarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,6 +404,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuItem jMenuIngresoSalario;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
