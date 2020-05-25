@@ -260,7 +260,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
                 Connection cn = DriverManager.getConnection(server, user, password);
 
-                PreparedStatement pst = cn.prepareStatement("select * from usuario_administrador where Usuario = ?");
+                PreparedStatement pst = cn.prepareStatement("select * from usuario_administrador where Usuario_Admin = ?");
 
                 pst.setString(1, txtUsuario.getText().trim());
                 ResultSet rs = pst.executeQuery();
@@ -273,17 +273,17 @@ public class LoginAdmin extends javax.swing.JFrame {
                 if(rs.next()){
 
                     if(rs2.next()){
-                        JOptionPane.showMessageDialog(null, "Bienvenido" + "     " + rs.getString("Usuario"));
+                        JOptionPane.showMessageDialog(null, "Bienvenido" + " " + rs.getString("Usuario_Admin"));
 
                         IngresoAdmin VentanaAdministrador = new IngresoAdmin();
 
                         //jDesktopPane1.add(VentanaAdministrador);
 
                         VentanaAdministrador.setVisible(true);
-
+                        
                         txtUsuario.setText("");
                         txtPass.setText("");
-
+                        this.dispose();
                     }
 
                 } else {
@@ -294,7 +294,7 @@ public class LoginAdmin extends javax.swing.JFrame {
                 }
 
             }catch(Exception e){
-
+                System.out.println(e);
             }
             //
         }

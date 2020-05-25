@@ -187,7 +187,7 @@ public class LoginUsers extends javax.swing.JFrame {
 
                 Connection cn = DriverManager.getConnection(server, user, password);
 
-                PreparedStatement pst = cn.prepareStatement("select * from USUARIOS where Usuario = ?");
+                PreparedStatement pst = cn.prepareStatement("select * from USUARIOS where NombreUsuario = ?");
 
                 pst.setString(1, txtUsuario.getText().trim());
                 ResultSet rs = pst.executeQuery();
@@ -200,7 +200,7 @@ public class LoginUsers extends javax.swing.JFrame {
                 if(rs.next()){
 
                     if(rs2.next()){
-                        JOptionPane.showMessageDialog(null, "Bienvenido" + "    " + rs.getString("Usuario"));
+                        JOptionPane.showMessageDialog(null, "Bienvenido" + " " + rs.getString("NombreUsuario"));
 
                         IngresoUsuario ventana = new IngresoUsuario();
                         ventana.setVisible(true);
