@@ -11,10 +11,11 @@ import ACCESO_ADMINISTRADOR.MantenimientoConceptos;
 import ACCESO_ADMINISTRADOR.MantenimientoDepartamentos;
 import ACCESO_ADMINISTRADOR.MantenimientoEmpleados;
 import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
+import ACCESO_ADMINISTRADOR.MantenimientoSalarioEmpleadosWHILE;
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
 import ACCESO_USUARIOS.ConsultaPuestos;
-import NEW_USER.Form_New_User;
+import NEW_USER.NuevoRegistro;
 
 
 import java.awt.Dimension;
@@ -33,7 +34,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
      * Creates new form Form_Pantalla_Ingreso
      */
         
-    private Form_New_User ventanaNuevoUsuario;
+    private NuevoRegistro ventanaNuevoUsuario;
   //  private Form_Logiin_Users ventanaLoginUsuarios;
     private LoginAdmin ventanaLoginAdmin;
     
@@ -70,6 +71,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -98,7 +100,6 @@ public class IngresoAdmin extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jMenu5.setBackground(new java.awt.Color(102, 204, 255));
         jMenu5.setText("Archivo");
 
         jMenu9.setText("Informes");
@@ -188,6 +189,15 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuBar3.add(jMenu7);
 
         jMenu8.setText("Procesos");
+
+        jMenuItem10.setText("Ingreso de Sueldos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem10);
+
         jMenuBar3.add(jMenu8);
 
         jMenu10.setText("Herramientas");
@@ -330,6 +340,12 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jDesktopPane1.add(dep);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        MantenimientoSalarioEmpleadosWHILE ventana = new MantenimientoSalarioEmpleadosWHILE();
+        jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,6 +397,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
