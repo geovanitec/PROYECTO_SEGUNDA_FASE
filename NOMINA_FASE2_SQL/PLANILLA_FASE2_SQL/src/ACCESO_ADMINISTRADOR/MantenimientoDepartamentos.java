@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,12 +19,41 @@ import javax.swing.JOptionPane;
  */
 public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
   
+    String[] Nombres = {"IdDepartamento" ,"NombreDepartamento" };
+     public void MostrarDB(String Tabla) {
+        String[] columnas = new String[2];
+        String query;
+        try {
+
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+
+            query = "SELECT * FROM " + Tabla;
+
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet resultado = consulta.executeQuery();
+            DefaultTableModel md = new DefaultTableModel(null, Nombres);
+
+            while (resultado.next()) {
+                for (int i = 0; i < 2; i++) {
+                    columnas[i] = resultado.getString(Nombres[i]);
+                }
+                md.addRow(columnas);
+
+            }
+            table.setModel(md);
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    
+     }
     
     /**
      * Creates new form MantenimientoDepartamentos
      */
     public MantenimientoDepartamentos() {
         initComponents();
+         MostrarDB("DEPARTAMENTO");
     }
 
     /**
@@ -35,31 +65,32 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNombre = new javax.swing.JTextField();
-        btn_Modificar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btn_Eliminar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        btn_Guardar = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
+        btn_Modificar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btnSalir = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtid = new javax.swing.JTextField();
+        btn_Guardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
 
+        setBorder(null);
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setVisible(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Modificar.setText("MODIFICAR");
-        btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ModificarActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Eliminar.setText("ELIMNAR");
         btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +98,32 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
                 btn_EliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 86, 31));
+
+        btn_Modificar.setText("MODIFICAR");
+        btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, 31));
+
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 74, 82, 30));
+
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(51, 51, 51));
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 140, -1));
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setText("SALIR");
@@ -75,6 +132,12 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 105, 31));
+
+        txtNombre.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 168, -1));
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 170, -1));
 
         btn_Guardar.setText("GUARDAR");
         btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,97 +145,45 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
                 btn_GuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 91, 31));
 
-        btnBuscar.setText("BUSCAR");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Id");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 90, 40));
 
-        jLabel4.setText("INGRESE EL CODIGO DEL PUESTO");
-
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 80, -1));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registro de Departamentos");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 250, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 4, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btn_Modificar)
-                                    .addGap(41, 41, 41)
-                                    .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(59, 59, 59))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
-        );
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(table);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 410, 150));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 490));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,7 +202,7 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Registro Modificado");
-
+             MostrarDB("DEPARTAMENTO");
             txtid.setText("");
             txtNombre.setText("");
 
@@ -213,6 +224,7 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
             txtid.setText("");
             txtNombre.setText("");
             JOptionPane.showMessageDialog(null, "Registro Eliminado");
+             MostrarDB("DEPARTAMENTO");
         } catch (Exception e) {
         }
 
@@ -240,9 +252,9 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
                 pst2.setString(1, txtid.getText().trim());
                 pst2.setString(2, txtNombre.getText().trim());
                 pst2.executeUpdate();
-
+                
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
-
+                MostrarDB("DEPARTAMENTO");
                 txtid.setText("");
                 txtNombre.setText("");
 
@@ -265,14 +277,20 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
             if(rs.next()){
                 txtid.setText(rs.getString("IdDepartamento"));
                 txtNombre.setText(rs.getString("NombreDepartamento"));
+               
             } else {
                 JOptionPane.showMessageDialog(null, "Departamento no registrado.");
+                 txtBuscar.setText("");
             }
 
         }catch (Exception e){
 
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -284,7 +302,10 @@ public class MantenimientoDepartamentos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable table;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtid;
