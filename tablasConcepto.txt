@@ -1,0 +1,25 @@
+create table conceptos (
+	IdConcepto int,
+	NombreConcepto varchar,
+	Afecta(Percepcion, Deduccion) Varchar,
+	Tipo (% o valor) varchar,
+	valor() varchar,
+	Aplica(A quien le aplica) vachar(todos, algunos)
+	PorTabla int(0 = no o 1 = si)
+
+)
+
+create table excepciones (
+	IdExcepcion
+	NombreConcepto(Igss)
+	CodigoEmpleado(1,2,3,4)
+
+)
+
+create tabla impuesto(
+	IdImpuesto
+	porcentaje
+	maximo
+	minimo
+
+)

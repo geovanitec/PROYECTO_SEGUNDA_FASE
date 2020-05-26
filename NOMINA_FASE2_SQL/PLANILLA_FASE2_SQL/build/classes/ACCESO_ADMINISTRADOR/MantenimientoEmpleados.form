@@ -337,9 +337,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxPuesto">
-          <Properties>
-            <Property name="selectedIndex" type="int" value="-1"/>
-          </Properties>
           <Events>
             <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jComboBoxPuestoAncestorAdded"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxPuestoActionPerformed"/>
@@ -351,9 +348,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxDepartamento">
-          <Properties>
-            <Property name="selectedIndex" type="int" value="-1"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxDepartamentoActionPerformed"/>
           </Events>

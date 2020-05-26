@@ -374,9 +374,23 @@ public void MostrarDB(String Tabla) {
             
             if(rs.next()){
               
+                PreparedStatement pst2 = cn.prepareStatement("select * from puesto where IdPuesto = ?" );
+                pst2.setString(1, lb.getText().trim());
+                ResultSet rs1 = pst2.executeQuery();
+                PreparedStatement pst3 = cn.prepareStatement("select * from departamento where IdDepartamento = ?" );
+                pst3.setString(1, lb1.getText().trim());
+                ResultSet rs2 = pst3.executeQuery();
+                
+                if (rs1.next()) {
+                    lb.setText(rs.getString("IdPuesto"));
+                }
+                if (rs2.next()) {
+                    lb1.setText(rs.getString("IdDepartamento"));
+                }
+                
                 txtIdEmpleado.setText(rs.getString("Id_Empleado"));
-                lb.setText(rs.getString("IdPuesto"));
-               lb1.setText(rs.getString("CodigoDepartamento"));
+                
+               //jComboBoxDepartamento.setSelectedItem(Integer.parseInt(lbl.getText().trim()));
                txtNombre.setText(rs.getString("NombreEmpleado"));
                txtApellido.setText(rs.getString("ApellidoEmpleado"));
                 txtEdad.setText(rs.getString("EdadEmpleado"));
@@ -385,14 +399,14 @@ public void MostrarDB(String Tabla) {
             
             } else {
                 JOptionPane.showMessageDialog(null, " No existe ese empleado.");
-               
+   
             }
             
            
             
         }catch(Exception e){
           //  JOptionPane.showMessageDialog(null, " ERROR INTENTO.");
-             
+             System.out.println(e);
         }
 
 // TODO add your handling code here:
@@ -408,7 +422,7 @@ public void MostrarDB(String Tabla) {
             String codigo = txtBuscar.getText().trim();
 
           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update DATOS_EMPLEADO set Id_Empleado = ? , IdPuesto= ? , CodigoDepartamento=?,NombreEmpleado=?,ApellidoEmpleado=?,EdadEmpleado=? ,EstadoEmpleado=? where Id_Empleado = " + codigo);
+            PreparedStatement pst = cn.prepareStatement("update DATOS_EMPLEADO set Id_Empleado = ? , CodigoPuesto= ? , CodigoDepartamento=?,NombreEmpleado=?,ApellidoEmpleado=?,EdadEmpleado=? ,EstadoEmpleado=? where Id_Empleado = " + codigo);
 
           
              pst.setString(1, txtIdEmpleado.getText().trim());
@@ -431,7 +445,8 @@ public void MostrarDB(String Tabla) {
             txtNombre.setText("");
             lb.setText("");
             lb1.setText("");
-           
+            jComboBoxPuesto.setSelectedItem(0);
+            jComboBoxDepartamento.setSelectedItem(0);
             txtEstado.setText("");
             txtBuscar.setText("");
 
