@@ -1,1 +1,0 @@
-SELECT * FROM nomina_salario.sueldos;

@@ -7,6 +7,8 @@ package PLANILLA_FASE2;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -18,6 +20,18 @@ public class Seleccion extends javax.swing.JFrame {
     public static String BD = "jdbc:mysql://localhost/NOMINA_SALARIO";
     public static String Usuario = "rex";
     public static String Contraseña = "polloloco900";
+   
+    
+    
+    
+    /*public void Panel(){
+    ventanaP.removeAll();
+       ventanaP.repaint();
+       ventanaP.revalidate();
+        
+       ventanaP.repaint();
+        ventanaP.revalidate();
+}*/
     
     
     /**

@@ -14,7 +14,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,7 +24,36 @@ import javax.swing.JOptionPane;
  */
 public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
 
-    
+     String[] NombresColumnas= { "Id_Empleado","CodigoPuesto","CodigoDepartamento","NombreEmpleado","ApellidoEmpleado","EdadEmpleado","EstadoEmpleado"};
+     
+public void MostrarDB(String Tabla) {
+        String[] columnas = new String[7];
+        String query;
+        try {
+
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+           
+                query = "SELECT * FROM " + Tabla;
+           
+
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet resultado = consulta.executeQuery();
+            DefaultTableModel md = new DefaultTableModel(null, NombresColumnas);
+
+            while (resultado.next()) {
+                for (int i = 0; i < 7; i++) {
+                    columnas[i] = resultado.getString(NombresColumnas[i]);
+                }
+                md.addRow(columnas);
+
+            }
+            tabla.setModel(md);
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+
+    }
   
    
     
@@ -32,7 +63,35 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
      */
     public MantenimientoEmpleados() {
         initComponents();
+        
+        try{
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            
+            PreparedStatement pst = cn.prepareStatement("select NombrePuesto from  PUESTO");
+            ResultSet rs = pst.executeQuery();
+            
+            PreparedStatement pst2 = cn.prepareStatement("select NombreDepartamento from DEPARTAMENTO");
+            ResultSet rM = pst2.executeQuery();
+            
+            jComboBoxPuesto.addItem("Seleccione una opción");
+            while(rs.next()){
+            jComboBoxPuesto.addItem(rs.getString("NombrePuesto"));
+            }
+            
+           jComboBoxDepartamento.addItem("Seleccione una opción");
+            while (rM.next()) {
+                jComboBoxDepartamento.addItem(rM.getString("NombreDepartamento"));
+            }
+   
+            
+        } catch (Exception e){
+
+        }
+        MostrarDB("DATOS_EMPLEADO");
     }
+        
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,77 +102,63 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtPuesto = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtEdad = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscarCodigo = new javax.swing.JButton();
         txtEstado = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtEdad = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtIdEmpleado = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        txtCodigoPuesto = new javax.swing.JTextField();
-        btnBuscarCodigo = new javax.swing.JButton();
-        txtIdEmpleado = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtDepartamento = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        jComboBoxPuesto = new javax.swing.JComboBox();
+        jComboBoxDepartamento = new javax.swing.JComboBox();
+        lb = new javax.swing.JLabel();
+        lb1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        cbox = new javax.swing.JLabel();
 
+        setBorder(null);
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setVisible(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registro de empleados");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
-        jLabel3.setText("Puesto");
-
-        jLabel5.setText("Nombres:");
-
-        jLabel6.setText("Apellidos:");
-
-        jLabel7.setText("Edad:");
-
-        jLabel8.setText("Estado:");
-
-        txtPuesto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPuestoActionPerformed(evt);
-            }
-        });
-
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setText("Eliminar");
-
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Codigo Puesto");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 114, 23));
+
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 145, -1));
 
         btnBuscarCodigo.setText("Buscar Codigo");
         btnBuscarCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -121,130 +166,148 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
                 btnBuscarCodigoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBuscarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 136, -1));
 
+        txtEstado.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jPanel1.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 170, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Estado:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 90, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Edad:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 80, 30));
+
+        txtEdad.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 170, -1));
+
+        txtApellido.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 170, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Apellidos:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 80, 30));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Nombres:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, 30));
+
+        txtNombre.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 170, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Id Empleado:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 110, 30));
+
+        txtIdEmpleado.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         txtIdEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdEmpleadoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 170, -1));
 
-        jLabel4.setText("Id Empleado:");
+        jLabel10.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Departamento");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 120, 30));
 
-        txtDepartamento.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Puesto");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 140, 20));
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDepartamentoActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
-        jLabel10.setText("Departamento");
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, 23));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalir))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtApellido)
-                                    .addComponent(txtEdad)
-                                    .addComponent(txtEstado)
-                                    .addComponent(txtNombre)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtIdEmpleado))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDepartamento))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPuesto)))
-                        .addGap(143, 143, 143)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCodigo))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel3)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnModificar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnSalir))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, -1, -1));
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, -1, -1));
+
+        jComboBoxPuesto.setSelectedIndex(-1);
+        jComboBoxPuesto.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jComboBoxPuestoAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jComboBoxPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPuestoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBoxPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 140, -1));
+
+        jComboBoxDepartamento.setSelectedIndex(-1);
+        jComboBoxDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDepartamentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBoxDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 140, -1));
+
+        lb.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        lb.setForeground(new java.awt.Color(255, 255, 255));
+        lb.setText("..");
+        jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
+
+        lb1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        lb1.setForeground(new java.awt.Color(255, 255, 255));
+        lb1.setText("..");
+        jPanel1.add(lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, -1, -1));
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 440, 320));
+
+        cbox.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        cbox.setForeground(new java.awt.Color(255, 255, 255));
+        cbox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
+        jPanel1.add(cbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 510));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -266,26 +329,29 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
             
             
             
-            pst.setString(1, "0");
-            pst.setString(2, txtPuesto.getText().trim());
-            pst.setString(3, txtDepartamento.getText().trim());
+            pst.setString(1, txtIdEmpleado.getText().trim());
+            pst.setString(2, lb.getText().trim());
+            pst.setString(3, lb1.getText().trim());
             pst.setString(4, txtNombre.getText().trim());
             pst.setString(5, txtApellido.getText().trim());
             pst.setString(6, txtEdad.getText().trim());
             pst.setString(7, txtEstado.getText().trim());
          
             pst.executeUpdate();
+            MostrarDB("DATOS_EMPLEADO");
+            JOptionPane.showMessageDialog(null, "Empleado Registrado.");
             
-            
-            txtPuesto.setText("");
-            txtDepartamento.setText("");
+            lb.setText("");
+            lb1.setText("");
             txtIdEmpleado.setText("");
             txtNombre.setText("");
             txtApellido.setText("");
             txtEdad.setText("");
             txtEstado.setText("");
+             jComboBoxPuesto.setSelectedIndex(0);
+             jComboBoxDepartamento.setSelectedIndex(0);
             
-            JOptionPane.showMessageDialog(null, "Empleado Registrado.");
+            
             
         }catch(Exception e){
             
@@ -295,35 +361,37 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPuestoActionPerformed
-
     private void btnBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCodigoActionPerformed
   try{
-            int codigoDepartamento = 0;
+            //int codigoDepartamento = 0;
              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from PUESTO where IdPuesto = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO where Id_Empleado = ?");
             
-            pst.setString(1, txtCodigoPuesto.getText().trim());
+            pst.setString(1, txtBuscar.getText().trim());
             
 
             ResultSet rs = pst.executeQuery();
             
             if(rs.next()){
               
-                txtPuesto.setText(rs.getString("IdPuesto"));
-               txtDepartamento.setText(rs.getString("CodigoDepartamento"));
-                
+                txtIdEmpleado.setText(rs.getString("Id_Empleado"));
+                lb.setText(rs.getString("IdPuesto"));
+               lb1.setText(rs.getString("CodigoDepartamento"));
+               txtNombre.setText(rs.getString("NombreEmpleado"));
+               txtApellido.setText(rs.getString("ApellidoEmpleado"));
+                txtEdad.setText(rs.getString("EdadEmpleado"));
+                 txtEstado.setText(rs.getString("EstadoEmpleado"));
+               
+            
             } else {
-                JOptionPane.showMessageDialog(null, " No existe puesto.");
+                JOptionPane.showMessageDialog(null, " No existe ese empleado.");
                
             }
             
            
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, " ERROR INTENTO.");
+          //  JOptionPane.showMessageDialog(null, " ERROR INTENTO.");
              
         }
 
@@ -334,13 +402,134 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdEmpleadoActionPerformed
 
-    private void txtDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDepartamentoActionPerformed
-
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+
+         try {
+            String codigo = txtBuscar.getText().trim();
+
+          Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("update DATOS_EMPLEADO set Id_Empleado = ? , IdPuesto= ? , CodigoDepartamento=?,NombreEmpleado=?,ApellidoEmpleado=?,EdadEmpleado=? ,EstadoEmpleado=? where Id_Empleado = " + codigo);
+
+          
+             pst.setString(1, txtIdEmpleado.getText().trim());
+            pst.setString(2, lb.getText().trim());
+            pst.setString(3, lb1.getText().trim());
+            pst.setString(4, txtNombre.getText().trim());
+            pst.setString(5, txtApellido.getText().trim());
+            pst.setString(6, txtEdad.getText().trim());
+            pst.setString(7, txtEstado.getText().trim());
+         
+            pst.executeUpdate();
+            MostrarDB("DATOS_EMPLEADO");
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+            //btnEliminar.setEnabled(false);
+           // btnModificar.setEnabled(false);
+           // txtEstado.setEnabled(false);
+
+            txtIdEmpleado.setText("");
+            txtNombre.setText("");
+            lb.setText("");
+            lb1.setText("");
+           
+            txtEstado.setText("");
+            txtBuscar.setText("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "NO SE PUDO MODIFICAR.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+
+
+
+
+
+
+
+
+
+// TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void jComboBoxPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPuestoActionPerformed
+       try{
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select IdPuesto from PUESTO where NombrePuesto= ?");
+            pst.setString(1, jComboBoxPuesto.getSelectedItem().toString());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                lb.setText(rs.getString("IdPuesto"));
+
+            } else {
+
+            }
+
+        }catch (Exception e){
+
+        }  // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPuestoActionPerformed
+
+    private void jComboBoxPuestoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jComboBoxPuestoAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPuestoAncestorAdded
+
+    private void jComboBoxDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDepartamentoActionPerformed
+ try{
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select IdDepartamento from DEPARTAMENTO where NombreDepartamento= ?");
+            pst.setString(1, jComboBoxDepartamento.getSelectedItem().toString());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                lb1.setText(rs.getString("IdDepartamento"));
+
+            } else {
+
+            }
+
+        }catch (Exception e){
+
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxDepartamentoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        try {
+           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("delete from DATOS_EMPLEADO where Id_Empleado = ?");
+
+            pst.setString(1, txtBuscar.getText().trim());
+            pst.executeUpdate();
+             MostrarDB("DATOS_EMPLEADO");
+            txtBuscar.setText("");
+
+            JOptionPane.showMessageDialog(this, "REGISTRO ELIMINADO.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            //btnEliminar.setEnabled(false);
+           // btnModificar.setEnabled(false);
+
+           txtIdEmpleado.setText("");
+            txtNombre.setText("");
+            lb.setText("");
+            lb1.setText("");
+           
+            txtEstado.setText("");
+            txtBuscar.setText("");
+
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -349,6 +538,9 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel cbox;
+    private javax.swing.JComboBox jComboBoxDepartamento;
+    private javax.swing.JComboBox jComboBoxPuesto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -358,13 +550,16 @@ public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb;
+    private javax.swing.JLabel lb1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCodigoPuesto;
-    private javax.swing.JTextField txtDepartamento;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtIdEmpleado;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPuesto;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,11 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class NuevoUsuario extends javax.swing.JFrame {
 
+    
+     public boolean mostrar = true;
     /**
      * Creates new form NuevoUsuario
      */
     public NuevoUsuario() {
         initComponents();
+             txtPass.setVisible(false);
+        txtPass1.setVisible(true);
     }
 
     /**
@@ -37,10 +41,12 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnRegreso = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
-        btnRegresar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtPass = new javax.swing.JTextField();
+        txtPass1 = new javax.swing.JPasswordField();
+        btnMostrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -57,21 +63,21 @@ public class NuevoUsuario extends javax.swing.JFrame {
         jLabel4.setText("PASSWORD");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 170, 30));
 
-        btnRegistrar.setText("REGRESAR");
+        btnRegreso.setText("REGRESAR");
+        btnRegreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 160, 40));
+
+        btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 160, 40));
-
-        btnRegresar.setText("REGISTRAR");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 160, 40));
+        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 160, 40));
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +86,15 @@ public class NuevoUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 170, 30));
         getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 170, 30));
+        getContentPane().add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 170, 30));
+
+        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono ojo login.jpg"))); // NOI18N
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 30, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoPersona.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, 100));
@@ -91,7 +106,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnRegresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresoActionPerformed
 
         LoginUsuarios ventana = new LoginUsuarios();
         ventana.setVisible(true);
@@ -99,11 +114,11 @@ public class NuevoUsuario extends javax.swing.JFrame {
         this.dispose();
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_btnRegresoActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-        if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
+        if ( txtUsuario.getText().isEmpty() || txtPass1.getText().isEmpty()){
             JOptionPane.showMessageDialog(null , " NO SE PUDEN DEJAR CAMPOS VACIOS");
         }
         else {
@@ -116,14 +131,14 @@ public class NuevoUsuario extends javax.swing.JFrame {
                 pst.setString(1, "0");
                 pst.setString(2, txtUsuario.getText().trim());
 
-                pst.setString(3, txtPass.getText().trim());
+                pst.setString(3, txtPass1.getText().trim());
 
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, " USUARIO REGISTRADO CORRECTAMENTE");
 
                 txtUsuario.setText("");
 
-                txtPass.setText("");
+                txtPass1.setText("");
                     LoginUsuarios ventana = new  LoginUsuarios();
                     ventana.setVisible(true);
                     this.dispose();
@@ -134,11 +149,32 @@ public class NuevoUsuario extends javax.swing.JFrame {
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        
+ if (mostrar ){
+            txtPass.setVisible(true);
+            txtPass1.setVisible(false);
+            txtPass.setText(txtPass1.getText());
+            mostrar = false;
+            
+        }else {
+            txtPass.setVisible(false);
+            txtPass1.setVisible(true);
+            txtPass1.setText(txtPass.getText());
+            mostrar = true;
+            
+        }
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,14 +212,16 @@ public class NuevoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnRegreso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass1;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
