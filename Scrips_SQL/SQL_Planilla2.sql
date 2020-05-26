@@ -10,11 +10,13 @@ NombreUsuario varchar (30) not null,
 Pass varchar(12) not null
 )Engine = InnoDB Default charset = Latin1;
 
+#drop table DEPARTAMENTO;
 create table DEPARTAMENTO
 (
 IdDepartamento int primary key auto_increment,
 NombreDepartamento varchar (30) not null
 )Engine = InnoDB Default charset = Latin1 ;
+select * from DEPARTAMENTO;
 
 -- drop table puesto;
 create table PUESTO
@@ -40,9 +42,10 @@ TipoConcepto varchar(1) not null # A : por porcentaje , B : por cuota
 )Engine = InnoDB Default charset = Latin1 ;
 
 -- drop table datos_empleado;
+#drop table DATOS_EMPLEADO;
 create table DATOS_EMPLEADO
 (
-Id_Empleado int primary key auto_increment,
+Id_Empleado int primary key,
 CodigoPuesto int not null,
 CodigoDepartamento int not null,
 NombreEmpleado varchar (20) not null,
@@ -114,12 +117,16 @@ foreign key(Id_Aplicar) references APLICAR_CONCEPTO(Id_Aplicar)
 
 )Engine = InnoDB Default charset = Latin1 ;
 
+#drop table usuario_administrador;
 create table usuario_administrador
 (
 Id_Admin int primary key auto_increment,
-Usuario_Admin varchar (60) not null,
+Usuario varchar (60) not null,
 pass varchar (60) not null
 
 )engine=InnoDB Default charset = Latin1 ;
+select *  from usuario_administrador;
+insert into usuario_administrador values (1,"geova","123");
+
 
 #drop database NOMINA_SALARIO;
