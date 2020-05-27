@@ -27,21 +27,35 @@ CodigoDepartamento int,
 foreign key(CodigoDepartamento) references DEPARTAMENTO (IdDepartamento)
 )Engine = InnoDB Default charset = Latin1 ;
 
-
+drop table conceptos;
 create table CONCEPTOS
 (
 Id_Concepto int primary key auto_increment,
 NombreConcepto varchar (20) not null, /*si es igss o es isr */
-AfectaConcepto varchar (1) not null,  /*A quienes afecta A= TODOS , B=algunos , C= excepcion */
-valorConcepto float not null,   #promedio de cuanto es el igss o isr
-TipoConcepto varchar(1) not null # A : por porcentaje , B : por cuota
-#aca se determina si es tipo fijo o no 
-#AplicarConcepto varchar (1) not null  #A= TODOS , B=algunos , C= excepcion
+AfectaConcepto varchar (20) not null,  /*percepcion o deduccion */
+TipoConcepto varchar(20) not null, # A : por porcentaje , B : por cuota
+valorConcepto varchar(20) not null,   #promedio de cuanto es el igss o isr,
+usoTabla varchar(2), #Si usa tabla o no
+aplica varchar(20) #A todos o algunos
 
 
 )Engine = InnoDB Default charset = Latin1 ;
 
--- drop table datos_empleado;
+create table EXCEPCIONES (
+	IdExcepcion int primary key,
+    NombreConcepto varchar(40),
+    CodigoEmpleado int
+
+)Engine = InnoDB Default charset = Latin1 ;
+
+create table IMPUESTO(
+	IdImpuesto int primary key,
+	NombpreConcepto varchar(30),
+    Porcentaje float, 
+    maximo float,
+    minimo float
+)Engine = InnoDB Default charset = Latin1 ;
+
 #drop table DATOS_EMPLEADO;
 create table DATOS_EMPLEADO
 (
@@ -129,4 +143,4 @@ select *  from usuario_administrador;
 insert into usuario_administrador values (1,"geova","123");
 
 
-#drop database NOMINA_SALARIO;
+-- drop database NOMINA_SALARIO;

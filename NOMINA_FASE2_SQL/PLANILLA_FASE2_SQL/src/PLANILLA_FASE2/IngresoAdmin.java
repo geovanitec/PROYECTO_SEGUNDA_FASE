@@ -370,7 +370,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
 
     private void jMenuIngresoSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIngresoSalarioActionPerformed
 
-        MantenimientoSalarioEmpleadosWHILE ventana = new MantenimientoSalarioEmpleadosWHILE ();
+        MantenimientoConceptos ventana = new MantenimientoConceptos ();
         CentrarVentanas(ventana);
 
 
