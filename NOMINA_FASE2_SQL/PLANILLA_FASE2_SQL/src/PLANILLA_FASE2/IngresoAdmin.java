@@ -7,6 +7,7 @@ package PLANILLA_FASE2;
 
 
 
+import ACCESO_ADMINISTRADOR.AplicacionExcepciones;
 import ACCESO_ADMINISTRADOR.MantenimientoConceptos;
 import ACCESO_ADMINISTRADOR.MantenimientoDepartamentos;
 import ACCESO_ADMINISTRADOR.MantenimientoEmpleados;
@@ -95,6 +96,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuIngresoSalario = new javax.swing.JMenuItem();
+        jMenuAplicacionExcepciones = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -225,6 +227,14 @@ public class IngresoAdmin extends javax.swing.JFrame {
             }
         });
         jMenu8.add(jMenuIngresoSalario);
+
+        jMenuAplicacionExcepciones.setText("Aplicacion Excepciones");
+        jMenuAplicacionExcepciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAplicacionExcepcionesActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuAplicacionExcepciones);
 
         jMenuBar3.add(jMenu8);
 
@@ -389,6 +399,15 @@ public class IngresoAdmin extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuAplicacionExcepcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAplicacionExcepcionesActionPerformed
+
+        AplicacionExcepciones ventana = new AplicacionExcepciones();
+CentrarVentanas(ventana);
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAplicacionExcepcionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -437,6 +456,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenuItem jMenuAplicacionExcepciones;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuIngresoSalario;

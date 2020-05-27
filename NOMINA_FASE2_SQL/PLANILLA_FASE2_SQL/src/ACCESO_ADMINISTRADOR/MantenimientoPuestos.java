@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,12 +22,56 @@ import javax.swing.JOptionPane;
  */
 public class MantenimientoPuestos extends javax.swing.JInternalFrame {
 
- 
+ public void MostrarDB(String Tabla) {
+        
+     String[] NombresColumnas= { "IdPuesto","NombrePuesto","CodigoDepartamento"};
+     
+    String[] columnas = new String[3];
+        String query;
+        try {
+
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+           
+                query = "SELECT * FROM " + Tabla;
+           
+
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet resultado = consulta.executeQuery();
+            DefaultTableModel md = new DefaultTableModel(null, NombresColumnas);
+
+            while (resultado.next()) {
+                for (int i = 0; i < 3; i++) {
+                    columnas[i] = resultado.getString(NombresColumnas[i]);
+                }
+                md.addRow(columnas);
+
+            }
+            tabla.setModel(md);
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+ }
     /**
      * Creates new form IngresoPuestos
      */
     public MantenimientoPuestos() {
         initComponents();
+        try{
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            
+            PreparedStatement pst = cn.prepareStatement("select NombreDepartamento from  DEPARTAMENTO");
+            ResultSet rs = pst.executeQuery();
+            
+            cboxDepartamentos.addItem("Seleccione una opción");
+            while(rs.next()){
+            cboxDepartamentos.addItem(rs.getString("NombreDepartamento"));
+            }
+            
+        } catch (Exception e){
+
+        }
+        MostrarDB("PUESTO");
     }
 
     /**
@@ -38,19 +83,27 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        btn_Modificar = new javax.swing.JButton();
-        btn_Eliminar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
         btn_Guardar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        btn_Modificar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        btn_Eliminar = new javax.swing.JButton();
+        cboxDepartamentos = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        lb = new javax.swing.JLabel();
+        lblfoto = new javax.swing.JLabel();
 
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -58,61 +111,133 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Id");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 64, -1, -1));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 102, -1, -1));
-
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registro de Puestos");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 17, -1, -1));
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 61, 113, -1));
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 99, 168, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 200, 40));
 
-        btn_Modificar.setText("MODIFICAR");
-        btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ModificarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 111, -1, 31));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Id");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 70, 30));
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 170, 30));
 
-        btn_Eliminar.setText("ELIMNAR");
-        btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_EliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 111, 86, 31));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nombre");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 80, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 170, 30));
 
-        btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnSalir.setText("SALIR");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 171, 105, 31));
-
+        btn_Guardar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Guardar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         btn_Guardar.setText("GUARDAR");
+        btn_Guardar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 173, 91, 31));
-        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 76, 140, -1));
+        jPanel1.add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 91, 31));
 
+        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        btnSalir.setText("SALIR");
+        btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 80, 31));
+
+        btn_Modificar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Modificar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        btn_Modificar.setText("MODIFICAR");
+        btn_Modificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 100, 31));
+
+        txtBuscar.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 140, 30));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("INGRESE EL CODIGO DEL PUESTO");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 210, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 69, 82, 34));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 120, 34));
 
-        jLabel4.setText("INGRESE EL CODIGO DEL PUESTO");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 23, -1, -1));
+        btn_Eliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Eliminar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        btn_Eliminar.setText("ELIMNAR");
+        btn_Eliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 86, 31));
+
+        cboxDepartamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxDepartamentosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cboxDepartamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 170, 30));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Departamento");
+        jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 130, 30));
+
+        tabla.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 390, 170));
+
+        lb.setForeground(new java.awt.Color(255, 255, 255));
+        lb.setText("..");
+        jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, -1));
+
+        lblfoto.setBackground(new java.awt.Color(255, 255, 255));
+        lblfoto.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        lblfoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
+        lblfoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblfoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 490));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -128,7 +253,7 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
 
         if ( txtid.getText().isEmpty() || txtNombre.getText().isEmpty()){
 
-            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPO VACIO");
+            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
 
         }
         else {
@@ -137,16 +262,17 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
               
                 try{
               Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst2 = cn.prepareStatement("insert into PUESTO values(?,?)");
-            
+            PreparedStatement pst2 = cn.prepareStatement("insert into PUESTO values(?,?,?)");
             
             
             pst2.setString(1, txtid.getText().trim());
-             pst2.setString(2, txtNombre.getText().trim());
+            pst2.setString(2, txtNombre.getText().trim());
+             pst2.setString(3, lb.getText().trim());
            
             pst2.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Registro exitoso");
+            MostrarDB("PUESTO");
             
             txtid.setText("");
             txtNombre.setText("");
@@ -167,68 +293,163 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
         
          try {
             String IdPuesto = txtBuscar.getText().trim();
-            
+
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update PUESTO set IdPuesto = ?,NombrePuesto = ? where IdPuesto = " + IdPuesto);
+            PreparedStatement pst = cn.prepareStatement("update PUESTO set IdPuesto = ?,NombrePuesto = ?,CodigoDepartamento = ? where IdPuesto = " + IdPuesto);
             
-            pst.setString(1, txtid.getText().trim());
-             pst.setString(2, txtNombre.getText().trim());
-            
+
+             pst.setString(1, txtid.getText().trim());
+             pst.setString(2, txtNombre.getText().trim());;
+            pst.setString(3, lb.getText().trim());
+           
+
             pst.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Registro Modificado");
-            
+              MostrarDB("PUESTO"); 
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+          //  btnEliminar.setEnabled(false);
+            //btnModificar.setEnabled(false);
             txtid.setText("");
+
             txtNombre.setText("");
+            lb.setText("");
+          
+            cboxDepartamentos.setSelectedIndex(0);
             
+            txtBuscar.setText("");
             
+         
         } catch (Exception e) {
-        }
+            System.out.println(e);
+        }   
         
         
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        try{
-              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+       
+        String buscar = txtBuscar.getText().trim();
+        if (buscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+                  Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from PUESTO where IdPuesto = ?");
             pst.setString(1, txtBuscar.getText().trim());
-            
+
             ResultSet rs = pst.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 txtid.setText(rs.getString("IdPuesto"));
                 txtNombre.setText(rs.getString("NombrePuesto"));
+                lb.setText(rs.getString("CodigoDepartamento"));
+               
                 
+
+                //btnEliminar.setEnabled(true);
+                //btnModificar.setEnabled(true);
+
             } else {
-                JOptionPane.showMessageDialog(null, "Alumno no registrado.");
+                JOptionPane.showMessageDialog(null, " no registrado.");
             }
             
-        }catch (Exception e){
+            PreparedStatement pst1 = cn.prepareStatement("select NombreDepartamento from DEPARTAMENTO where IdDepartamento=?");
+            pst1.setString(1, lb.getText().trim());
+            ResultSet rs1 = pst1.executeQuery();
+
+           
             
+            while (rs1.next()) {
+                 cboxDepartamentos.setSelectedItem(rs1.getString("NombreDepartamento"));
+            }
+           
+
+        } catch (Exception err) {
+            err.printStackTrace();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
         
-        try {
+        /*try {
                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from PUESTO where IdPuesto = ?");
             
             pst.setString(1, txtBuscar.getText().trim());
             pst.executeUpdate();
+            MostrarDB("PUESTO");
             
             txtid.setText("");
             txtNombre.setText("");
+            lb.setText("");
            
             
             
         } catch (Exception e) {
-        }
-        
+        }*/
+        try {
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+           PreparedStatement pst = cn.prepareStatement("delete from PUESTO where IdPuesto = ?");
+
+            pst.setString(1, txtBuscar.getText().trim());
+            pst.executeUpdate();
+                MostrarDB("PUESTO");
+            txtBuscar.setText("");
+
+            JOptionPane.showMessageDialog(this, "REGISTRO ELIMINADO.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+           // btnEliminar.setEnabled(false);
+            //btnModificar.setEnabled(false);
+
+             txtid.setText("");
+
+            txtNombre.setText("");
+            lb.setText("");
+          
+            cboxDepartamentos.setSelectedIndex(0);
+            
+            txtBuscar.setText("");
+            
+            
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
+        }   
     }//GEN-LAST:event_btn_EliminarActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void cboxDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxDepartamentosActionPerformed
+
+        
+        
+          try{
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            PreparedStatement pst = cn.prepareStatement("select IdDepartamento from DEPARTAMENTO where NombreDepartamento= ?");
+            pst.setString(1, cboxDepartamentos.getSelectedItem().toString());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                lb.setText(rs.getString("IdDepartamento"));
+
+            } else {
+
+            }
+
+        }catch (Exception e){
+
+        }   
+
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cboxDepartamentosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -237,10 +458,17 @@ public class MantenimientoPuestos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Modificar;
+    private javax.swing.JComboBox cboxDepartamentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lb;
+    private javax.swing.JLabel lblfoto;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtid;

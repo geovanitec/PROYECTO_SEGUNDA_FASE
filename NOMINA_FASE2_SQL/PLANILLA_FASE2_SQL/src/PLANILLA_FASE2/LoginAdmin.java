@@ -289,7 +289,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
                 }
 
-                this.dispose();
+                //this.dispose();
             }catch(Exception e){
 
             }

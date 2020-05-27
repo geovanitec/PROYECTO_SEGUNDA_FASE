@@ -67,10 +67,12 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnAplicacion = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btnAplicacion = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -84,26 +86,26 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 cbxTipoActionPerformed(evt);
             }
         });
-        jPanel2.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 130, -1));
+        jPanel2.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 150, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Afecta:");
-        jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Conceptos");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 190, 40));
 
         txtValorConcepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorConceptoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtValorConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 130, -1));
+        jPanel2.add(txtValorConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 150, 30));
 
         cbxAfecta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opcion", "Percepcion", "Deduccion" }));
         cbxAfecta.addActionListener(new java.awt.event.ActionListener() {
@@ -111,26 +113,26 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 cbxAfectaActionPerformed(evt);
             }
         });
-        jPanel2.add(cbxAfecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 130, -1));
+        jPanel2.add(cbxAfecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 150, 30));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Valor Concepto:");
-        jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 160, -1));
+        jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
+        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, 30));
 
         btnNecesidadTabla.setText("Ingresar Popiedades");
-        jPanel2.add(btnNecesidadTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+        jPanel2.add(btnNecesidadTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Aplicacion");
-        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 65, -1));
+        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 80, 30));
 
         btnAplicaA.setText("Ingresar Propiedades");
-        jPanel2.add(btnAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        jPanel2.add(btnAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         cbxUsoDeTabla.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opcion", "Si", "No" }));
         cbxUsoDeTabla.addActionListener(new java.awt.event.ActionListener() {
@@ -138,16 +140,21 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 cbxUsoDeTablaActionPerformed(evt);
             }
         });
-        jPanel2.add(cbxUsoDeTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 110, -1));
+        jPanel2.add(cbxUsoDeTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 150, 30));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Tipo:");
-        jLabel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        jLabel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 60, 30));
 
         cbxAplicaA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige opcion", "Todos", "Algunos" }));
-        jPanel2.add(cbxAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 130, -1));
+        cbxAplicaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAplicaAActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 150, 30));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -155,8 +162,8 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
-        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 140, -1));
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, 80, 30));
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 140, -1));
 
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +171,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 82, 34));
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 82, 34));
 
         btnTipo.setText("Configuracion Avanzada");
         btnTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +179,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnTipoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
+        jPanel2.add(btnTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
         btn_Modificar.setText("MODIFICAR");
         btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +187,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btn_ModificarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, 31));
+        jPanel2.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, -1, 31));
 
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +195,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 115, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 100, 30));
 
         jButton3.setText("Eliminar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -196,43 +203,60 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 90, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("INGRESE EL CODIGO DEL PUESTO");
+        jLabel7.setText("INGRESE NO. CONCEPTO");
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 27, 180, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("¿Necesita tabla?");
-        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Id");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 80, 30));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 150, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 310, 180));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nombre:");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
 
         btnAplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
-        jPanel2.add(btnAplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 550));
-
-        jLabel2.setText("Id");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, 20));
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 160, -1));
-
-        jLabel1.setText("Nombre:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        btnAplicacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(btnAplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 10, 920, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -414,6 +438,28 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cbxUsoDeTablaActionPerformed
 
+    private void cbxAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAplicaAActionPerformed
+
+        
+if (cbxAplicaA.getSelectedIndex() == 2) {
+           
+        }
+        else if(cbxAplicaA.getSelectedIndex() == 3){
+            AplicacionExcepciones ventana = new AplicacionExcepciones();
+            ventana.setVisible(true);
+        }
+        else{
+        
+        }
+
+
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbxAplicaAActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAplicaA;
@@ -439,6 +485,8 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
