@@ -28,6 +28,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
      */
     public MantenimientoConceptos() {
         initComponents();
+        btnTipo.setVisible(false);
+        jLabel4.setVisible(false);
+        cbxUsoDeTabla.setVisible(false);
+        btnNecesidadTabla.setVisible(false);
+        btnAplicaA.setVisible(false);
     }
 
     /**
@@ -39,36 +44,117 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        cbxTipo = new javax.swing.JComboBox();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtValorConcepto = new javax.swing.JTextField();
+        cbxAfecta = new javax.swing.JComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        btnNecesidadTabla = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnAplicaA = new javax.swing.JButton();
+        cbxUsoDeTabla = new javax.swing.JComboBox();
+        jLabel11 = new javax.swing.JLabel();
+        cbxAplicaA = new javax.swing.JComboBox();
         btnSalir = new javax.swing.JButton();
-        txtValor = new javax.swing.JTextField();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
+        btnTipo = new javax.swing.JButton();
         btn_Modificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        txtValorMax = new javax.swing.JTextField();
-        txtValorMin = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        rbUno = new javax.swing.JRadioButton();
-        rbAlgunos = new javax.swing.JRadioButton();
-        rbMuchos = new javax.swing.JRadioButton();
-        txtAplicacion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        btnAplicacion = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setVisible(true);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opcion", "Porcentaje", "Valor" }));
+        cbxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTipoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 150, 30));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Afecta:");
+        jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 30));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Conceptos");
+        jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 190, 40));
+
+        txtValorConcepto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorConceptoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtValorConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 150, 30));
+
+        cbxAfecta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opcion", "Percepcion", "Deduccion" }));
+        cbxAfecta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAfectaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxAfecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 150, 30));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Valor Concepto:");
+        jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
+        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, 30));
+
+        btnNecesidadTabla.setText("Ingresar Popiedades");
+        jPanel2.add(btnNecesidadTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Aplicacion");
+        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 80, 30));
+
+        btnAplicaA.setText("Ingresar Propiedades");
+        jPanel2.add(btnAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
+
+        cbxUsoDeTabla.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opcion", "Si", "No" }));
+        cbxUsoDeTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxUsoDeTablaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxUsoDeTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 150, 30));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Tipo:");
+        jLabel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 60, 30));
+
+        cbxAplicaA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige opcion", "Todos", "Algunos" }));
+        cbxAplicaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAplicaAActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbxAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 150, 30));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +162,8 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, 80, 30));
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 140, -1));
 
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,20 +171,15 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 82, 34));
 
-        jLabel2.setText("Id");
-
-        jLabel7.setText("INGRESE EL CODIGO DEL PUESTO");
-
-        jLabel1.setText("Nombre:");
-
-        jLabel3.setText("Aplicacion(uno,muchos,ninguno)");
-
-        jLabel4.setText("Valor");
-
-        jLabel5.setText("Tipo");
-
-        jLabel6.setText("Conceptos");
+        btnTipo.setText("Configuracion Avanzada");
+        btnTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
         btn_Modificar.setText("MODIFICAR");
         btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +187,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btn_ModificarActionPerformed(evt);
             }
         });
+        jPanel2.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, -1, 31));
 
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,10 +195,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-
-        jLabel8.setText("Valor Maximo Sueldo");
-
-        jLabel9.setText("Valor Minimo Sueldo");
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 100, 30));
 
         jButton3.setText("Eliminar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -122,176 +203,60 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 90, 30));
 
-        rbUno.setText("Uno");
-        rbUno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbUnoActionPerformed(evt);
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("INGRESE NO. CONCEPTO");
+        jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 27, 180, 30));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("¿Necesita tabla?");
+        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Id");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 80, 30));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 150, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
             }
-        });
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        rbAlgunos.setText("Algunos");
-        rbAlgunos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAlgunosActionPerformed(evt);
-            }
-        });
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 310, 180));
 
-        rbMuchos.setText("Muchos");
-        rbMuchos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbMuchosActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nombre:");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(rbUno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbAlgunos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbMuchos)
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbAlgunos)
-                    .addComponent(rbUno)
-                    .addComponent(rbMuchos))
-                .addGap(7, 7, 7))
-        );
+        btnAplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
+        btnAplicacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(btnAplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 10, 920, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 176, 176)
-                        .addComponent(btnSalir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                                    .addComponent(txtNombre)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtAplicacion)))
-                                .addGap(68, 68, 68)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3)
-                                    .addComponent(btn_Modificar)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(42, 42, 42)
-                                                .addComponent(jLabel7)))))))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtValorMin)
-                            .addComponent(txtTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                            .addComponent(txtValorMax, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jLabel6)
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnGuardar)
-                            .addComponent(btnSalir))
-                        .addGap(50, 50, 50))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jLabel3))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtAplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabel5))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtValorMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtValorMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addComponent(btn_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3))))))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -310,7 +275,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
             pst.setString(1, txtBuscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
-
+/*
             if(rs.next()){
                 txtId.setText(rs.getString("Id_Concepto"));
                 txtNombre.setText(rs.getString("NombreConcepto"));
@@ -322,7 +287,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Concepto no registrado.");
-            }
+            }*/
 
         }catch (Exception e){
 
@@ -340,11 +305,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
             pst.setString(1, txtId.getText().trim());
             pst.setString(2, txtNombre.getText().trim());
-            pst.setString(3, txtAplicacion.getText().trim());
+            /*pst.setString(3, txtAplicacion.getText().trim());
             pst.setString(4, txtValor.getText().trim());            
             pst.setString(5, txtTipo.getText().trim());
             pst.setString(6, txtValor.getText().trim());
-            pst.setString(7, txtValor.getText().trim());
+            pst.setString(7, txtValor.getText().trim());*/
             pst.executeUpdate();
 
         } catch (Exception e) {
@@ -354,7 +319,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         
-        if ( txtId.getText().isEmpty() || txtNombre.getText().isEmpty()|| txtAplicacion.getText().isEmpty() || txtValor.getText().isEmpty()|| txtTipo.getText().isEmpty())
+       /* if ( txtId.getText().isEmpty() || txtNombre.getText().isEmpty()|| txtAplicacion.getText().isEmpty() || txtValor.getText().isEmpty()|| txtTipo.getText().isEmpty())
         {
 
             JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPO VACIO");
@@ -369,7 +334,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
                 pst.setString(1, txtId.getText().trim());
                 pst.setString(2, txtNombre.getText().trim());
-                pst.setString(3, txtAplicacion.getText().trim());
+               /* pst.setString(3, txtAplicacion.getText().trim());
                 pst.setString(4, txtValor.getText().trim());
                 pst.setString(5, txtTipo.getText().trim());
                 pst.setString(6, txtValorMax.getText().trim());
@@ -379,7 +344,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Registro Exitoso.");
                 txtId.setText("");
                 txtNombre.setText("");
-                txtAplicacion.setText("");
+               /* txtAplicacion.setText("");
                 txtValor.setText("");
                 txtTipo.setText("");
                 txtValorMax.setText("");
@@ -388,8 +353,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
             }catch(Exception e){
 
             }
-        }
-
+        }*/
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -405,11 +369,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
             txtId.setText("");
                 txtNombre.setText("");
-                txtAplicacion.setText("");
+                /*txtAplicacion.setText("");
                 txtValor.setText("");
                 txtTipo.setText("");
                 txtValorMax.setText("");
-                txtValorMin.setText("");
+                txtValorMin.setText("");*/
                 
                 JOptionPane.showMessageDialog(null, "Registro Eliminado.");
 
@@ -418,54 +382,114 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void rbUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbUnoActionPerformed
+    private void txtValorConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorConceptoActionPerformed
         // TODO add your handling code here:
-        if (rbUno.isSelected()) {
-                txtAplicacion.setText("Uno");
-            }
-    }//GEN-LAST:event_rbUnoActionPerformed
+    }//GEN-LAST:event_txtValorConceptoActionPerformed
 
-    private void rbAlgunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlgunosActionPerformed
+    private void cbxAfectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAfectaActionPerformed
         // TODO add your handling code here:
-        if (rbAlgunos.isSelected()) {
-                txtAplicacion.setText("Algunos");
-            }
-    }//GEN-LAST:event_rbAlgunosActionPerformed
+        
+        if (cbxAfecta.getSelectedIndex() == 1) {
+            
+        }
+        else if(cbxAfecta.getSelectedIndex() == 2){
+            
+        }
+        else{
+        
+        }
+    }//GEN-LAST:event_cbxAfectaActionPerformed
 
-    private void rbMuchosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMuchosActionPerformed
+    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
         // TODO add your handling code here:
-        if (rbMuchos.isSelected()) {
-                txtAplicacion.setText("Muchos");
-            }
-    }//GEN-LAST:event_rbMuchosActionPerformed
+        if (cbxTipo.getSelectedIndex() == 1) {
+            btnTipo.setVisible(true);
+        }
+        else if(cbxTipo.getSelectedIndex() == 2){
+            jLabel4.setVisible(false);
+        cbxUsoDeTabla.setVisible(false);
+        btnNecesidadTabla.setVisible(false);
+         btnTipo.setVisible(false);
+        }
+        else{
+        
+        }
+    }//GEN-LAST:event_cbxTipoActionPerformed
+
+    private void btnTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoActionPerformed
+        // TODO add your handling code here:
+         jLabel4.setVisible(true);
+        cbxUsoDeTabla.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_btnTipoActionPerformed
+
+    private void cbxUsoDeTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUsoDeTablaActionPerformed
+        // TODO add your handling code here:
+        if (cbxUsoDeTabla.getSelectedIndex() == 1) {
+            btnNecesidadTabla.setVisible(true);
+        }
+        else if(cbxUsoDeTabla.getSelectedIndex() == 2){
+            btnNecesidadTabla.setVisible(false);
+        }
+        else{
+        
+        }
+    }//GEN-LAST:event_cbxUsoDeTablaActionPerformed
+
+    private void cbxAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAplicaAActionPerformed
+
+        
+if (cbxAplicaA.getSelectedIndex() == 2) {
+           
+        }
+        else if(cbxAplicaA.getSelectedIndex() == 3){
+            AplicacionExcepciones ventana = new AplicacionExcepciones();
+            ventana.setVisible(true);
+        }
+        else{
+        
+        }
+
+
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cbxAplicaAActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAplicaA;
+    private javax.swing.JLabel btnAplicacion;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNecesidadTabla;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnTipo;
     private javax.swing.JButton btn_Modificar;
+    private javax.swing.JComboBox cbxAfecta;
+    private javax.swing.JComboBox cbxAplicaA;
+    private javax.swing.JComboBox cbxTipo;
+    private javax.swing.JComboBox cbxUsoDeTabla;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton rbAlgunos;
-    private javax.swing.JRadioButton rbMuchos;
-    private javax.swing.JRadioButton rbUno;
-    private javax.swing.JTextField txtAplicacion;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTipo;
-    private javax.swing.JTextField txtValor;
-    private javax.swing.JTextField txtValorMax;
-    private javax.swing.JTextField txtValorMin;
+    private javax.swing.JTextField txtValorConcepto;
     // End of variables declaration//GEN-END:variables
 }

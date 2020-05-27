@@ -1,0 +1,52 @@
+create table conceptos (
+	IdConcepto int,
+	NombreConcepto varchar,
+	Afecta(Percepcion, Deduccion) Varchar,
+	Tipo (% o valor) varchar,
+	PorTabla int(0 = no o 1 = si),
+	valor() varchar,
+	Aplica(A quien le aplica) vachar(todos, algunos)
+	
+
+)
+
+create table excepciones (
+	IdExcepcion
+	NombreConcepto(Igss)
+	CodigoEmpleado(1,2,3,4)
+
+)
+
+create tabla impuesto(
+	IdImpuesto
+	nombre
+	porcentaje
+	maximo
+	minimo
+
+)
+
+1)
+La codigo 1 si percibe iva.
+Registros
+1	iva	0.12	1000	200
+2	iva	0.16	2000	1001
+
+2)
+Planilla
+Buscar codigo : 1
+nombre: Geovani Mendoza
+
+NombreConcepto	Saldo	Afecta
+Salario	        3000	Percepcion	
+Extra		200¨	Percepcion
+Bonifi		10	Percecpion
+
+
+where afecta = Percepcion;
+Salario	        3000	Percepcion	
+Extra		200¨	Percepcion
+Bonifi		10	Percecpion
+
+
+	

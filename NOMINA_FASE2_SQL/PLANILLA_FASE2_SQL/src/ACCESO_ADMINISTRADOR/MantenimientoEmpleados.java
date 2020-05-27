@@ -362,38 +362,61 @@ public void MostrarDB(String Tabla) {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCodigoActionPerformed
-  try{
-            //int codigoDepartamento = 0;
-             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO where Id_Empleado = ?");
-            
+ 
+          String buscar = txtBuscar.getText().trim();
+        if (buscar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+             PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO where Id_Empleado = ?");
             pst.setString(1, txtBuscar.getText().trim());
-            
 
             ResultSet rs = pst.executeQuery();
-            
-            if(rs.next()){
-              
+
+            if (rs.next()) {
                 txtIdEmpleado.setText(rs.getString("Id_Empleado"));
-                lb.setText(rs.getString("IdPuesto"));
-               lb1.setText(rs.getString("CodigoDepartamento"));
-               txtNombre.setText(rs.getString("NombreEmpleado"));
-               txtApellido.setText(rs.getString("ApellidoEmpleado"));
+                lb.setText(rs.getString("CodigoPuesto"));
+                lb1.setText(rs.getString("CodigoDepartamento"));
+                txtNombre.setText(rs.getString("NombreEmpleado"));
+                txtApellido.setText(rs.getString("ApellidoEmpleado"));
                 txtEdad.setText(rs.getString("EdadEmpleado"));
-                 txtEstado.setText(rs.getString("EstadoEmpleado"));
-               
-            
+                txtEstado.setText(rs.getString("EstadoEmpleado"));
+              
+                
+
+                
             } else {
-                JOptionPane.showMessageDialog(null, " No existe ese empleado.");
-               
+                JOptionPane.showMessageDialog(null, " no registrado.");
             }
             
+            PreparedStatement pst1 = cn.prepareStatement("select NombrePuesto from PUESTO where IdPuesto=?");
+            pst1.setString(1, lb.getText().trim());
+            ResultSet rs1 = pst1.executeQuery();
+
+            PreparedStatement pst2 = cn.prepareStatement("select NombreDepartamento from DEPARTAMENTO where IdDepartamento=?");
+            pst2.setString(1, lb1.getText().trim());
+            ResultSet rs2 = pst2.executeQuery();
+
            
             
-        }catch(Exception e){
-          //  JOptionPane.showMessageDialog(null, " ERROR INTENTO.");
-             
+            
+            while (rs1.next()) {
+                 jComboBoxPuesto.setSelectedItem(rs1.getString("NombrePuesto"));
+            }
+            while (rs2.next()) {
+                 jComboBoxDepartamento.setSelectedItem(rs2.getString("NombreDepartamento"));
+            }
+           
+
+        } catch (Exception err) {
+            err.printStackTrace();
         }
+        
+      
+                
+             
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarCodigoActionPerformed
@@ -408,7 +431,7 @@ public void MostrarDB(String Tabla) {
             String codigo = txtBuscar.getText().trim();
 
           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update DATOS_EMPLEADO set Id_Empleado = ? , IdPuesto= ? , CodigoDepartamento=?,NombreEmpleado=?,ApellidoEmpleado=?,EdadEmpleado=? ,EstadoEmpleado=? where Id_Empleado = " + codigo);
+            PreparedStatement pst = cn.prepareStatement("update DATOS_EMPLEADO set Id_Empleado = ? , CodigoPuesto= ? , CodigoDepartamento=?,NombreEmpleado=?,ApellidoEmpleado=?,EdadEmpleado=? ,EstadoEmpleado=? where Id_Empleado = " + codigo);
 
           
              pst.setString(1, txtIdEmpleado.getText().trim());
@@ -431,10 +454,12 @@ public void MostrarDB(String Tabla) {
             txtNombre.setText("");
             lb.setText("");
             lb1.setText("");
-           
+            jComboBoxPuesto.setSelectedItem(0);
+            jComboBoxDepartamento.setSelectedItem(0);
             txtEstado.setText("");
             txtBuscar.setText("");
-
+txtApellido.setText("");
+        txtEdad.setText("");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "NO SE PUDO MODIFICAR.", "Error", JOptionPane.ERROR_MESSAGE);
         }

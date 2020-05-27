@@ -44,8 +44,8 @@ public class LoginUsuarios extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
         btnNuevoUsuario = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -87,7 +87,15 @@ public class LoginUsuarios extends javax.swing.JFrame {
                 btnNuevoUsuarioActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnNuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, 130, 40));
+        jDesktopPane1.add(btnNuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(812, 340, 130, 40));
+
+        btnIngresar.setText("INGRESAR");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, 118, 40));
 
         btnRegresar.setText("REGRESAR");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,27 +103,19 @@ public class LoginUsuarios extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jDesktopPane1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, 100, 40));
-
-        jButton4.setText("INGRESAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 90, 40));
+        jDesktopPane1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 110, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo login users.jpg"))); // NOI18N
         jDesktopPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 296, 545, 220));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoCajas.jpg"))); // NOI18N
-        jDesktopPane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 400, 510));
+        jDesktopPane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 420, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +124,7 @@ public class LoginUsuarios extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(958, 547));
+        setSize(new java.awt.Dimension(976, 547));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,18 +138,65 @@ public class LoginUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoUsuarioActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-       Seleccion ventana = new Seleccion();
-       ventana.setVisible(true);
-       this.dispose();
-      
-           
-    }//GEN-LAST:event_btnRegresarActionPerformed
+        if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
+
+            txtUsuario.setText("");
+            txtPass.setText("");
+        }
+        else {
+
+            try{
+
+                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+
+                PreparedStatement pst = cn.prepareStatement("select * from USUARIOS where NombreUsuario = ?");
+
+                pst.setString(1, txtUsuario.getText().trim());
+                ResultSet rs = pst.executeQuery();
+
+                PreparedStatement pst2 = cn.prepareStatement("select * from USUARIOS where Pass = ?");
+
+                pst2.setString(1, txtPass.getText().trim());
+                ResultSet rs2 = pst2.executeQuery();
+
+                if(rs.next()){
+
+                    if(rs2.next()){
+                        JOptionPane.showMessageDialog(null, "Bienvenido" + "    " + rs.getString("NombreUsuario"));
+
+                        IngresoUsuario ventana = new IngresoUsuario();
+                        ventana.setVisible(true);
+                       // jDesktopPane1.add(ventana);
+
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No registrado.");
+                    txtUsuario.setText("");
+                    txtPass.setText("");
+
+                }
+
+            }catch(Exception e){
+
+            }
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+
+        Seleccion ventana = new Seleccion();
+        ventana.setVisible(true);
+        this.dispose();
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,10 +234,10 @@ public class LoginUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnNuevoUsuario;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
