@@ -223,6 +223,8 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
      */
     public AplicacionExcepciones() {
         initComponents();
+        MantenimientoConceptos object = new MantenimientoConceptos();
+        txtNombreEx.setText(object.NombreConcepto);
         //table.setVisible(false);
         //lblTabla.setVisible(false);
         mostrarnomb();
@@ -276,7 +278,6 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         lb = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -418,17 +419,9 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         lb.setText("..");
         jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, -1, -1));
-
         lblfondo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
-        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
+        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
 
@@ -628,77 +621,6 @@ try {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel modelo = new DefaultTableModel();
-        try{
-            
-
-            Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO");
-            ResultSet rs = pst.executeQuery();
-            
-            modelo.addColumn("Id_Emp");
-            modelo.addColumn("NombreEmplea");
-            modelo.addColumn("CodigoPuesto");
-            modelo.addColumn("NombrePuesto");
-            modelo.addColumn("CodigoDep");
-            modelo.addColumn("NombreDep");
-
-            while(rs.next()){
-
-                int idemp=0,idpuesto=0,iddep;
-                String nombreemp = "", nombredep = "", nombrepues="";
-                
-                idemp = Integer.parseInt(rs.getString("Id_Empleado"));
-                nombreemp = String.valueOf(rs.getString("NombreEmpleado"));
-
-                
-                Connection cn2 = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst2 = cn.prepareStatement("select * from PUESTO");
-            ResultSet rs2 = pst2.executeQuery();
-            
-            while(rs2.next()){
-                
-                idpuesto = Integer.parseInt(rs2.getString("IdPuesto"));
-                nombrepues = String.valueOf(rs2.getString("NombrePuesto"));
-                
-                
-                Connection cn3 = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst3 = cn3.prepareStatement("select * from DEPARTAMENTO");
-            ResultSet rs3 = pst3.executeQuery();
-            
-            while(rs3.next()){
-                 iddep = Integer.parseInt(rs3.getString("IdDepartamento"));
-                nombredep = String.valueOf(rs3.getString("NombreDepartamento"));
-                
-                
-                Object filas[] = {idemp,nombreemp,idpuesto,nombrepues,iddep,nombredep};
-                modelo.addRow(filas);
-                TablaEmpleados.setModel(modelo);
-                
-            }
-                
-               
-            
-            }
-            
-            
-                
-                
-                
-                
-                
-                
-            }
-
-           // TablaEmpleados.setModel(modelo);
-
-        }catch(Exception e){
-
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaEmpleados;
@@ -707,7 +629,6 @@ try {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox cboxCodigoEmpleado;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
