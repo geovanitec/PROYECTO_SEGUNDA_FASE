@@ -130,6 +130,11 @@ public static String NombreConcepto = "";
         jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, 30));
 
         btnNecesidadTabla.setText("Ingresar Popiedades");
+        btnNecesidadTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNecesidadTablaActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnNecesidadTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
@@ -502,6 +507,12 @@ ventana.setVisible(true);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnAplicaAActionPerformed
+
+    private void btnNecesidadTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNecesidadTablaActionPerformed
+        // TODO add your handling code here:
+        MantenimientoImpuestos ventana = new MantenimientoImpuestos();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnNecesidadTablaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
