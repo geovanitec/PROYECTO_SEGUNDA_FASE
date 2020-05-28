@@ -1,4 +1,4 @@
--- drop database nomina_salario;
+- drop database nomina_salario;
 create database NOMINA_SALARIO;
 use NOMINA_SALARIO;
 
@@ -10,7 +10,9 @@ NombreUsuario varchar (30) not null,
 Pass varchar(12) not null
 )Engine = InnoDB Default charset = Latin1;
 
+select * from usuarios;
 #drop table DEPARTAMENTO;
+
 create table DEPARTAMENTO
 (
 IdDepartamento int primary key auto_increment,
@@ -27,7 +29,7 @@ CodigoDepartamento int,
 foreign key(CodigoDepartamento) references DEPARTAMENTO (IdDepartamento)
 )Engine = InnoDB Default charset = Latin1 ;
 
-drop table conceptos;
+#drop table conceptos;
 create table CONCEPTOS
 (
 Id_Concepto int primary key auto_increment,
@@ -40,11 +42,13 @@ aplica varchar(20) #A todos o algunos
 
 
 )Engine = InnoDB Default charset = Latin1 ;
-
+use NOMINA_SALARIO;
+drop table excepciones;
 create table EXCEPCIONES (
-	IdExcepcion int primary key,
+	IdExcepcion int ,
     NombreConcepto varchar(40),
-    CodigoEmpleado int
+    CodigoEmpleado int,
+    primary key(IdExcepcion,NombreConcepto,CodigoEmpleado)
 
 )Engine = InnoDB Default charset = Latin1 ;
 

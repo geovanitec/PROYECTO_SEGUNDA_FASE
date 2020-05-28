@@ -52,6 +52,50 @@ String[] NombresColumnas= { "IdExcepcion","NombreConcepto","CodigoEmpleado"};
     }
     
     String[] Nombres = {"Id_Empleado" ,"CodigoPuesto" ,"CodigoDepartamento" ,"NombreEmpleado"};
+    public void Mostrar(String Tabla) {
+        String[] columnas = new String[4];
+        String query,query2,query3;
+        try {
+
+           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+
+            query = "SELECT * FROM " + Tabla;
+             /*query2 = "SELECT NombrePuesto FROM PUESTO where IdPuesto = ?";
+              query3 = "SELECT NombreDepartamento FROM DEPARTAMENTO where IdDepartamento = ?";*/
+
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet resultado = consulta.executeQuery();
+            DefaultTableModel md = new DefaultTableModel(null, Nombres);
+           // PreparedStatement cPuesto = cn.prepareStatement(query2);
+           // PreparedStatement cDepto = cn.prepareStatement(query3);
+
+            while (resultado.next()) {
+                for (int i = 0; i < 4; i++) {
+                    columnas[i] = resultado.getString(Nombres[i]);
+                }
+                md.addRow(columnas);
+                  //ResultSet rPuesto = cPuesto.executeQuery();
+               // ResultSet rDepto = cDepto.executeQuery();
+                
+               // while (rPuesto.next()) {
+                //    columnas[1] = rPuesto.getString("NombrePuesto");
+
+                
+               // while (rDepto.next()) {
+                //    columnas[2] = rDepto.getString("NombreDepartamento");
+
+              //  }
+                
+                
+                
+            }
+            TablaEmpleados.setModel(md);
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    
+    }
     
     /**
      * Creates new form AplicacionExcepciones
@@ -260,33 +304,6 @@ String[] NombresColumnas= { "IdExcepcion","NombreConcepto","CodigoEmpleado"};
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Mostrar(String Tabla) {
-        String[] columnas = new String[4];
-        String query;
-        try {
-
-           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-
-            query = "SELECT * FROM " + Tabla;
-
-            PreparedStatement consulta = cn.prepareStatement(query);
-            ResultSet resultado = consulta.executeQuery();
-            DefaultTableModel md = new DefaultTableModel(null, Nombres);
-
-            while (resultado.next()) {
-                for (int i = 0; i < 4; i++) {
-                    columnas[i] = resultado.getString(Nombres[i]);
-                }
-                md.addRow(columnas);
-
-            }
-            TablaEmpleados.setModel(md);
-
-        } catch (Exception err) {
-            err.printStackTrace();
-        }
-    
-    }
     
     
     
