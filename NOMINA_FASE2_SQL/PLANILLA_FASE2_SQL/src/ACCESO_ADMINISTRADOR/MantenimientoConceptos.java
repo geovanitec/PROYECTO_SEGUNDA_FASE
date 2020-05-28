@@ -330,42 +330,61 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
+        int i = 1;
         try {
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             if (cbxTipo.getSelectedIndex() == 1) { //porcentaje
 
                 //Query de busqueda
+                
                 PreparedStatement pst1 = cn.prepareStatement("select * from EXCEPCIONES");
                 ResultSet rs = pst1.executeQuery();
                 PreparedStatement pst2 = cn.prepareStatement("select * from DATOS_EMPLEADO");
                 ResultSet rs1 = pst2.executeQuery();
-
+                
+                
                 while (rs1.next()) {
-
+                    
+                  
+                    
                     while (rs.next()) {
                         if (rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
+                            PreparedStatement pst4 = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+                            pst4.setString(i, "0");
+                            i++;
+                        }else {
+                            PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+                    pst.setString(i, "0");
+                    pst.setString(i, txtNombre.getText().trim());
+                    pst.setString(i, cbxAfecta.getSelectedItem().toString());
+                    pst.setString(i, cbxTipo.getSelectedItem().toString());
+                    pst.setString(i, "Si");
+                    pst.setString(i, txtValorConcepto.getText().trim());
+                    pst.setString(i, cbxAplicaA.getSelectedItem().toString());
+                    pst.setString(i, rs1.getString("Id_Empleado"));
 
+                    pst.executeUpdate();
                         }
 
                     }
-                    PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                    pst.setString(1, "0");
-                    pst.setString(2, txtNombre.getText().trim());
-                    pst.setString(3, cbxAfecta.getSelectedItem().toString());
-                    pst.setString(4, cbxTipo.getSelectedItem().toString());
-                    pst.setString(5, "Si");
-                    pst.setString(6, txtValorConcepto.getText().trim());
-                    pst.setString(7, cbxAplicaA.getSelectedItem().toString());
-                    pst.setString(8, rs1.getString("Id_Empleado"));
+                   /* PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+                    pst.setString(i, "0");
+                    pst.setString(i, txtNombre.getText().trim());
+                    pst.setString(i, cbxAfecta.getSelectedItem().toString());
+                    pst.setString(i, cbxTipo.getSelectedItem().toString());
+                    pst.setString(i, "Si");
+                    pst.setString(i, txtValorConcepto.getText().trim());
+                    pst.setString(i, cbxAplicaA.getSelectedItem().toString());
+                    pst.setString(i, rs1.getString("Id_Empleado"));
 
-                    pst.executeUpdate();
+                    pst.executeUpdate();*/
                     txtNombre.setText("");
                     cbxAfecta.setSelectedIndex(0);
                     cbxTipo.setSelectedIndex(0);
                     cbxUsoDeTabla.setSelectedIndex(0);
                     txtValorConcepto.setText("");
                     cbxAplicaA.setSelectedIndex(0);
+                    i++;
                 }
 
                 JOptionPane.showMessageDialog(null, "REGISTRADO");
@@ -383,16 +402,19 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                     while (rs.next()) {
                         if (rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
                             JOptionPane.showMessageDialog(null, "LOS CODIGOS NO COINCIDEN, SON EXCEPCIONES");
-                        } else {
+                            i++;
+                        } else if ( !rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
                             PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                            pst.setString(1, "0");
-                            pst.setString(2, txtNombre.getText().trim());
-                            pst.setString(3, cbxAfecta.getSelectedItem().toString());
-                            pst.setString(4, cbxTipo.getSelectedItem().toString());
-                            pst.setString(5, "No");
-                            pst.setString(6, txtValorConcepto.getText().trim());
-                            pst.setString(7, cbxAplicaA.getSelectedItem().toString());
-                            pst.setString(8, rs1.getString("Id_Empleado"));
+                           
+                            pst.setString(i, "0");
+                           
+                            pst.setString(i, txtNombre.getText().trim());
+                            pst.setString(i, cbxAfecta.getSelectedItem().toString());
+                            pst.setString(i, cbxTipo.getSelectedItem().toString());
+                            pst.setString(i, "No");
+                            pst.setString(i, txtValorConcepto.getText().trim());
+                            pst.setString(i, cbxAplicaA.getSelectedItem().toString());
+                            pst.setString(i, rs1.getString("Id_Empleado"));
 
                             pst.executeUpdate();
                             txtNombre.setText("");
@@ -401,6 +423,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
                             cbxUsoDeTabla.setSelectedIndex(0);
                             txtValorConcepto.setText("");
                             cbxAplicaA.setSelectedIndex(0);
+                            i++;
                             JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
                         }
 
@@ -408,16 +431,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
                 }
 
-                /*  PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                 pst.setString(1, "0");
-                 pst.setString(2, txtNombre.getText().trim());
-                 pst.setString(3, cbxAfecta.getSelectedItem().toString());
-                 pst.setString(4, cbxTipo.getSelectedItem().toString());
-                 pst.setString(5, "No");
-                 pst.setString(6, txtValorConcepto.getText().trim());
-                 pst.setString(7, cbxAplicaA.getSelectedItem().toString());
-                 pst.executeUpdate();*/
-               // JOptionPane.showMessageDialog(null, "REGISTRADO");
+               
             } else {
                 JOptionPane.showMessageDialog(null, "NO HA COMPLETADO LOS CAMPOS");
             }
