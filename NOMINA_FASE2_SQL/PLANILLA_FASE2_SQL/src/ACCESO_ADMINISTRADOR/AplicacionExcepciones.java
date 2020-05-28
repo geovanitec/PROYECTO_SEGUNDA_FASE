@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,7 +19,126 @@ import javax.swing.table.DefaultTableModel;
  * @author Geovani
  */
 public class AplicacionExcepciones extends javax.swing.JInternalFrame {
-String[] NombresColumnas= { "IdExcepcion","NombreConcepto","CodigoEmpleado"};
+    private static String db = "NOMINA_SALARIO";
+    private static String user = "root";
+    private static String password = "compromiso";
+    private static String host = "localhost";
+    private static String server = "jdbc:mysql://"+ host + "/" +db;
+    public void mostrarnomb (){
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        try{
+            
+
+            Connection cn = DriverManager.getConnection(server, user, password);
+            PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO");
+            ResultSet rs = pst.executeQuery();
+            
+            modelo.addColumn("Id_Emp");
+            modelo.addColumn("NombreEmplea");
+            modelo.addColumn("CodigoPuesto");
+            modelo.addColumn("NombrePuesto");
+            modelo.addColumn("CodigoDep");
+            modelo.addColumn("NombreDep");
+
+            while(rs.next()){
+
+                int idemp=0,idpuesto=0,iddep;
+                String nombreemp = "", nombredep = "", nombrepues="";
+                
+                idemp = Integer.parseInt(rs.getString("Id_Empleado"));
+                nombreemp = String.valueOf(rs.getString("NombreEmpleado"));
+
+                
+                Connection cn2 = DriverManager.getConnection(server, user, password);
+            PreparedStatement pst2 = cn.prepareStatement("select * from PUESTO");
+            ResultSet rs2 = pst2.executeQuery();
+            
+            while(rs2.next()){
+                
+                idpuesto = Integer.parseInt(rs2.getString("IdPuesto"));
+                nombrepues = String.valueOf(rs2.getString("NombrePuesto"));
+                
+                
+                Connection cn3 = DriverManager.getConnection(server, user, password);
+            PreparedStatement pst3 = cn3.prepareStatement("select * from DEPARTAMENTO");
+            ResultSet rs3 = pst3.executeQuery();
+            
+            while(rs3.next()){
+                 iddep = Integer.parseInt(rs3.getString("IdDepartamento"));
+                nombredep = String.valueOf(rs3.getString("NombreDepartamento"));
+                
+                
+                Object filas[] = {idemp,nombreemp,idpuesto,nombrepues,iddep,nombredep};
+                modelo.addRow(filas);
+                TablaEmpleados.setModel(modelo);
+                
+            }
+                
+               
+            
+            }
+            
+            
+                
+                
+                
+                
+                
+                
+            }
+
+           // TablaEmpleados.setModel(modelo);
+
+        }catch(Exception e){
+
+        }
+        
+        
+        /*DefaultTableModel modelo = new DefaultTableModel();
+      
+       
+       try{
+
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/prueba", "root", "compromiso");
+            PreparedStatement pst = cn.prepareStatement("select * from maestros where idmaestro = ?");
+            pst.setString(1, txtBuscar.getText().trim());
+            
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Sueldo");
+            modelo.addColumn("bonif");
+            modelo.addColumn("extra");
+            modelo.addColumn("Total");
+            modelo.addColumn("Concepto");
+            modelo.addColumn("Aplicacion");
+            modelo.addColumn("TotalDesc");
+            modelo.addColumn("TotalLiq");
+            
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+               String nombremaestro="";
+                double S = 0, B = 0, E = 0, T = 0, I = 0, Max = 0, Min = 0, TD = 0, TL = 0;
+                    
+                nombremaestro = String.valueOf(rs.getString("nombremaestro"));
+                S = Double.parseDouble(rs.getString("sueldo"));
+                B = Double.parseDouble(rs.getString("bonificacion"));
+                E = Double.parseDouble(rs.getString("extraordinario"));
+                        
+             
+                
+            }
+            
+            
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null, "Error");
+        }*/
+        
+    }
+    
+    
+String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
     public void MostrarDB(String Tabla) {
         
      
@@ -52,14 +172,62 @@ String[] NombresColumnas= { "IdExcepcion","NombreConcepto","CodigoEmpleado"};
     }
     
     String[] Nombres = {"Id_Empleado" ,"CodigoPuesto" ,"CodigoDepartamento" ,"NombreEmpleado"};
+    public void Mostrar(String Tabla) {
+        String[] columnas = new String[4];
+        String query,query2,query3;
+        try {
+
+           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+
+            query = "SELECT * FROM " + Tabla;
+             /*query2 = "SELECT NombrePuesto FROM PUESTO where IdPuesto = ?";
+              query3 = "SELECT NombreDepartamento FROM DEPARTAMENTO where IdDepartamento = ?";*/
+
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet resultado = consulta.executeQuery();
+            DefaultTableModel md = new DefaultTableModel(null, Nombres);
+           // PreparedStatement cPuesto = cn.prepareStatement(query2);
+           // PreparedStatement cDepto = cn.prepareStatement(query3);
+
+            while (resultado.next()) {
+                for (int i = 0; i < 4; i++) {
+                    columnas[i] = resultado.getString(Nombres[i]);
+                }
+                md.addRow(columnas);
+                  //ResultSet rPuesto = cPuesto.executeQuery();
+               // ResultSet rDepto = cDepto.executeQuery();
+                
+               // while (rPuesto.next()) {
+                //    columnas[1] = rPuesto.getString("NombrePuesto");
+
+                
+               // while (rDepto.next()) {
+                //    columnas[2] = rDepto.getString("NombreDepartamento");
+
+              //  }
+                
+                
+                
+            }
+            //TablaEmpleados.setModel(md);
+            mostrarnomb();
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+    
+    }
     
     /**
      * Creates new form AplicacionExcepciones
      */
     public AplicacionExcepciones() {
         initComponents();
+        MantenimientoConceptos object = new MantenimientoConceptos();
+        txtNombreEx.setText(object.NombreConcepto);
         //table.setVisible(false);
         //lblTabla.setVisible(false);
+        mostrarnomb();
         try{
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             
@@ -196,7 +364,7 @@ String[] NombresColumnas= { "IdExcepcion","NombreConcepto","CodigoEmpleado"};
         ));
         jScrollPane2.setViewportView(TablaEmpleados);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 380, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 470, 160));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,40 +421,13 @@ String[] NombresColumnas= { "IdExcepcion","NombreConcepto","CodigoEmpleado"};
 
         lblfondo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
-        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
+        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Mostrar(String Tabla) {
-        String[] columnas = new String[4];
-        String query;
-        try {
-
-           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-
-            query = "SELECT * FROM " + Tabla;
-
-            PreparedStatement consulta = cn.prepareStatement(query);
-            ResultSet resultado = consulta.executeQuery();
-            DefaultTableModel md = new DefaultTableModel(null, Nombres);
-
-            while (resultado.next()) {
-                for (int i = 0; i < 4; i++) {
-                    columnas[i] = resultado.getString(Nombres[i]);
-                }
-                md.addRow(columnas);
-
-            }
-            TablaEmpleados.setModel(md);
-
-        } catch (Exception err) {
-            err.printStackTrace();
-        }
-    
-    }
     
     
     

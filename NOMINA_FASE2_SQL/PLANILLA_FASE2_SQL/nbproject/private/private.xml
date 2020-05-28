@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/SEBAS/Desktop/ProyectoSegundaFase/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/MantenimientoConceptos.java</file>
             <file>file:/C:/Users/SEBAS/Desktop/ProyectoSegundaFase/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/PLANILLA_FASE2/Seleccion.java</file>
             <file>file:/C:/Users/SEBAS/Desktop/ProyectoSegundaFase/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/AplicacionExcepciones.java</file>
+=======
+            <file>file:/C:/Users/Geovani/Documents/CURSOS%202020%20SEMESTRE%201/Progra3/backup%20final/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/AplicacionExcepciones.java</file>
+            <file>file:/C:/Users/Geovani/Documents/CURSOS%202020%20SEMESTRE%201/Progra3/backup%20final/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/MantenimientoConceptos.java</file>
+            <file>file:/C:/Users/Geovani/Documents/CURSOS%202020%20SEMESTRE%201/Progra3/backup%20final/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/PLANILLA_FASE2/IngresoAdmin.java</file>
+>>>>>>> f4c12c55bfca2dcf834774585925d119dbfb6d03
         </group>
     </open-files>
 </project-private>

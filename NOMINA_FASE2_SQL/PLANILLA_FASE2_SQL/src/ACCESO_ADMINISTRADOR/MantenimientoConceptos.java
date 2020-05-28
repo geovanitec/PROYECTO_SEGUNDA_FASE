@@ -8,7 +8,10 @@ package ACCESO_ADMINISTRADOR;
 /*import static ACCESO_ADMINISTRADOR.Registro.password;
 import static ACCESO_ADMINISTRADOR.Registro.server;
 import static ACCESO_ADMINISTRADOR.Registro.user;*/
+import PLANILLA_FASE2.IngresoAdmin;
+import static PLANILLA_FASE2.IngresoAdmin.jDesktopPane1;
 import PLANILLA_FASE2.Seleccion;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,7 +22,9 @@ import javax.swing.JOptionPane;
  *
  * @author Angel Chacon
  */
+
 public class MantenimientoConceptos extends javax.swing.JInternalFrame {
+public static String NombreConcepto = "";
 
    
    
@@ -33,6 +38,8 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         cbxUsoDeTabla.setVisible(false);
         btnNecesidadTabla.setVisible(false);
         btnAplicaA.setVisible(false);
+        txtValorConcepto.setVisible(false);
+        lblValor.setVisible(false);
     }
 
     /**
@@ -50,7 +57,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtValorConcepto = new javax.swing.JTextField();
         cbxAfecta = new javax.swing.JComboBox();
-        jLabel12 = new javax.swing.JLabel();
+        lblValor = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         btnNecesidadTabla = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -96,7 +103,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Conceptos");
+        jLabel6.setText("             Conceptos");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 190, 40));
 
@@ -115,11 +122,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         });
         jPanel2.add(cbxAfecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 150, 30));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Valor Concepto:");
-        jLabel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
+        lblValor.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        lblValor.setForeground(new java.awt.Color(255, 255, 255));
+        lblValor.setText("Valor Concepto:");
+        lblValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(lblValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
         jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, 30));
 
         btnNecesidadTabla.setText("Ingresar Popiedades");
@@ -132,6 +139,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 80, 30));
 
         btnAplicaA.setText("Ingresar Propiedades");
+        btnAplicaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicaAActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAplicaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         cbxUsoDeTabla.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opcion", "Si", "No" }));
@@ -404,12 +416,16 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (cbxTipo.getSelectedIndex() == 1) {
             btnTipo.setVisible(true);
+            lblValor.setVisible(false);
+         txtValorConcepto.setVisible(false);
         }
         else if(cbxTipo.getSelectedIndex() == 2){
             jLabel4.setVisible(false);
         cbxUsoDeTabla.setVisible(false);
         btnNecesidadTabla.setVisible(false);
          btnTipo.setVisible(false);
+         lblValor.setVisible(true);
+         txtValorConcepto.setVisible(true);
         }
         else{
         
@@ -429,9 +445,13 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (cbxUsoDeTabla.getSelectedIndex() == 1) {
             btnNecesidadTabla.setVisible(true);
+            lblValor.setVisible(false);
+         txtValorConcepto.setVisible(false);
         }
         else if(cbxUsoDeTabla.getSelectedIndex() == 2){
             btnNecesidadTabla.setVisible(false);
+            lblValor.setVisible(true);
+         txtValorConcepto.setVisible(true);
         }
         else{
         
@@ -441,12 +461,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private void cbxAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAplicaAActionPerformed
 
         
-if (cbxAplicaA.getSelectedIndex() == 2) {
-           
+if (cbxAplicaA.getSelectedIndex() == 1) {
+             btnAplicaA.setVisible(false);
         }
-        else if(cbxAplicaA.getSelectedIndex() == 3){
-            AplicacionExcepciones ventana = new AplicacionExcepciones();
-            ventana.setVisible(true);
+        else if(cbxAplicaA.getSelectedIndex() == 2){
+            btnAplicaA.setVisible(true);
         }
         else{
         
@@ -459,6 +478,30 @@ if (cbxAplicaA.getSelectedIndex() == 2) {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_cbxAplicaAActionPerformed
+
+    private void btnAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicaAActionPerformed
+NombreConcepto = txtNombre.getText();
+       
+        
+AplicacionExcepciones ventana = new AplicacionExcepciones ();
+//ventana.setVisible(true);
+
+
+IngresoAdmin.jDesktopPane1.add(ventana);
+ventana.toFront();
+ventana.setVisible(true);
+   Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+
+
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnAplicaAActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -478,7 +521,6 @@ if (cbxAplicaA.getSelectedIndex() == 2) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -487,6 +529,7 @@ if (cbxAplicaA.getSelectedIndex() == 2) {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
