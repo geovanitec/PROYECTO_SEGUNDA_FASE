@@ -39,7 +39,7 @@ create table EXCEPCIONES (
     primary key(IdExcepcion,NombreConcepto,CodigoEmpleado)
 
 )Engine = InnoDB Default charset = Latin1 ;
-
+select * from excepciones;
 create table IMPUESTO(
 	IdImpuesto int primary key,
 	NombpreConcepto varchar(30),
@@ -78,7 +78,11 @@ CodigoEmpleado int,
 primary key(Id_Concepto, NombreConcepto,AfectaConcepto,TipoConcepto, valorConcepto, usoTabla,aplica),
 foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
 )Engine = InnoDB Default charset = Latin1 ;
+<<<<<<< HEAD
 
+=======
+select * from conceptos;
+>>>>>>> f313ec3027f18a287d9c1954fb7ad58c04c0752d
 create table APLICAR_CONCEPTO(
 Id_Aplicar int primary key auto_increment,
 Id_Empleado int not null,

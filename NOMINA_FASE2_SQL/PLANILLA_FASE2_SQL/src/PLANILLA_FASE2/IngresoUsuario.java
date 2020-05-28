@@ -251,7 +251,7 @@ public class IngresoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         
                 try {
-            String url = "C:\\Users\\SEBAS\\Desktop\\ProyectoSegundaFase\\MANUAL USUARIO.pdf";
+            String url = "C:\\Users\\Geovani\\Desktop\\h\\MANUAL USUARIO.pdf";
         ProcessBuilder p = new ProcessBuilder();
         p.command("cmd.exe", "/C", url);
             p.start();

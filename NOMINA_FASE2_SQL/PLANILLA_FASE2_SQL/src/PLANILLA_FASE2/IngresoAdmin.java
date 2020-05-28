@@ -98,9 +98,9 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuAplicacionExcepciones = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuIngresoSalario = new javax.swing.JMenuItem();
-        jMenuAplicacionExcepciones = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -221,6 +221,14 @@ public class IngresoAdmin extends javax.swing.JFrame {
 
         jMenu7.add(jMenu1);
 
+        jMenuAplicacionExcepciones.setText("Aplicacion Excepciones");
+        jMenuAplicacionExcepciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAplicacionExcepcionesActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuAplicacionExcepciones);
+
         jMenuBar3.add(jMenu7);
 
         jMenu8.setText("Procesos");
@@ -232,14 +240,6 @@ public class IngresoAdmin extends javax.swing.JFrame {
             }
         });
         jMenu8.add(jMenuIngresoSalario);
-
-        jMenuAplicacionExcepciones.setText("Aplicacion Excepciones");
-        jMenuAplicacionExcepciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAplicacionExcepcionesActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuAplicacionExcepciones);
 
         jMenuBar3.add(jMenu8);
 
@@ -428,7 +428,7 @@ CentrarVentanas(ventana);
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
                  try {
-            String url = "C:\\Users\\SEBAS\\Desktop\\ProyectoSegundaFase\\MANUAL DE ADMINISTRADOR.pdf";
+            String url = "C:\\Users\\Geovani\\Desktop\\h\\MANUAL DE ADMINISTRADOR.pdf";
         ProcessBuilder p = new ProcessBuilder();
         p.command("cmd.exe", "/C", url);
             p.start();
