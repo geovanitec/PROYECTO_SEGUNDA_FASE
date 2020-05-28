@@ -1,4 +1,4 @@
-- drop database nomina_salario;
+-- drop database nomina_salario;
 create database NOMINA_SALARIO;
 use NOMINA_SALARIO;
 
@@ -29,23 +29,11 @@ CodigoDepartamento int,
 foreign key(CodigoDepartamento) references DEPARTAMENTO (IdDepartamento)
 )Engine = InnoDB Default charset = Latin1 ;
 
-#drop table conceptos;
-create table CONCEPTOS
-(
-Id_Concepto int primary key auto_increment,
-NombreConcepto varchar (20) not null, /*si es igss o es isr */
-AfectaConcepto varchar (20) not null,  /*percepcion o deduccion */
-TipoConcepto varchar(20) not null, # A : por porcentaje , B : por cuota
-valorConcepto varchar(20) not null,   #promedio de cuanto es el igss o isr,
-usoTabla varchar(2), #Si usa tabla o no
-aplica varchar(20) #A todos o algunos
 
-
-)Engine = InnoDB Default charset = Latin1 ;
 use NOMINA_SALARIO;
-drop table excepciones;
+-- drop table excepciones;
 create table EXCEPCIONES (
-	IdExcepcion int ,
+	IdExcepcion int auto_increment ,
     NombreConcepto varchar(40),
     CodigoEmpleado int,
     primary key(IdExcepcion,NombreConcepto,CodigoEmpleado)
@@ -73,6 +61,22 @@ EstadoEmpleado varchar(20) not null,
 foreign key(CodigoPuesto) references puesto (IdPuesto),
 foreign key(CodigoDepartamento) references departamento (IdDepartamento)
 
+)Engine = InnoDB Default charset = Latin1 ;
+
+ use NOMINA_SALARIO;
+-- drop table conceptos;
+create table CONCEPTOS
+(
+Id_Concepto int auto_increment,
+NombreConcepto varchar (80) not null, /*si es igss o es isr */
+AfectaConcepto varchar (20) not null,  /*percepcion o deduccion */
+TipoConcepto varchar(20) not null, # A : por porcentaje , B : por cuota
+valorConcepto varchar(20) not null,   #promedio de cuanto es el igss o isr,
+usoTabla varchar(10), #Si usa tabla o no
+aplica varchar(20), #A todos o algunos,
+CodigoEmpleado int,
+primary key(Id_Concepto, NombreConcepto,AfectaConcepto,TipoConcepto, valorConcepto, usoTabla,aplica),
+foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
 )Engine = InnoDB Default charset = Latin1 ;
 
 create table APLICAR_CONCEPTO(
