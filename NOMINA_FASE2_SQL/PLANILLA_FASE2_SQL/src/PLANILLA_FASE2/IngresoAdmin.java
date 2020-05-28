@@ -15,11 +15,15 @@ import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
 import ACCESO_ADMINISTRADOR.MantenimientoSalarioEmpleadosWHILE;
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
+import ACCESO_USUARIOS.ConsultaPlanilla;
 import ACCESO_USUARIOS.ConsultaPuestos;
 import NEW_USER.NuevoUsuario;
 
 
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 
@@ -98,6 +102,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuIngresoSalario = new javax.swing.JMenuItem();
         jMenuAplicacionExcepciones = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -239,11 +244,25 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuBar3.add(jMenu8);
 
         jMenu10.setText("Herramientas");
+
+        jMenuItem10.setText("Calculadora");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem10);
+
         jMenuBar3.add(jMenu10);
 
         jMenu6.setText("Ayuda");
 
-        jMenuItem1.setText("Videotutorial");
+        jMenuItem1.setText("Manual de Administrador");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem1);
 
         jMenuBar3.add(jMenu6);
@@ -347,14 +366,12 @@ public class IngresoAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-      /* CalculoImpuestos ventanaLoginUsuarios = new CalculoImpuestos();
-        jDesktopPane1.add(ventanaLoginUsuarios);
-       Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventanaLoginUsuarios.getSize();
-        ventanaLoginUsuarios.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
-        ventanaLoginUsuarios.show();*/
-
+        ConsultaPlanilla ventana = new ConsultaPlanilla();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -407,6 +424,36 @@ CentrarVentanas(ventana);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuAplicacionExcepcionesActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+                 try {
+            String url = "C:\\Users\\SEBAS\\Desktop\\ProyectoSegundaFase\\MANUAL DE ADMINISTRADOR.pdf";
+        ProcessBuilder p = new ProcessBuilder();
+        p.command("cmd.exe", "/C", url);
+            p.start();
+        } catch (IOException ex) {
+            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+            try        
+    {
+        Runtime rt = Runtime.getRuntime();           
+        Process p = rt.exec("calc");            
+        p.waitFor();        
+    }        
+    catch ( IOException ioe )       
+    {            
+        ioe.printStackTrace();
+    }         
+    catch ( InterruptedException ie )
+    {            
+        ie.printStackTrace();     
+    }
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,6 +508,7 @@ CentrarVentanas(ventana);
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuIngresoSalario;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

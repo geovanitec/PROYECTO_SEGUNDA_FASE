@@ -6,11 +6,19 @@
 package PLANILLA_FASE2;
 
 
+import ACCESO_USUARIOS.ConsultaDepartamentos;
+import ACCESO_USUARIOS.ConsultaEmpleados;
+import ACCESO_USUARIOS.ConsultaPuestos;
 import NEW_USER.NuevoUsuario;
+import static PLANILLA_FASE2.IngresoAdmin.jDesktopPane1;
 
 
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -21,17 +29,35 @@ import javax.swing.JDesktopPane;
 
 public class IngresoUsuario extends javax.swing.JFrame {
 
+    
+     public void CentrarVentanas(JInternalFrame internalFrame){
+        
+        int x = (jDesktopPane1.getWidth( ) / 2)- internalFrame.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2)- internalFrame.getHeight() / 2;
+        
+       if (internalFrame.isShowing () ){
+           internalFrame.setLocation (x,  y);
+       }
+    
+    else {
+    jDesktopPane1.add(internalFrame);
+    internalFrame.setLocation(x,  y);
+    internalFrame.show();
+}
+     }
     /**
      * Creates new form Form_Pantalla_Ingreso
      */
         
-    private NuevoUsuario ventanaNuevoUsuario;
+    //private NuevoUsuario ventanaNuevoUsuario;
   //  private Form_Logiin_Users ventanaLoginUsuarios;
-    private LoginAdmin ventanaLoginAdmin;
+   // private LoginAdmin ventanaLoginAdmin;
     
     
     public IngresoUsuario() {
         initComponents();
+          jDesktopPane1.setBorder( new ImagenFondo());
+        this.setExtendedState(IngresoUsuario.MAXIMIZED_BOTH);
     }
 
     /**
@@ -50,11 +76,11 @@ public class IngresoUsuario extends javax.swing.JFrame {
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuEmpleados = new javax.swing.JMenuItem();
+        jMenuPuestos = new javax.swing.JMenuItem();
+        jMenuDepartamentos = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -83,31 +109,62 @@ public class IngresoUsuario extends javax.swing.JFrame {
         );
 
         jMenu5.setText("Archivo");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
 
         jMenu9.setText("Informes");
 
-        jMenuItem2.setText("Conceptos");
-        jMenu9.add(jMenuItem2);
+        jMenuEmpleados.setText("Empleados");
+        jMenuEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEmpleadosActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuEmpleados);
 
-        jMenuItem3.setText("Empleados");
-        jMenu9.add(jMenuItem3);
+        jMenuPuestos.setText("Puestos");
+        jMenuPuestos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPuestosActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuPuestos);
 
-        jMenuItem4.setText("Puestos");
-        jMenu9.add(jMenuItem4);
-
-        jMenuItem5.setText("Departamentos");
-        jMenu9.add(jMenuItem5);
+        jMenuDepartamentos.setText("Departamentos");
+        jMenuDepartamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDepartamentosActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuDepartamentos);
 
         jMenu5.add(jMenu9);
 
         jMenuBar3.add(jMenu5);
 
         jMenu10.setText("Herramientas");
+
+        jMenuItem2.setText("Calculadora");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem2);
+
         jMenuBar3.add(jMenu10);
 
         jMenu6.setText("Ayuda");
 
-        jMenuItem1.setText("Videotutorial");
+        jMenuItem1.setText("Manual de Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem1);
 
         jMenuBar3.add(jMenu6);
@@ -152,8 +209,74 @@ public class IngresoUsuario extends javax.swing.JFrame {
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
         // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_jSalirActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+
+        
+        
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenuDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDepartamentosActionPerformed
+        ConsultaDepartamentos ventana = new ConsultaDepartamentos();
+        CentrarVentanas(ventana);// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuDepartamentosActionPerformed
+
+    private void jMenuPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPuestosActionPerformed
+
+        ConsultaPuestos ventana = new ConsultaPuestos();
+         CentrarVentanas(ventana);
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuPuestosActionPerformed
+
+    private void jMenuEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEmpleadosActionPerformed
+       
+        ConsultaEmpleados ventana = new ConsultaEmpleados();
+         CentrarVentanas(ventana);
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuEmpleadosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+                try {
+            String url = "C:\\Users\\SEBAS\\Desktop\\ProyectoSegundaFase\\MANUAL USUARIO.pdf";
+        ProcessBuilder p = new ProcessBuilder();
+        p.command("cmd.exe", "/C", url);
+            p.start();
+        } catch (IOException ex) {
+            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+                  try        
+    {
+        Runtime rt = Runtime.getRuntime();           
+        Process p = rt.exec("calc");            
+        p.waitFor();        
+    }        
+    catch ( IOException ioe )       
+    {            
+        ioe.printStackTrace();
+    }         
+    catch ( InterruptedException ie )
+    {            
+        ie.printStackTrace();     
+    }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,11 +327,11 @@ public class IngresoUsuario extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuItem jMenuDepartamentos;
+    private javax.swing.JMenuItem jMenuEmpleados;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuPuestos;
     private javax.swing.JMenuItem jSalir;
     // End of variables declaration//GEN-END:variables
 }

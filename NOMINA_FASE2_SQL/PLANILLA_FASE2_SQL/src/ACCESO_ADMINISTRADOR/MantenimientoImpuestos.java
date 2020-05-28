@@ -16,6 +16,11 @@ import javax.swing.table.DefaultTableModel;
  * @author user
  */
 public class MantenimientoImpuestos extends javax.swing.JFrame {
+    //Variable global
+    public static String valor = "";
+    
+
+    
 String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minimo"};
      public void MostrarDB(String Tabla) {
         String[] columnas = new String[5];
@@ -48,8 +53,11 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
      * Creates new form MantenimientoImpuestos
      */
     public MantenimientoImpuestos() {
+        
         initComponents();
         MostrarDB("IMPUESTO");
+        MantenimientoConceptos object = new MantenimientoConceptos();
+        txtNombre.setText(object.NombreConcepto);
     }
 
     /**
@@ -126,7 +134,7 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 40, -1));
 
         txtId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 50, 30));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 50, 20));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,6 +270,8 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         // TODO add your handling code here:
 
+        valor = txtPorcentaje.getText();
+        
         if ( txtId.getText().isEmpty() || txtNombre.getText().isEmpty() || txtPorcentaje.getText().isEmpty() || txtValMax.getText().isEmpty() || txtValMin.getText().isEmpty()){
 
             JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPO VACIO");
@@ -288,11 +298,15 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
                 txtValMax.setText("");
                 txtValMin.setText("");
 
+                this.dispose();
+                
             }catch (Exception e){
 
             }
 
         }
+        
+        
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
     /**

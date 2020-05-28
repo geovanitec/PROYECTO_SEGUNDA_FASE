@@ -19,11 +19,8 @@ public class Seleccion extends javax.swing.JFrame {
     
     public static String BD = "jdbc:mysql://localhost/NOMINA_SALARIO";
     public static String Usuario = "root";
-<<<<<<< HEAD
     public static String Contraseña = "Cagada1234";
-=======
-    public static String Contraseña = "compromiso";
->>>>>>> f4c12c55bfca2dcf834774585925d119dbfb6d03
+
    
     
     

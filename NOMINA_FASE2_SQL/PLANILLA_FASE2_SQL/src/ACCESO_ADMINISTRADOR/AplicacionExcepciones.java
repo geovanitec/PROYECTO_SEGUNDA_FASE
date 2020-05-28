@@ -19,21 +19,22 @@ import javax.swing.table.DefaultTableModel;
  * @author Geovani
  */
 public class AplicacionExcepciones extends javax.swing.JInternalFrame {
+
     private static String db = "NOMINA_SALARIO";
     private static String user = "root";
-    private static String password = "compromiso";
+    private static String password = "Cagada1234";
     private static String host = "localhost";
-    private static String server = "jdbc:mysql://"+ host + "/" +db;
-    public void mostrarnomb (){
-        
+    private static String server = "jdbc:mysql://" + host + "/" + db;
+
+    public void mostrarnomb() {
+
         DefaultTableModel modelo = new DefaultTableModel();
-        try{
-            
+        try {
 
             Connection cn = DriverManager.getConnection(server, user, password);
             PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO");
             ResultSet rs = pst.executeQuery();
-            
+
             modelo.addColumn("Id_Emp");
             modelo.addColumn("NombreEmplea");
             modelo.addColumn("CodigoPuesto");
@@ -41,116 +42,98 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
             modelo.addColumn("CodigoDep");
             modelo.addColumn("NombreDep");
 
-            while(rs.next()){
+            while (rs.next()) {
 
-                int idemp=0,idpuesto=0,iddep;
-                String nombreemp = "", nombredep = "", nombrepues="";
-                
+                int idemp = 0, idpuesto = 0, iddep;
+                String nombreemp = "", nombredep = "", nombrepues = "";
+
                 idemp = Integer.parseInt(rs.getString("Id_Empleado"));
                 nombreemp = String.valueOf(rs.getString("NombreEmpleado"));
 
-                
                 Connection cn2 = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst2 = cn.prepareStatement("select * from PUESTO");
-            ResultSet rs2 = pst2.executeQuery();
-            
-            while(rs2.next()){
-                
-                idpuesto = Integer.parseInt(rs2.getString("IdPuesto"));
-                nombrepues = String.valueOf(rs2.getString("NombrePuesto"));
-                
-                
-                Connection cn3 = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst3 = cn3.prepareStatement("select * from DEPARTAMENTO");
-            ResultSet rs3 = pst3.executeQuery();
-            
-            while(rs3.next()){
-                 iddep = Integer.parseInt(rs3.getString("IdDepartamento"));
-                nombredep = String.valueOf(rs3.getString("NombreDepartamento"));
-                
-                
-                Object filas[] = {idemp,nombreemp,idpuesto,nombrepues,iddep,nombredep};
-                modelo.addRow(filas);
-                TablaEmpleados.setModel(modelo);
-                
-            }
-                
-               
-            
-            }
-            
-            
-                
-                
-                
-                
-                
-                
+                PreparedStatement pst2 = cn.prepareStatement("select * from PUESTO");
+                ResultSet rs2 = pst2.executeQuery();
+
+                while (rs2.next()) {
+
+                    idpuesto = Integer.parseInt(rs2.getString("IdPuesto"));
+                    nombrepues = String.valueOf(rs2.getString("NombrePuesto"));
+
+                    Connection cn3 = DriverManager.getConnection(server, user, password);
+                    PreparedStatement pst3 = cn3.prepareStatement("select * from DEPARTAMENTOS");
+                    ResultSet rs3 = pst3.executeQuery();
+
+                    while (rs3.next()) {
+                        iddep = Integer.parseInt(rs3.getString("IdDepartamento"));
+                        nombredep = String.valueOf(rs3.getString("NombreDepartamento"));
+
+                        Object filas[] = {idemp, nombreemp, idpuesto, nombrepues, iddep, nombredep};
+                        modelo.addRow(filas);
+                        TablaEmpleados.setModel(modelo);
+
+                    }
+
+                }
+
             }
 
-           // TablaEmpleados.setModel(modelo);
-
-        }catch(Exception e){
+            // TablaEmpleados.setModel(modelo);
+        } catch (Exception e) {
 
         }
-        
-        
+
         /*DefaultTableModel modelo = new DefaultTableModel();
       
        
-       try{
+         try{
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/prueba", "root", "compromiso");
-            PreparedStatement pst = cn.prepareStatement("select * from maestros where idmaestro = ?");
-            pst.setString(1, txtBuscar.getText().trim());
+         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/prueba", "root", "compromiso");
+         PreparedStatement pst = cn.prepareStatement("select * from maestros where idmaestro = ?");
+         pst.setString(1, txtBuscar.getText().trim());
             
-            modelo.addColumn("Nombre");
-            modelo.addColumn("Sueldo");
-            modelo.addColumn("bonif");
-            modelo.addColumn("extra");
-            modelo.addColumn("Total");
-            modelo.addColumn("Concepto");
-            modelo.addColumn("Aplicacion");
-            modelo.addColumn("TotalDesc");
-            modelo.addColumn("TotalLiq");
+         modelo.addColumn("Nombre");
+         modelo.addColumn("Sueldo");
+         modelo.addColumn("bonif");
+         modelo.addColumn("extra");
+         modelo.addColumn("Total");
+         modelo.addColumn("Concepto");
+         modelo.addColumn("Aplicacion");
+         modelo.addColumn("TotalDesc");
+         modelo.addColumn("TotalLiq");
             
-            ResultSet rs = pst.executeQuery();
+         ResultSet rs = pst.executeQuery();
             
-            while(rs.next()){
+         while(rs.next()){
                 
-               String nombremaestro="";
-                double S = 0, B = 0, E = 0, T = 0, I = 0, Max = 0, Min = 0, TD = 0, TL = 0;
+         String nombremaestro="";
+         double S = 0, B = 0, E = 0, T = 0, I = 0, Max = 0, Min = 0, TD = 0, TL = 0;
                     
-                nombremaestro = String.valueOf(rs.getString("nombremaestro"));
-                S = Double.parseDouble(rs.getString("sueldo"));
-                B = Double.parseDouble(rs.getString("bonificacion"));
-                E = Double.parseDouble(rs.getString("extraordinario"));
+         nombremaestro = String.valueOf(rs.getString("nombremaestro"));
+         S = Double.parseDouble(rs.getString("sueldo"));
+         B = Double.parseDouble(rs.getString("bonificacion"));
+         E = Double.parseDouble(rs.getString("extraordinario"));
                         
              
                 
-            }
+         }
             
             
-        }catch(Exception e){
-              JOptionPane.showMessageDialog(null, "Error");
-        }*/
-        
+         }catch(Exception e){
+         JOptionPane.showMessageDialog(null, "Error");
+         }*/
     }
-    
-    
-String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
+
+    String[] NombresColumnas = {"IdExcepcion", "NombreConcepto", "CodigoEmpleado"};
+
     public void MostrarDB(String Tabla) {
-        
-     
-     
-    String[] columnas = new String[3];
+
+        String[] columnas = new String[3];
         String query;
         try {
 
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-           
-                query = "SELECT * FROM " + Tabla;
-           
+
+            query = "SELECT * FROM " + Tabla;
 
             PreparedStatement consulta = cn.prepareStatement(query);
             ResultSet resultado = consulta.executeQuery();
@@ -170,24 +153,25 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         }
 
     }
-    
-    String[] Nombres = {"Id_Empleado" ,"CodigoPuesto" ,"CodigoDepartamento" ,"NombreEmpleado"};
+
+    String[] Nombres = {"Id_Empleado", "CodigoPuesto", "CodigoDepartamento", "NombreEmpleado"};
+
     public void Mostrar(String Tabla) {
         String[] columnas = new String[4];
-        String query,query2,query3;
+        String query, query2, query3;
         try {
 
-           Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
 
             query = "SELECT * FROM " + Tabla;
-             /*query2 = "SELECT NombrePuesto FROM PUESTO where IdPuesto = ?";
-              query3 = "SELECT NombreDepartamento FROM DEPARTAMENTO where IdDepartamento = ?";*/
+            /*query2 = "SELECT NombrePuesto FROM PUESTO where IdPuesto = ?";
+             query3 = "SELECT NombreDepartamento FROM DEPARTAMENTO where IdDepartamento = ?";*/
 
             PreparedStatement consulta = cn.prepareStatement(query);
             ResultSet resultado = consulta.executeQuery();
             DefaultTableModel md = new DefaultTableModel(null, Nombres);
-           // PreparedStatement cPuesto = cn.prepareStatement(query2);
-           // PreparedStatement cDepto = cn.prepareStatement(query3);
+            // PreparedStatement cPuesto = cn.prepareStatement(query2);
+            // PreparedStatement cDepto = cn.prepareStatement(query3);
 
             while (resultado.next()) {
                 for (int i = 0; i < 4; i++) {
@@ -195,19 +179,13 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
                 }
                 md.addRow(columnas);
                   //ResultSet rPuesto = cPuesto.executeQuery();
-               // ResultSet rDepto = cDepto.executeQuery();
-                
+                // ResultSet rDepto = cDepto.executeQuery();
+
                // while (rPuesto.next()) {
                 //    columnas[1] = rPuesto.getString("NombrePuesto");
-
-                
-               // while (rDepto.next()) {
+                // while (rDepto.next()) {
                 //    columnas[2] = rDepto.getString("NombreDepartamento");
-
-              //  }
-                
-                
-                
+                //  }
             }
             //TablaEmpleados.setModel(md);
             mostrarnomb();
@@ -215,9 +193,9 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         } catch (Exception err) {
             err.printStackTrace();
         }
-    
+
     }
-    
+
     /**
      * Creates new form AplicacionExcepciones
      */
@@ -228,25 +206,9 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         //table.setVisible(false);
         //lblTabla.setVisible(false);
         mostrarnomb();
-        try{
-            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            
-            PreparedStatement pst = cn.prepareStatement("select NombreEmpleado from  DATOS_EMPLEADO");
-            ResultSet rs = pst.executeQuery();
-            
-            cboxCodigoEmpleado.addItem("Seleccione una opción");
-            while(rs.next()){
-            cboxCodigoEmpleado.addItem(rs.getString("NombreEmpleado"));
-            }
-            
-           
-            
-        } catch (Exception e){
 
-        }
-        
-          MostrarDB("EXCEPCIONES");   
-           Mostrar("DATOS_EMPLEADO"); 
+        MostrarDB("EXCEPCIONES");
+        Mostrar("DATOS_EMPLEADO");
     }
 
     /**
@@ -264,14 +226,14 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         lblTabla = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtCodigoEx = new javax.swing.JTextField();
         txtNombreEx = new javax.swing.JTextField();
         cboxCodigoEmpleado = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaEmpleados = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cbxFormaIngreso = new javax.swing.JComboBox();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -306,12 +268,12 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 380, 160));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 380, 160));
 
         lblTabla.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         lblTabla.setForeground(new java.awt.Color(255, 255, 255));
         lblTabla.setText("TABLAS DE EXCEPCIONES");
-        jPanel1.add(lblTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 240, 20));
+        jPanel1.add(lblTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 240, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -321,20 +283,9 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CODIGO EMPLEADO");
+        jLabel3.setText("FORMA DE INGRESO:");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 180, 30));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("CODIGO EXCEPCION");
-        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 180, 30));
-
-        txtCodigoEx.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        txtCodigoEx.setText("    ");
-        txtCodigoEx.setBorder(null);
-        jPanel1.add(txtCodigoEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 140, 30));
 
         txtNombreEx.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         txtNombreEx.setText("    ");
@@ -346,12 +297,12 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
                 cboxCodigoEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(cboxCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 30));
+        jPanel1.add(cboxCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 140, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("TABLA CODIGOS EMPLEADOS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 240, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 240, 20));
 
         TablaEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
@@ -364,12 +315,26 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         ));
         jScrollPane2.setViewportView(TablaEmpleados);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 470, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 520, 160));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("APLICACION DE EXCEPCIONES");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 240, 50));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("CODIGO ");
+        jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 30));
+
+        cbxFormaIngreso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Opcion", "CodigoEmpleado", "CodigoPuesto" }));
+        cbxFormaIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxFormaIngresoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbxFormaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 30));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         btnGuardar.setText("GUARDAR");
@@ -417,175 +382,175 @@ String[] NombresColumnas= { "EXCEPCIONES","NombreConcepto","CodigoEmpleado"};
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 130, 30));
 
         lb.setText("..");
-        jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
+        jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 20, -1));
 
         lblfondo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
-        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 500));
+        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 730));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
-    
-    
+
     private void cboxCodigoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCodigoEmpleadoActionPerformed
 
-          try{
+        try {
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("select Id_Empleado from DATOS_EMPLEADO where NombreEmpleado= ?");
-            pst.setString(1, cboxCodigoEmpleado.getSelectedItem().toString());
 
-            ResultSet rs = pst.executeQuery();
+            if (cbxFormaIngreso.getSelectedIndex() == 1) {
+                PreparedStatement pst = cn.prepareStatement("select Id_Empleado from DATOS_EMPLEADO where NombreEmpleado= ?");
+                pst.setString(1, cboxCodigoEmpleado.getSelectedItem().toString());
 
-            if(rs.next()){
-                lb.setText(rs.getString("Id_Empleado"));
+                ResultSet rs = pst.executeQuery();
 
-            } else {
+                if (rs.next()) {
+                    lb.setText(rs.getString("Id_Empleado"));
+
+                }
+
+            } else if (cbxFormaIngreso.getSelectedIndex() == 2) {
+                PreparedStatement pst = cn.prepareStatement("select IdPuesto from PUESTO where NombrePuesto= ?");
+                pst.setString(1, cboxCodigoEmpleado.getSelectedItem().toString());
+
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    lb.setText(rs.getString("IdPuesto"));
+
+                }
+            }
+            {
 
             }
 
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            System.out.println(e);
         }
-
-
-
-
 
 // TODO add your handling code here:
     }//GEN-LAST:event_cboxCodigoEmpleadoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-        
-        
-        if ( txtCodigoEx.getText().isEmpty() || txtNombreEx.getText().isEmpty()){
+        if (txtNombreEx.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPOS VACIOS");
 
-        }
-        else {
-            
+        } else {
+
+            try {
+                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+                PreparedStatement pst2 = cn.prepareStatement("insert into EXCEPCIONES values(?,?,?)");
+
+                if (cbxFormaIngreso.getSelectedIndex() == 1) {
+                    pst2.setString(1, "0");
+                    pst2.setString(2, txtNombreEx.getText().trim());
+                    pst2.setString(3, lb.getText().trim());
+
+                    pst2.executeUpdate();
+                      JOptionPane.showMessageDialog(null, "Registro exitoso");
+                  
+
+                    MostrarDB("EXCEPCIONES");
+
+                } else if (cbxFormaIngreso.getSelectedIndex() == 2) {
+
+                    PreparedStatement pst3 = cn.prepareStatement("select * from DATOS_EMPLEADO where CodigoPuesto =?");
+                    pst3.setString(1, lb.getText().trim());
+                    ResultSet rs = pst3.executeQuery();
+                    while(rs.next()){
+                        
+                        pst2.setString(1, "0");
+                        pst2.setString(2, txtNombreEx.getText().trim());
+                        pst2.setString(3, rs.getString("Id_Empleado"));
+
+                        pst2.executeUpdate();
+                    
+                      
+                    }
+                      JOptionPane.showMessageDialog(null, "Registro exitoso");
+                    
+                }
+
                 
-              
-                try{
-              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst2 = cn.prepareStatement("insert into EXCEPCIONES values(?,?,?)");
-            
-            
-            pst2.setString(1, txtCodigoEx.getText().trim());
-            pst2.setString(2, txtNombreEx.getText().trim());
-             pst2.setString(3, lb.getText().trim());
-           
-            pst2.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Registro exitoso");
-           
-            MostrarDB("EXCEPCIONES");   
-           
-            
-            txtCodigoEx.setText("");
-            txtNombreEx.setText("");
-            
-            
-        }catch (Exception e){
-            
-        }
-                
-
-          
+                txtNombreEx.setText("");
+                this.dispose();
+            } catch (Exception e) {
+                 System.out.println(e);
+            }
 
         }
-
-
-
-
-
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 
-     try {
+        try {
             String codigo = txtBuscar.getText().trim();
 
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update EXCEPCIONES set IdExcepcion = ? , NombreConcepto= ? , CodigoEmpleado=?  where IdExcepcion = " + codigo);
 
-            pst.setString(1, txtCodigoEx.getText().trim());
+            pst.setString(1, "0");
             pst.setString(2, txtNombreEx.getText().trim());
             pst.setString(3, lb.getText().trim());
-           
 
             pst.executeUpdate();
-              MostrarDB("EXCEPCIONES");  
+            MostrarDB("EXCEPCIONES");
             JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
 
-          //  btnEliminar.setEnabled(false);
+            //  btnEliminar.setEnabled(false);
             //btnModificar.setEnabled(false);
-            txtCodigoEx.setText("");
+            
 
             txtNombreEx.setText("");
             lb.setText("");
-          
+
             cboxCodigoEmpleado.setSelectedIndex(0);
-            
+
             txtBuscar.setText("");
-            
-         
+
         } catch (Exception e) {
             System.out.println(e);
-        }   
-
-
-
+        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-String buscar = txtBuscar.getText().trim();
+        String buscar = txtBuscar.getText().trim();
         if (buscar.isEmpty()) {
             JOptionPane.showMessageDialog(this, "¡No se ingreso el campo de busqueda!", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
         try {
-                  Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from EXCEPCIONES where IdExcepcion = ?");
             pst.setString(1, txtBuscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                txtCodigoEx.setText(rs.getString("IdExcepcion"));
+                
                 txtNombreEx.setText(rs.getString("NombreConcepto"));
                 lb.setText(rs.getString("CodigoEmpleado"));
-               
-                
 
                 //btnEliminar.setEnabled(true);
                 //btnModificar.setEnabled(true);
-
             } else {
                 JOptionPane.showMessageDialog(null, " no registrado.");
             }
-            
+
             PreparedStatement pst1 = cn.prepareStatement("select NombreEmpleado from DATOS_EMPLEADO where Id_Empleado=?");
             pst1.setString(1, lb.getText().trim());
             ResultSet rs1 = pst1.executeQuery();
 
-           
-            
             while (rs1.next()) {
-                 cboxCodigoEmpleado.setSelectedItem(rs1.getString("NombreEmpleado"));
+                cboxCodigoEmpleado.setSelectedItem(rs1.getString("NombreEmpleado"));
             }
-           
 
         } catch (Exception err) {
             err.printStackTrace();
@@ -594,32 +559,70 @@ String buscar = txtBuscar.getText().trim();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-try {
+        try {
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from EXCEPCIONES where IdExcepcion = ?");
 
             pst.setString(1, txtBuscar.getText().trim());
             pst.executeUpdate();
-             MostrarDB("EXCEPCIONES");  
+            MostrarDB("EXCEPCIONES");
             txtBuscar.setText("");
 
             JOptionPane.showMessageDialog(this, "REGISTRO ELIMINADO.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-           // btnEliminar.setEnabled(false);
+            // btnEliminar.setEnabled(false);
             //btnModificar.setEnabled(false);
 
-             txtCodigoEx.setText("");
+            
 
             txtNombreEx.setText("");
             lb.setText("");
-          
+
             cboxCodigoEmpleado.setSelectedIndex(0);
-            
-            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error en la eliminación de registros.", "Error", JOptionPane.ERROR_MESSAGE);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void cbxFormaIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxFormaIngresoActionPerformed
+        // TODO add your handling code here:
+
+        if (cbxFormaIngreso.getSelectedIndex() == 1) {
+            try {
+                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+
+                PreparedStatement pst = cn.prepareStatement("select NombreEmpleado from  DATOS_EMPLEADO");
+                ResultSet rs = pst.executeQuery();
+                cboxCodigoEmpleado.removeAllItems();
+                cboxCodigoEmpleado.addItem("Seleccione opcion");
+                while (rs.next()) {
+                    cboxCodigoEmpleado.addItem(rs.getString("NombreEmpleado"));
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        } else if (cbxFormaIngreso.getSelectedIndex() == 2) {
+            try {
+                Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+
+                PreparedStatement pst = cn.prepareStatement("select NombrePuesto from  PUESTO");
+                ResultSet rs = pst.executeQuery();
+                
+                cboxCodigoEmpleado.removeAllItems();
+                
+                while (rs.next()) {
+                    cboxCodigoEmpleado.addItem(rs.getString("NombrePuesto"));
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "NO HA ELEGIDO TIPO DE INGRESO");
+        }
+    }//GEN-LAST:event_cbxFormaIngresoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -629,11 +632,12 @@ try {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox cboxCodigoEmpleado;
+    private javax.swing.JComboBox cbxFormaIngreso;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -642,7 +646,6 @@ try {
     private javax.swing.JLabel lblfondo;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtCodigoEx;
     private javax.swing.JTextField txtNombreEx;
     // End of variables declaration//GEN-END:variables
 }

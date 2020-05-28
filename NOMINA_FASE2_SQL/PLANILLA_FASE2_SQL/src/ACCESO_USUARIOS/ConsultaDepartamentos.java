@@ -41,7 +41,10 @@ public class ConsultaDepartamentos extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleados = new javax.swing.JTable();
         jToggleButton3 = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        lblfondo = new javax.swing.JLabel();
 
         setClosable(true);
         setResizable(true);
@@ -49,8 +52,9 @@ public class ConsultaDepartamentos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 194, 32));
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 194, 32));
 
+        tblEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -64,7 +68,7 @@ public class ConsultaDepartamentos extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblEmpleados);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 650, 260));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 650, 260));
 
         jToggleButton3.setText("BUSCAR");
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -72,12 +76,27 @@ public class ConsultaDepartamentos extends javax.swing.JInternalFrame {
                 jToggleButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 82, 31));
+        jPanel2.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 82, 31));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoDepto.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 870, 490));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("         CONSULTA DEPARTAMENTOS");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 280, 60));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 490));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("\nLa consulta departementos\npermite al usuario saber \ncuales son los Departamentos\nque existen en la empresa\n");
+        jTextArea1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 240, 140));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
+        jPanel2.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-18, 0, 920, 490));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 890, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,10 +146,13 @@ public class ConsultaDepartamentos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JLabel lblfondo;
     private javax.swing.JTable tblEmpleados;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

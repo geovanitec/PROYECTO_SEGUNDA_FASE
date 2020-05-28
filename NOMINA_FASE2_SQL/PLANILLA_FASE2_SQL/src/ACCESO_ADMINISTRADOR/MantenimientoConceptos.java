@@ -6,8 +6,8 @@
 package ACCESO_ADMINISTRADOR;
 
 /*import static ACCESO_ADMINISTRADOR.Registro.password;
-import static ACCESO_ADMINISTRADOR.Registro.server;
-import static ACCESO_ADMINISTRADOR.Registro.user;*/
+ import static ACCESO_ADMINISTRADOR.Registro.server;
+ import static ACCESO_ADMINISTRADOR.Registro.user;*/
 import PLANILLA_FASE2.IngresoAdmin;
 import static PLANILLA_FASE2.IngresoAdmin.jDesktopPane1;
 import PLANILLA_FASE2.Seleccion;
@@ -22,12 +22,10 @@ import javax.swing.JOptionPane;
  *
  * @author Angel Chacon
  */
-
 public class MantenimientoConceptos extends javax.swing.JInternalFrame {
-public static String NombreConcepto = "";
 
-   
-   
+    public static String NombreConcepto = "";
+
     /**
      * Creates new form CONCEPTO
      */
@@ -38,8 +36,7 @@ public static String NombreConcepto = "";
         cbxUsoDeTabla.setVisible(false);
         btnNecesidadTabla.setVisible(false);
         btnAplicaA.setVisible(false);
-        txtValorConcepto.setVisible(false);
-        lblValor.setVisible(false);
+
     }
 
     /**
@@ -58,7 +55,6 @@ public static String NombreConcepto = "";
         txtValorConcepto = new javax.swing.JTextField();
         cbxAfecta = new javax.swing.JComboBox();
         lblValor = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
         btnNecesidadTabla = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnAplicaA = new javax.swing.JButton();
@@ -70,11 +66,11 @@ public static String NombreConcepto = "";
         btnBuscar = new javax.swing.JButton();
         btnTipo = new javax.swing.JButton();
         btn_Modificar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -127,7 +123,6 @@ public static String NombreConcepto = "";
         lblValor.setText("Valor Concepto:");
         lblValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.add(lblValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
-        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, 30));
 
         btnNecesidadTabla.setText("Ingresar Popiedades");
         btnNecesidadTabla.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +201,14 @@ public static String NombreConcepto = "";
         });
         jPanel2.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, -1, 31));
 
+        jButton1.setText("Obtener Valor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
+
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,12 +236,6 @@ public static String NombreConcepto = "";
         jLabel4.setText("¿Necesita tabla?");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 30));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Id");
-        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 80, 30));
         jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 150, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -286,27 +283,27 @@ public static String NombreConcepto = "";
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        try{
-              Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+        try {
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from CONCEPTOS where Id_Concepto = ?");
             pst.setString(1, txtBuscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
-/*
-            if(rs.next()){
-                txtId.setText(rs.getString("Id_Concepto"));
-                txtNombre.setText(rs.getString("NombreConcepto"));
-                txtAplicacion.setText(rs.getString("AfectaConcepto"));
-                txtValor.setText(rs.getString("valorConcepto"));
-                txtTipo.setText(rs.getString("TipoConcepto"));
-                txtValorMax.setText(rs.getString("ValorMax"));
-                txtValorMin.setText(rs.getString("ValorMin"));
+            /*
+             if(rs.next()){
+             txtId.setText(rs.getString("Id_Concepto"));
+             txtNombre.setText(rs.getString("NombreConcepto"));
+             txtAplicacion.setText(rs.getString("AfectaConcepto"));
+             txtValor.setText(rs.getString("valorConcepto"));
+             txtTipo.setText(rs.getString("TipoConcepto"));
+             txtValorMax.setText(rs.getString("ValorMax"));
+             txtValorMin.setText(rs.getString("ValorMin"));
                 
-            } else {
-                JOptionPane.showMessageDialog(null, "Concepto no registrado.");
-            }*/
+             } else {
+             JOptionPane.showMessageDialog(null, "Concepto no registrado.");
+             }*/
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -318,15 +315,14 @@ public static String NombreConcepto = "";
             String ID = txtBuscar.getText().trim();
 
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update CONCEPTOS set Id_Concepto = ?,NombreConcepto = ?, AfectaConcepto = ?, valorConcepto = ?, TipoConcepto = ?, ValorMax = ?, ValorMin = ? where Id_Concepto = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update CONCEPTOS set NombreConcepto = ?, AfectaConcepto = ?, valorConcepto = ?, TipoConcepto = ?, ValorMax = ?, ValorMin = ? where Id_Concepto = " + ID);
 
-            pst.setString(1, txtId.getText().trim());
-            pst.setString(2, txtNombre.getText().trim());
+            pst.setString(1, txtNombre.getText().trim());
             /*pst.setString(3, txtAplicacion.getText().trim());
-            pst.setString(4, txtValor.getText().trim());            
-            pst.setString(5, txtTipo.getText().trim());
-            pst.setString(6, txtValor.getText().trim());
-            pst.setString(7, txtValor.getText().trim());*/
+             pst.setString(4, txtValor.getText().trim());            
+             pst.setString(5, txtTipo.getText().trim());
+             pst.setString(6, txtValor.getText().trim());
+             pst.setString(7, txtValor.getText().trim());*/
             pst.executeUpdate();
 
         } catch (Exception e) {
@@ -334,65 +330,123 @@ public static String NombreConcepto = "";
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-        
-       /* if ( txtId.getText().isEmpty() || txtNombre.getText().isEmpty()|| txtAplicacion.getText().isEmpty() || txtValor.getText().isEmpty()|| txtTipo.getText().isEmpty())
-        {
 
-            JOptionPane.showMessageDialog(null, " NO SE PUEDE DEJAR CAMPO VACIO");
+        try {
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            if (cbxTipo.getSelectedIndex() == 1) { //porcentaje
 
-        }
-        else {
-            
-           
-            try{
-               Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-                PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?)");
+                //Query de busqueda
+                PreparedStatement pst1 = cn.prepareStatement("select * from EXCEPCIONES");
+                ResultSet rs = pst1.executeQuery();
+                PreparedStatement pst2 = cn.prepareStatement("select * from DATOS_EMPLEADO");
+                ResultSet rs1 = pst2.executeQuery();
 
-                pst.setString(1, txtId.getText().trim());
-                pst.setString(2, txtNombre.getText().trim());
-               /* pst.setString(3, txtAplicacion.getText().trim());
-                pst.setString(4, txtValor.getText().trim());
-                pst.setString(5, txtTipo.getText().trim());
-                pst.setString(6, txtValorMax.getText().trim());
-                pst.setString(7, txtValorMin.getText().trim());
+                while (rs1.next()) {
 
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Registro Exitoso.");
-                txtId.setText("");
-                txtNombre.setText("");
-               /* txtAplicacion.setText("");
-                txtValor.setText("");
-                txtTipo.setText("");
-                txtValorMax.setText("");
-                txtValorMin.setText("");
+                    while (rs.next()) {
+                        if (rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
 
-            }catch(Exception e){
+                        }
 
+                    }
+                    PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+                    pst.setString(1, "0");
+                    pst.setString(2, txtNombre.getText().trim());
+                    pst.setString(3, cbxAfecta.getSelectedItem().toString());
+                    pst.setString(4, cbxTipo.getSelectedItem().toString());
+                    pst.setString(5, "Si");
+                    pst.setString(6, txtValorConcepto.getText().trim());
+                    pst.setString(7, cbxAplicaA.getSelectedItem().toString());
+                    pst.setString(8, rs1.getString("Id_Empleado"));
+
+                    pst.executeUpdate();
+                    txtNombre.setText("");
+                    cbxAfecta.setSelectedIndex(0);
+                    cbxTipo.setSelectedIndex(0);
+                    cbxUsoDeTabla.setSelectedIndex(0);
+                    txtValorConcepto.setText("");
+                    cbxAplicaA.setSelectedIndex(0);
+                }
+
+                JOptionPane.showMessageDialog(null, "REGISTRADO");
+
+            } else if (cbxTipo.getSelectedIndex() == 2) {//valor
+
+                //Query de busqueda
+                PreparedStatement pst1 = cn.prepareStatement("select * from EXCEPCIONES");
+                ResultSet rs = pst1.executeQuery();
+                PreparedStatement pst2 = cn.prepareStatement("select * from DATOS_EMPLEADO");
+                ResultSet rs1 = pst2.executeQuery();
+
+                while (rs1.next()) {
+
+                    while (rs.next()) {
+                        if (rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
+                            JOptionPane.showMessageDialog(null, "LOS CODIGOS NO COINCIDEN, SON EXCEPCIONES");
+                        } else {
+                            PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+                            pst.setString(1, "0");
+                            pst.setString(2, txtNombre.getText().trim());
+                            pst.setString(3, cbxAfecta.getSelectedItem().toString());
+                            pst.setString(4, cbxTipo.getSelectedItem().toString());
+                            pst.setString(5, "No");
+                            pst.setString(6, txtValorConcepto.getText().trim());
+                            pst.setString(7, cbxAplicaA.getSelectedItem().toString());
+                            pst.setString(8, rs1.getString("Id_Empleado"));
+
+                            pst.executeUpdate();
+                            txtNombre.setText("");
+                            cbxAfecta.setSelectedIndex(0);
+                            cbxTipo.setSelectedIndex(0);
+                            cbxUsoDeTabla.setSelectedIndex(0);
+                            txtValorConcepto.setText("");
+                            cbxAplicaA.setSelectedIndex(0);
+                            JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
+                        }
+
+                    }
+
+                }
+
+                /*  PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+                 pst.setString(1, "0");
+                 pst.setString(2, txtNombre.getText().trim());
+                 pst.setString(3, cbxAfecta.getSelectedItem().toString());
+                 pst.setString(4, cbxTipo.getSelectedItem().toString());
+                 pst.setString(5, "No");
+                 pst.setString(6, txtValorConcepto.getText().trim());
+                 pst.setString(7, cbxAplicaA.getSelectedItem().toString());
+                 pst.executeUpdate();*/
+               // JOptionPane.showMessageDialog(null, "REGISTRADO");
+            } else {
+                JOptionPane.showMessageDialog(null, "NO HA COMPLETADO LOS CAMPOS");
             }
-        }*/
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         //Codigo que permite borrar registros en la base de datos
-
         try {
-             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("delete from CONCEPTOS where Id_Concepto = ?");
 
             pst.setString(1, txtBuscar.getText().trim());
             pst.executeUpdate();
 
-            txtId.setText("");
-                txtNombre.setText("");
-                /*txtAplicacion.setText("");
-                txtValor.setText("");
-                txtTipo.setText("");
-                txtValorMax.setText("");
-                txtValorMin.setText("");*/
-                
-                JOptionPane.showMessageDialog(null, "Registro Eliminado.");
+            txtNombre.setText("");
+            /*txtAplicacion.setText("");
+             txtValor.setText("");
+             txtTipo.setText("");
+             txtValorMax.setText("");
+             txtValorMin.setText("");*/
+
+            JOptionPane.showMessageDialog(null, "Registro Eliminado.");
 
         } catch (Exception e) {
         }
@@ -401,19 +455,18 @@ public static String NombreConcepto = "";
 
     private void txtValorConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorConceptoActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_txtValorConceptoActionPerformed
 
     private void cbxAfectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAfectaActionPerformed
         // TODO add your handling code here:
-        
+
         if (cbxAfecta.getSelectedIndex() == 1) {
-            
-        }
-        else if(cbxAfecta.getSelectedIndex() == 2){
-            
-        }
-        else{
-        
+
+        } else if (cbxAfecta.getSelectedIndex() == 2) {
+
+        } else {
+
         }
     }//GEN-LAST:event_cbxAfectaActionPerformed
 
@@ -421,98 +474,81 @@ public static String NombreConcepto = "";
         // TODO add your handling code here:
         if (cbxTipo.getSelectedIndex() == 1) {
             btnTipo.setVisible(true);
-            lblValor.setVisible(false);
-         txtValorConcepto.setVisible(false);
-        }
-        else if(cbxTipo.getSelectedIndex() == 2){
+
+        } else if (cbxTipo.getSelectedIndex() == 2) {
             jLabel4.setVisible(false);
-        cbxUsoDeTabla.setVisible(false);
-        btnNecesidadTabla.setVisible(false);
-         btnTipo.setVisible(false);
-         lblValor.setVisible(true);
-         txtValorConcepto.setVisible(true);
-        }
-        else{
-        
+            cbxUsoDeTabla.setVisible(false);
+            btnNecesidadTabla.setVisible(false);
+            btnTipo.setVisible(false);
+
+        } else {
+
         }
     }//GEN-LAST:event_cbxTipoActionPerformed
 
     private void btnTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoActionPerformed
         // TODO add your handling code here:
-         jLabel4.setVisible(true);
+        jLabel4.setVisible(true);
         cbxUsoDeTabla.setVisible(true);
-        
-        
-        
+
+
     }//GEN-LAST:event_btnTipoActionPerformed
 
     private void cbxUsoDeTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUsoDeTablaActionPerformed
         // TODO add your handling code here:
         if (cbxUsoDeTabla.getSelectedIndex() == 1) {
             btnNecesidadTabla.setVisible(true);
-            lblValor.setVisible(false);
-         txtValorConcepto.setVisible(false);
-        }
-        else if(cbxUsoDeTabla.getSelectedIndex() == 2){
+
+        } else if (cbxUsoDeTabla.getSelectedIndex() == 2) {
             btnNecesidadTabla.setVisible(false);
-            lblValor.setVisible(true);
-         txtValorConcepto.setVisible(true);
-        }
-        else{
-        
+
+        } else {
+
         }
     }//GEN-LAST:event_cbxUsoDeTablaActionPerformed
 
     private void cbxAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAplicaAActionPerformed
 
-        
-if (cbxAplicaA.getSelectedIndex() == 1) {
-             btnAplicaA.setVisible(false);
-        }
-        else if(cbxAplicaA.getSelectedIndex() == 2){
+        if (cbxAplicaA.getSelectedIndex() == 1) {
+            btnAplicaA.setVisible(false);
+        } else if (cbxAplicaA.getSelectedIndex() == 2) {
             btnAplicaA.setVisible(true);
+        } else {
+
         }
-        else{
-        
-        }
-
-
-
-
-
 
 // TODO add your handling code here:
     }//GEN-LAST:event_cbxAplicaAActionPerformed
 
     private void btnAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicaAActionPerformed
-NombreConcepto = txtNombre.getText();
-       
-        
-AplicacionExcepciones ventana = new AplicacionExcepciones ();
+        NombreConcepto = txtNombre.getText();
+
+        AplicacionExcepciones ventana = new AplicacionExcepciones();
 //ventana.setVisible(true);
 
-
-IngresoAdmin.jDesktopPane1.add(ventana);
-ventana.toFront();
-ventana.setVisible(true);
-   Dimension desktopSize = jDesktopPane1.getSize();
+        IngresoAdmin.jDesktopPane1.add(ventana);
+        ventana.toFront();
+        ventana.setVisible(true);
+        Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         ventana.show();
-
-
-
-
-
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnAplicaAActionPerformed
 
     private void btnNecesidadTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNecesidadTablaActionPerformed
         // TODO add your handling code here:
+        NombreConcepto = txtNombre.getText();
         MantenimientoImpuestos ventana = new MantenimientoImpuestos();
         ventana.setVisible(true);
     }//GEN-LAST:event_btnNecesidadTablaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        MantenimientoImpuestos ventana = new MantenimientoImpuestos();
+        txtValorConcepto.setText(ventana.valor);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -528,11 +564,11 @@ ventana.setVisible(true);
     private javax.swing.JComboBox cbxAplicaA;
     private javax.swing.JComboBox cbxTipo;
     private javax.swing.JComboBox cbxUsoDeTabla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -542,7 +578,6 @@ ventana.setVisible(true);
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtValorConcepto;
     // End of variables declaration//GEN-END:variables
