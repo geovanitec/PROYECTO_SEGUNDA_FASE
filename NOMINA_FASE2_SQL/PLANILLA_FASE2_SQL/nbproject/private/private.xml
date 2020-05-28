@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/SEBAS/Desktop/ProyectoSegundaFase/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/MantenimientoConceptos.java</file>
             <file>file:/C:/Users/SEBAS/Desktop/ProyectoSegundaFase/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/PLANILLA_FASE2/Seleccion.java</file>
             <file>file:/C:/Users/SEBAS/Desktop/ProyectoSegundaFase/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/AplicacionExcepciones.java</file>
@@ -12,6 +13,11 @@
             <file>file:/C:/Users/Geovani/Documents/CURSOS%202020%20SEMESTRE%201/Progra3/backup%20final/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/MantenimientoConceptos.java</file>
             <file>file:/C:/Users/Geovani/Documents/CURSOS%202020%20SEMESTRE%201/Progra3/backup%20final/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/PLANILLA_FASE2/IngresoAdmin.java</file>
 >>>>>>> f4c12c55bfca2dcf834774585925d119dbfb6d03
+=======
+            <file>file:/C:/Users/user/Desktop/Angel/Proyectos/Planilla/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/FormularioImpuestos.java</file>
+            <file>file:/C:/Users/user/Desktop/Angel/Proyectos/Planilla/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/MantenimientoConceptos.java</file>
+            <file>file:/C:/Users/user/Desktop/Angel/Proyectos/Planilla/NOMINA_FASE2_SQL/PLANILLA_FASE2_SQL/src/ACCESO_ADMINISTRADOR/AplicacionExcepciones.java</file>
+>>>>>>> a0fcca5bc6c0006105442bbb52005fb65b91e408
         </group>
     </open-files>
 </project-private>
