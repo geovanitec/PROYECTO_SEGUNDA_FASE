@@ -22,7 +22,9 @@ import javax.swing.JOptionPane;
  *
  * @author Angel Chacon
  */
+
 public class MantenimientoConceptos extends javax.swing.JInternalFrame {
+public static String NombreConcepto = "";
 
    
    
@@ -478,7 +480,7 @@ if (cbxAplicaA.getSelectedIndex() == 1) {
     }//GEN-LAST:event_cbxAplicaAActionPerformed
 
     private void btnAplicaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicaAActionPerformed
-
+NombreConcepto = txtNombre.getText();
        
         
 AplicacionExcepciones ventana = new AplicacionExcepciones ();
