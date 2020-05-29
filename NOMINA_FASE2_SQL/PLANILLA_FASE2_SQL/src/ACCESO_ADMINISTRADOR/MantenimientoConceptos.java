@@ -345,6 +345,18 @@ public void MostrarDB(String Tabla) {
             pst.setString(1, txtBuscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+            
+                txtIdConcepto.setText(rs.getString("Id_Concepto"));
+                txtNombre.setText(rs.getString("NombreConcepto"));
+                cbxAfecta.setSelectedItem("AfectaConcepto");
+                cbxTipo.setSelectedItem("TipoConcepto");
+                txtValorConcepto.setText("valorConcepto");
+                cbxUsoDeTabla.setSelectedItem("usoTabla");
+                
+            
+            }
             /*
              if(rs.next()){
              txtId.setText(rs.getString("Id_Concepto"));

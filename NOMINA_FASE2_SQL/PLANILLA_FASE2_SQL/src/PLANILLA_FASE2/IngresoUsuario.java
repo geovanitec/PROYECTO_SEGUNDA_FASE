@@ -8,6 +8,7 @@ package PLANILLA_FASE2;
 
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
+import ACCESO_ADMINISTRADOR.ConsultaPlanillaUsuarios;
 import ACCESO_USUARIOS.ConsultaPuestos;
 import NEW_USER.NuevoUsuario;
 import static PLANILLA_FASE2.IngresoAdmin.jDesktopPane1;
@@ -83,6 +84,7 @@ public class IngresoUsuario extends javax.swing.JFrame {
         jMenuEmpleados = new javax.swing.JMenuItem();
         jMenuPuestos = new javax.swing.JMenuItem();
         jMenuDepartamentos = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -144,6 +146,14 @@ public class IngresoUsuario extends javax.swing.JFrame {
             }
         });
         jMenu9.add(jMenuDepartamentos);
+
+        jMenuItem3.setText("Consulta Planilla");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem3);
 
         jMenu5.add(jMenu9);
 
@@ -255,7 +265,7 @@ public class IngresoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         
                 try {
-            String url = "C:\\Users\\Geovani\\Desktop\\h\\MANUAL USUARIO.pdf";
+            String url = "C:\\Users\\SEBAS\\Desktop\\ProyectoSegundaFase\\MANUAL USUARIO.pdf";
         ProcessBuilder p = new ProcessBuilder();
         p.command("cmd.exe", "/C", url);
             p.start();
@@ -281,6 +291,16 @@ public class IngresoUsuario extends javax.swing.JFrame {
         ie.printStackTrace();     
     }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        ConsultaPlanillaUsuarios ventana = new ConsultaPlanillaUsuarios();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,6 +355,7 @@ public class IngresoUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuEmpleados;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuPuestos;
     private javax.swing.JMenuItem jSalir;
     // End of variables declaration//GEN-END:variables

@@ -16,6 +16,7 @@ import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
 import ACCESO_USUARIOS.ConsultaPlanilla;
+import ACCESO_ADMINISTRADOR.ConsultaPlanillaUsuarios;
 import ACCESO_USUARIOS.ConsultaPuestos;
 import NEW_USER.NuevoUsuario;
 
@@ -101,7 +102,6 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuAplicacionExcepciones = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuIngresoSalario = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
@@ -223,14 +223,6 @@ public class IngresoAdmin extends javax.swing.JFrame {
         jMenu1.add(jMenuItem8);
 
         jMenu7.add(jMenu1);
-
-        jMenuAplicacionExcepciones.setText("Aplicacion Excepciones");
-        jMenuAplicacionExcepciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAplicacionExcepcionesActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuAplicacionExcepciones);
 
         jMenuBar3.add(jMenu7);
 
@@ -374,7 +366,7 @@ public class IngresoAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        ConsultaPlanilla ventana = new ConsultaPlanilla();
+        ConsultaPlanillaUsuarios ventana = new ConsultaPlanillaUsuarios();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -424,15 +416,6 @@ public class IngresoAdmin extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuAplicacionExcepcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAplicacionExcepcionesActionPerformed
-
-        AplicacionExcepciones ventana = new AplicacionExcepciones();
-CentrarVentanas(ventana);
-
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuAplicacionExcepcionesActionPerformed
-
     /**
      * 
      * @param void que  permite ingresar un documento de formato pdf a nuesto programa
@@ -441,7 +424,7 @@ CentrarVentanas(ventana);
         // TODO add your handling code here:
            
         try {
-            String url = "C:\\Users\\Geovani\\Desktop\\h\\MANUAL DE ADMINISTRADOR.pdf";
+            String url = "C:\\Users\\SEBAS\\Desktop\\ProyectoSegundaFase\\MANUAL DE ADMINISTRADOR.pdf";
         ProcessBuilder p = new ProcessBuilder();
         p.command("cmd.exe", "/C", url);
             p.start();
@@ -516,7 +499,6 @@ CentrarVentanas(ventana);
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuItem jMenuAplicacionExcepciones;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuIngresoSalario;
