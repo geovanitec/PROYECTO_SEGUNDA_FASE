@@ -17,15 +17,54 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Angel Chacon
+ * @author Sebastian Moreira
+ */
+
+/**
+ * 
+ * @param; void funcion que permirte ingresarle datos a una tabla de contenidos
  */
 public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
     public static String NombreConcepto = "";
 
+    String[] NombresColumnas= { "Id_Concepto","NombreConcepto","AfectaConcepto","TipoConcepto","valorConcepto","usoTabla","aplica","CodigoEmpleado"};
+     
+public void MostrarDB(String Tabla) {
+        String[] columnas = new String[8];
+        String query;
+        try {
+
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+           
+                query = "SELECT * FROM " + Tabla;
+           
+
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet resultado = consulta.executeQuery();
+            DefaultTableModel md = new DefaultTableModel(null, NombresColumnas);
+
+            while (resultado.next()) {
+                for (int i = 0; i < 8; i++) {
+                    columnas[i] = resultado.getString(NombresColumnas[i]);
+                }
+                md.addRow(columnas);
+
+            }
+            tblConceptos.setModel(md);
+
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+
+    }
+    
+    
+    
     /**
      * Creates new form CONCEPTO
      */
@@ -36,7 +75,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         cbxUsoDeTabla.setVisible(false);
         btnNecesidadTabla.setVisible(false);
         btnAplicaA.setVisible(false);
-
+         MostrarDB("CONCEPTOS");
     }
 
     /**
@@ -75,8 +114,9 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblConceptos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         btnAplicacion = new javax.swing.JLabel();
 
         setClosable(true);
@@ -101,9 +141,9 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("             Conceptos");
+        jLabel6.setText("  TABLA CONCEPTOS");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 190, 40));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 190, 40));
 
         txtValorConcepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +272,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("INGRESE NO. CONCEPTO");
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 27, 180, 30));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 180, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -247,7 +287,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblConceptos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -255,9 +295,9 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblConceptos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 310, 180));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 490, 230));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,17 +305,21 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 80, 30));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("             Conceptos");
+        jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 190, 40));
+
         btnAplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
         btnAplicacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel2.add(btnAplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 10, 920, 600));
+        jPanel2.add(btnAplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1032, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +384,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
             pst.setString(7, cbxAplicaA.getSelectedItem().toString());
             
             pst.executeUpdate();
-          
+          MostrarDB("CONCEPTOS");
             JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
 
             //  btnEliminar.setEnabled(false);
@@ -391,8 +435,9 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
                                 pst.executeUpdate();
 
-
+                                MostrarDB("CONCEPTOS");
                                 JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
+                                
 
                     }
                     rs1.close();
@@ -436,7 +481,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
                                 pst.executeUpdate();
 
-
+                                MostrarDB("CONCEPTOS");
                                 JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
 
                     }
@@ -605,10 +650,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblValor;
+    private javax.swing.JTable tblConceptos;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtIdConcepto;
     private javax.swing.JTextField txtNombre;

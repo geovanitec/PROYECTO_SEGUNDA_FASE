@@ -137,7 +137,10 @@ public class LoginUsuarios extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoUsuarioActionPerformed
-
+/**
+ * 
+ * @param void funcion que permite ingreasr a un usuario con cuenta ya creada
+ */
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){

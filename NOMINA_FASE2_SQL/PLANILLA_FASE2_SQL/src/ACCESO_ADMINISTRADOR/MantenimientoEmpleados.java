@@ -20,7 +20,15 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Angel Chacon
+ * @author: Geovani Mendoza
+ */
+
+
+
+/**
+ * 
+ * @param: Void funcion que permite ingresarle datos a una tabla de contenido
+ * 
  */
 public class MantenimientoEmpleados extends javax.swing.JInternalFrame {
 
@@ -319,6 +327,14 @@ public void MostrarDB(String Tabla) {
         
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    
+    
+    /**
+     * 
+     * @param void funcion que permite crear un nuevo usuario en la tabla de empleados
+     */
+    
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         
@@ -361,6 +377,11 @@ public void MostrarDB(String Tabla) {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    
+    /**
+     * 
+     * @param void funcion que permite buscar un empleado en nuestra base de datos
+     */
     private void btnBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCodigoActionPerformed
  
           String buscar = txtBuscar.getText().trim();

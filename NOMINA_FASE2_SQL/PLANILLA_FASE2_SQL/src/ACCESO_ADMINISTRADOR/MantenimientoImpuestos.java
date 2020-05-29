@@ -13,14 +13,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author user
+ * @author Angel Chacon
  */
 public class MantenimientoImpuestos extends javax.swing.JFrame {
     //Variable global
     public static String valor = "";
     
 
-    
+    /**
+     * @see  void MostrarDB funcion que nos permite insertar una tabla de contenidos segun seas sus elementos
+     */
 String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minimo"};
      public void MostrarDB(String Tabla) {
         String[] columnas = new String[5];
@@ -102,7 +104,7 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 82, 30));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 82, 30));
 
         btn_Eliminar.setText("ELIMNAR");
         btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +112,7 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
                 btn_EliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 86, 31));
+        jPanel1.add(btn_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 86, 31));
 
         btn_Modificar.setText("MODIFICAR");
         btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +120,7 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
                 btn_ModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, 31));
+        jPanel1.add(btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 31));
 
         btn_Guardar.setText("GUARDAR");
         btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,15 +128,15 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
                 btn_GuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 91, 31));
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 100, -1));
-        jPanel1.add(txtValMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 120, -1));
-        jPanel1.add(txtValMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 130, -1));
-        jPanel1.add(txtPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 90, -1));
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 40, -1));
+        jPanel1.add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 91, 31));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 120, 30));
+        jPanel1.add(txtValMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 120, 30));
+        jPanel1.add(txtValMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 130, 30));
+        jPanel1.add(txtPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 90, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 100, 30));
 
         txtId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 50, 20));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 110, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,12 +161,12 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Ingrese id impuesto");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 130, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 145, 130, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Id");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 20, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 20, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -181,10 +183,10 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         ));
         jScrollPane2.setViewportView(table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 660, 250));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 660, 250));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 570));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 570));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 570));
 
@@ -192,6 +194,12 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /**
+     * 
+     * @param evt funcion que permite ingresar un impouesto al sistema
+     */
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try{
@@ -218,6 +226,11 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    
+    /**
+     * 
+     * @param evt funcion que permite eliminar un impuesto que ya fue creado
+     */
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
         // TODO add your handling code here:
 
@@ -239,6 +252,11 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         }
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
+    
+    /**
+     * 
+     * @param evt funcion que permite modigicar los impuestos 
+     */
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         // TODO add your handling code here:
 
@@ -267,6 +285,12 @@ String[] Nombres = {"IdImpuesto" ,"NombpreConcepto","Porcentaje","maximo","minim
         }
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
+    
+    /**
+     * 
+     * @param evt Funcion que permite guardar un impuesto en nuestra planilla
+     */
+    
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         // TODO add your handling code here:
 

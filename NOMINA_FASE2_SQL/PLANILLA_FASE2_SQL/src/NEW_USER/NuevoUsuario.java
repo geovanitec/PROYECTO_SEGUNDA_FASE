@@ -115,7 +115,10 @@ public class NuevoUsuario extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresoActionPerformed
-
+/**
+ * 
+ * @param: void funcion que permite crear un nuevos usuario en la tabla de usuarios
+ */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
         if ( txtUsuario.getText().isEmpty() || txtPass1.getText().isEmpty()){

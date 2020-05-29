@@ -12,7 +12,7 @@ import ACCESO_ADMINISTRADOR.MantenimientoConceptos;
 import ACCESO_ADMINISTRADOR.MantenimientoDepartamentos;
 import ACCESO_ADMINISTRADOR.MantenimientoEmpleados;
 import ACCESO_ADMINISTRADOR.MantenimientoPuestos;
-import ACCESO_ADMINISTRADOR.MantenimientoSalarioEmpleadosWHILE;
+
 import ACCESO_USUARIOS.ConsultaDepartamentos;
 import ACCESO_USUARIOS.ConsultaEmpleados;
 import ACCESO_USUARIOS.ConsultaPlanilla;
@@ -29,26 +29,29 @@ import javax.swing.JInternalFrame;
 
 /**
  *
- * @author Angel Chacon
+ * @author Sebastian Moreira
  */
 
 
 
 public class IngresoAdmin extends javax.swing.JFrame {
 
-    
+    /**
+     * @author GEOVANI MENDOZA
+     * @param internalFrame funcion que permite central las ventanas de los JinternalFrame
+     */
     public void CentrarVentanas(JInternalFrame internalFrame){
         
-        int x = (jDesktopPane1.getWidth( ) / 2)- internalFrame.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2)- internalFrame.getHeight() / 2;
+        int Posicionx = (jDesktopPane1.getWidth( ) / 2)- internalFrame.getWidth() / 2;
+        int Posiciony = (jDesktopPane1.getHeight() / 2)- internalFrame.getHeight() / 2;
         
        if (internalFrame.isShowing () ){
-           internalFrame.setLocation (x,  y);
+           internalFrame.setLocation (Posicionx,  Posiciony);
        }
     
     else {
     jDesktopPane1.add(internalFrame);
-    internalFrame.setLocation(x,  y);
+    internalFrame.setLocation(Posicionx,  Posiciony);
     internalFrame.show();
 }
     }
@@ -321,6 +324,11 @@ public class IngresoAdmin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jSalirActionPerformed
 
+    /**
+     * 
+     * @param evt BOTONES QUE PERMITEN ACCEDER A LOS DISTINTOS JINTERNALFRAME DE LOS MANTENIMIENTOS
+     */
+    
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
         MantenimientoConceptos ventanaLoginUsuarios = new MantenimientoConceptos();
@@ -425,9 +433,14 @@ CentrarVentanas(ventana);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuAplicacionExcepcionesActionPerformed
 
+    /**
+     * 
+     * @param void que  permite ingresar un documento de formato pdf a nuesto programa
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-                 try {
+           
+        try {
             String url = "C:\\Users\\Geovani\\Desktop\\h\\MANUAL DE ADMINISTRADOR.pdf";
         ProcessBuilder p = new ProcessBuilder();
         p.command("cmd.exe", "/C", url);

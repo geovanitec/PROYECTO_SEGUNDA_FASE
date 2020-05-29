@@ -29,22 +29,26 @@ import javax.swing.JInternalFrame;
 
 public class IngresoUsuario extends javax.swing.JFrame {
 
-    
+    /**
+     * 
+     * @param internalFrame funcion que permite centrar todas las ventanas internal framna
+     */
      public void CentrarVentanas(JInternalFrame internalFrame){
         
-        int x = (jDesktopPane1.getWidth( ) / 2)- internalFrame.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2)- internalFrame.getHeight() / 2;
+        int Posicionx = (jDesktopPane1.getWidth( ) / 2)- internalFrame.getWidth() / 2;
+        int Posiciony = (jDesktopPane1.getHeight() / 2)- internalFrame.getHeight() / 2;
         
        if (internalFrame.isShowing () ){
-           internalFrame.setLocation (x,  y);
+           internalFrame.setLocation (Posicionx,  Posiciony);
        }
     
     else {
     jDesktopPane1.add(internalFrame);
-    internalFrame.setLocation(x,  y);
+    internalFrame.setLocation(Posicionx,  Posiciony);
     internalFrame.show();
 }
-     }
+    }
+    
     /**
      * Creates new form Form_Pantalla_Ingreso
      */

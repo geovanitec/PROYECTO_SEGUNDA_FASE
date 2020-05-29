@@ -12,14 +12,16 @@ import javax.swing.JInternalFrame;
 
 /**
  *
- * @author SEBAS
+ * @author: Geovani Mendoza
  */
 public class Seleccion extends javax.swing.JFrame {
 
-    
+    /**
+     * @see: public variables globales que prmiten conectar a una base de datos
+     */
     public static String BD = "jdbc:mysql://localhost/NOMINA_SALARIO";
-    public static String Usuario = "root";
-    public static String Contraseña = "Cagada1234";
+    public static String Usuario = "rex";
+    public static String Contraseña = "polloloco900";
 
    
     

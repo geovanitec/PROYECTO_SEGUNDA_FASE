@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author SEBAS
+ * @author Geovani Mendoza 
  */
 public class LoginAdmin extends javax.swing.JFrame {
  
@@ -241,7 +241,11 @@ public class LoginAdmin extends javax.swing.JFrame {
     private void btnIngresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresar1ActionPerformed
-
+/**
+ * 
+ * @param Void funcion que permite ingresar al sistema por medio de un login de seguridad
+ * 
+ */
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         if ( txtUsuario.getText().isEmpty() || txtPass.getText().isEmpty()){

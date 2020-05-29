@@ -17,6 +17,12 @@ import javax.swing.border.Border;
  *
  * @author Geovani
  */
+
+
+/**
+ * 
+ * @class que permite insertar una imagen en nuestro DesktopPane
+ */
 public class ImagenFondo implements Border{
 
     public BufferedImage back;

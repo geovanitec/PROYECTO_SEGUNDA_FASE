@@ -20,27 +20,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AplicacionExcepciones extends javax.swing.JInternalFrame {
 
-    private static String db = "NOMINA_SALARIO";
-    private static String user = "root";
-    private static String password = "Cagada1234";
-    private static String host = "localhost";
-    private static String server = "jdbc:mysql://" + host + "/" + db;
-
+    
+/**
+ * @param void funcion que permite ingresarle informacion o datos a una tabla de contenido
+ */
     public void mostrarnomb() {
 
         DefaultTableModel modelo = new DefaultTableModel();
         try {
 
-            Connection cn = DriverManager.getConnection(server, user, password);
+            Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from DATOS_EMPLEADO");
             ResultSet rs = pst.executeQuery();
 
-            modelo.addColumn("Id_Emp");
-            modelo.addColumn("NombreEmplea");
+            modelo.addColumn("Id_Empleado");
+            modelo.addColumn("NombreEmpleado");
             modelo.addColumn("CodigoPuesto");
             modelo.addColumn("NombrePuesto");
-            modelo.addColumn("CodigoDep");
-            modelo.addColumn("NombreDep");
+            modelo.addColumn("CodigoDepartamento");
+            modelo.addColumn("NombreDepartamento");
 
             while (rs.next()) {
 
@@ -50,7 +48,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                 idemp = Integer.parseInt(rs.getString("Id_Empleado"));
                 nombreemp = String.valueOf(rs.getString("NombreEmpleado"));
 
-                Connection cn2 = DriverManager.getConnection(server, user, password);
+                Connection cn2 = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
                 PreparedStatement pst2 = cn.prepareStatement("select * from PUESTO");
                 ResultSet rs2 = pst2.executeQuery();
 
@@ -59,8 +57,8 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                     idpuesto = Integer.parseInt(rs2.getString("IdPuesto"));
                     nombrepues = String.valueOf(rs2.getString("NombrePuesto"));
 
-                    Connection cn3 = DriverManager.getConnection(server, user, password);
-                    PreparedStatement pst3 = cn3.prepareStatement("select * from DEPARTAMENTOS");
+                    Connection cn3 = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
+                    PreparedStatement pst3 = cn3.prepareStatement("select * from DEPARTAMENTO");
                     ResultSet rs3 = pst3.executeQuery();
 
                     while (rs3.next()) {
@@ -82,45 +80,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
 
         }
 
-        /*DefaultTableModel modelo = new DefaultTableModel();
       
-       
-         try{
-
-         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/prueba", "root", "compromiso");
-         PreparedStatement pst = cn.prepareStatement("select * from maestros where idmaestro = ?");
-         pst.setString(1, txtBuscar.getText().trim());
-            
-         modelo.addColumn("Nombre");
-         modelo.addColumn("Sueldo");
-         modelo.addColumn("bonif");
-         modelo.addColumn("extra");
-         modelo.addColumn("Total");
-         modelo.addColumn("Concepto");
-         modelo.addColumn("Aplicacion");
-         modelo.addColumn("TotalDesc");
-         modelo.addColumn("TotalLiq");
-            
-         ResultSet rs = pst.executeQuery();
-            
-         while(rs.next()){
-                
-         String nombremaestro="";
-         double S = 0, B = 0, E = 0, T = 0, I = 0, Max = 0, Min = 0, TD = 0, TL = 0;
-                    
-         nombremaestro = String.valueOf(rs.getString("nombremaestro"));
-         S = Double.parseDouble(rs.getString("sueldo"));
-         B = Double.parseDouble(rs.getString("bonificacion"));
-         E = Double.parseDouble(rs.getString("extraordinario"));
-                        
-             
-                
-         }
-            
-            
-         }catch(Exception e){
-         JOptionPane.showMessageDialog(null, "Error");
-         }*/
     }
 
     String[] NombresColumnas = {"IdExcepcion", "NombreConcepto", "CodigoEmpleado"};
@@ -247,6 +207,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setAutoscrolls(true);
         try {
             setSelected(true);
         } catch (java.beans.PropertyVetoException e1) {
@@ -268,41 +229,41 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, 380, 160));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 390, 160));
 
         lblTabla.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         lblTabla.setForeground(new java.awt.Color(255, 255, 255));
         lblTabla.setText("TABLAS DE EXCEPCIONES");
-        jPanel1.add(lblTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 240, 20));
+        jPanel1.add(lblTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 240, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NOMBRE EXCEPCION");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 180, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 180, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("FORMA DE INGRESO:");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 180, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 190, 30));
 
         txtNombreEx.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         txtNombreEx.setText("    ");
         txtNombreEx.setBorder(null);
-        jPanel1.add(txtNombreEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 140, 30));
+        jPanel1.add(txtNombreEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 180, 30));
 
         cboxCodigoEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxCodigoEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(cboxCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 140, 30));
+        jPanel1.add(cboxCodigoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 180, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("TABLA CODIGOS EMPLEADOS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 240, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 240, 20));
 
         TablaEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
@@ -315,18 +276,18 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(TablaEmpleados);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 520, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 550, 160));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("APLICACION DE EXCEPCIONES");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 240, 50));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 240, 50));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("CODIGO ");
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 190, 30));
 
         cbxFormaIngreso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Opcion", "CodigoEmpleado", "CodigoPuesto" }));
         cbxFormaIngreso.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +295,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                 cbxFormaIngresoActionPerformed(evt);
             }
         });
-        jPanel1.add(cbxFormaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, 30));
+        jPanel1.add(cbxFormaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 180, 30));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         btnGuardar.setText("GUARDAR");
@@ -344,7 +305,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 100, 30));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 100, 30));
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         btnModificar.setText("MODIFICAR");
@@ -354,7 +315,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 100, 30));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 100, 30));
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         btnEliminar.setText("ELIMINAR");
@@ -364,7 +325,7 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 100, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 100, 30));
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         btnBuscar.setText("BUSCAR");
@@ -374,21 +335,21 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 100, 30));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 100, 30));
 
         txtBuscar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         txtBuscar.setText("   ");
         txtBuscar.setBorder(null);
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 130, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 130, 30));
 
         lb.setText("..");
-        jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 20, -1));
+        jPanel1.add(lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 20, -1));
 
         lblfondo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
-        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 730));
+        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 730));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 730));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -431,7 +392,11 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_cboxCodigoEmpleadoActionPerformed
-
+/**
+ * 
+ * @param void funcion que permite crear una excepcion de la tabla conceptos
+ * 
+ */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         if (txtNombreEx.getText().isEmpty()) {
@@ -450,10 +415,11 @@ public class AplicacionExcepciones extends javax.swing.JInternalFrame {
                     pst2.setString(3, lb.getText().trim());
 
                     pst2.executeUpdate();
+                     MostrarDB("EXCEPCIONES");
                       JOptionPane.showMessageDialog(null, "Registro exitoso");
                   
 
-                    MostrarDB("EXCEPCIONES");
+                   
 
                 } else if (cbxFormaIngreso.getSelectedIndex() == 2) {
 

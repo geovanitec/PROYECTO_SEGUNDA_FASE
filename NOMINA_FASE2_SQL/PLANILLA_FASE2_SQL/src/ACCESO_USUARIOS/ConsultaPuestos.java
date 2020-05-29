@@ -105,7 +105,10 @@ public class ConsultaPuestos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param void funcion que permite buscar los datos de los impuestos segun sean buscados
+ */
     private void txtMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMostrarActionPerformed
 
          DefaultTableModel modelo = new DefaultTableModel();
