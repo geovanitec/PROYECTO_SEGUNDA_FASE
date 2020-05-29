@@ -69,9 +69,11 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        txtIdConcepto = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -224,6 +226,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 90, 30));
+        jPanel2.add(txtIdConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 150, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,6 +240,12 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 30));
         jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 150, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("IdConcepto:");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -254,7 +263,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nombre:");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, 30));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 80, 30));
 
         btnAplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo3.jpg"))); // NOI18N
         btnAplicacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -284,6 +293,9 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try {
+            /**
+             * @author Sebastian
+             */
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             PreparedStatement pst = cn.prepareStatement("select * from CONCEPTOS where Id_Concepto = ?");
             pst.setString(1, txtBuscar.getText().trim());
@@ -310,22 +322,43 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         // TODO add your handling code here:
-
+            /**
+             **@param 
+             */
         try {
-            String ID = txtBuscar.getText().trim();
+            String codigo = txtBuscar.getText().trim();
 
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
-            PreparedStatement pst = cn.prepareStatement("update CONCEPTOS set NombreConcepto = ?, AfectaConcepto = ?, valorConcepto = ?, TipoConcepto = ?, ValorMax = ?, ValorMin = ? where Id_Concepto = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update DATOS_EMPLEADO set Id_Concepto = ? , NombreConcepto= ? , AfectaConcepto=?, TipoConcepto = ?, valorConcepto=? , usoTabla = ?, aplica = ?, CodigoEmpleado = ? where Id_123Concepto = " + codigo);
 
-            pst.setString(1, txtNombre.getText().trim());
-            /*pst.setString(3, txtAplicacion.getText().trim());
-             pst.setString(4, txtValor.getText().trim());            
-             pst.setString(5, txtTipo.getText().trim());
-             pst.setString(6, txtValor.getText().trim());
-             pst.setString(7, txtValor.getText().trim());*/
+            pst.setString(1, txtIdConcepto.getText().trim());
+            pst.setString(2, txtNombre.getText().trim());
+            pst.setString(3, cbxAfecta.getSelectedItem().toString());
+            pst.setString(4, cbxTipo.getSelectedItem().toString());
+            pst.setString(5, cbxUsoDeTabla.getSelectedItem().toString());
+            pst.setString(6, txtValorConcepto.getText().trim());
+            pst.setString(7, cbxAplicaA.getSelectedItem().toString());
+            
             pst.executeUpdate();
+          
+            JOptionPane.showMessageDialog(this, "MODIFICACION EXITOSA.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+            //  btnEliminar.setEnabled(false);
+            //btnModificar.setEnabled(false);
+            
+
+ 
+
+            txtBuscar.setText("");
+                                            txtNombre.setText("");
+                                cbxAfecta.setSelectedIndex(0);
+                                cbxTipo.setSelectedIndex(0);
+                                cbxUsoDeTabla.setSelectedIndex(0);
+                                txtValorConcepto.setText("");
+                                cbxAplicaA.setSelectedIndex(0);
 
         } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
@@ -335,106 +368,90 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
             Connection cn = DriverManager.getConnection(Seleccion.BD, Seleccion.Usuario, Seleccion.Contraseña);
             if (cbxTipo.getSelectedIndex() == 1) { //porcentaje
 
-                //Query de busqueda
-                
-                PreparedStatement pst1 = cn.prepareStatement("select * from EXCEPCIONES");
-                ResultSet rs = pst1.executeQuery();
                 PreparedStatement pst2 = cn.prepareStatement("select * from DATOS_EMPLEADO");
                 ResultSet rs1 = pst2.executeQuery();
-                
-                
-                while (rs1.next()) {
-                    
-                  
-                    
-                    while (rs.next()) {
-                        if (rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
-                            PreparedStatement pst4 = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                            pst4.setString(i, "0");
-                            i++;
-                        }else {
-                            PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                    pst.setString(i, "0");
-                    pst.setString(i, txtNombre.getText().trim());
-                    pst.setString(i, cbxAfecta.getSelectedItem().toString());
-                    pst.setString(i, cbxTipo.getSelectedItem().toString());
-                    pst.setString(i, "Si");
-                    pst.setString(i, txtValorConcepto.getText().trim());
-                    pst.setString(i, cbxAplicaA.getSelectedItem().toString());
-                    pst.setString(i, rs1.getString("Id_Empleado"));
 
-                    pst.executeUpdate();
-                        }
+                
+                PreparedStatement pst4 = cn.prepareStatement("select * from DATOS_EMPLEADO");
+                ResultSet rs3 = pst4.executeQuery();
+
+                if (rs3.next()) {
+                    while (rs1.next()) {
+   
+                                PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
+
+                                pst.setString(1, txtIdConcepto.getText().trim());
+                                pst.setString(2, txtNombre.getText().trim());
+                                pst.setString(3, cbxAfecta.getSelectedItem().toString());
+                                pst.setString(4, cbxTipo.getSelectedItem().toString());
+                                pst.setString(5, txtValorConcepto.getText().trim());
+                                pst.setString(6, "No");
+                                pst.setString(7, cbxAplicaA.getSelectedItem().toString());
+                                pst.setString(8, rs1.getString("Id_Empleado"));
+
+                                pst.executeUpdate();
+
+
+                                JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
 
                     }
-                   /* PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                    pst.setString(i, "0");
-                    pst.setString(i, txtNombre.getText().trim());
-                    pst.setString(i, cbxAfecta.getSelectedItem().toString());
-                    pst.setString(i, cbxTipo.getSelectedItem().toString());
-                    pst.setString(i, "Si");
-                    pst.setString(i, txtValorConcepto.getText().trim());
-                    pst.setString(i, cbxAplicaA.getSelectedItem().toString());
-                    pst.setString(i, rs1.getString("Id_Empleado"));
-
-                    pst.executeUpdate();*/
-                    txtNombre.setText("");
-                    cbxAfecta.setSelectedIndex(0);
-                    cbxTipo.setSelectedIndex(0);
-                    cbxUsoDeTabla.setSelectedIndex(0);
-                    txtValorConcepto.setText("");
-                    cbxAplicaA.setSelectedIndex(0);
-                    i++;
+                    rs1.close();
                 }
+                
 
-                JOptionPane.showMessageDialog(null, "REGISTRADO");
+            else {
+                JOptionPane.showMessageDialog(null, "NO HA COMPLETADO LOS CAMPOS");
+            }
+                                txtNombre.setText("");
+                                cbxAfecta.setSelectedIndex(0);
+                                cbxTipo.setSelectedIndex(0);
+                                cbxUsoDeTabla.setSelectedIndex(0);
+                                txtValorConcepto.setText("");
+                                cbxAplicaA.setSelectedIndex(0);
 
             } else if (cbxTipo.getSelectedIndex() == 2) {//valor
 
                 //Query de busqueda
-                PreparedStatement pst1 = cn.prepareStatement("select * from EXCEPCIONES");
-                ResultSet rs = pst1.executeQuery();
+
                 PreparedStatement pst2 = cn.prepareStatement("select * from DATOS_EMPLEADO");
                 ResultSet rs1 = pst2.executeQuery();
 
-                while (rs1.next()) {
+                
+                PreparedStatement pst4 = cn.prepareStatement("select * from DATOS_EMPLEADO");
+                ResultSet rs3 = pst4.executeQuery();
 
-                    while (rs.next()) {
-                        if (rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
-                            JOptionPane.showMessageDialog(null, "LOS CODIGOS NO COINCIDEN, SON EXCEPCIONES");
-                            i++;
-                        } else if ( !rs1.getString("Id_Empleado").equals(rs.getString("CodigoEmpleado"))) {
-                            PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
-                           
-                            pst.setString(i, "0");
-                           
-                            pst.setString(i, txtNombre.getText().trim());
-                            pst.setString(i, cbxAfecta.getSelectedItem().toString());
-                            pst.setString(i, cbxTipo.getSelectedItem().toString());
-                            pst.setString(i, "No");
-                            pst.setString(i, txtValorConcepto.getText().trim());
-                            pst.setString(i, cbxAplicaA.getSelectedItem().toString());
-                            pst.setString(i, rs1.getString("Id_Empleado"));
+                if (rs3.next()) {
+                    while (rs1.next()) {
+   
+                                PreparedStatement pst = cn.prepareStatement("insert into CONCEPTOS values (?,?,?,?,?,?,?,?)");
 
-                            pst.executeUpdate();
-                            txtNombre.setText("");
-                            cbxAfecta.setSelectedIndex(0);
-                            cbxTipo.setSelectedIndex(0);
-                            cbxUsoDeTabla.setSelectedIndex(0);
-                            txtValorConcepto.setText("");
-                            cbxAplicaA.setSelectedIndex(0);
-                            i++;
-                            JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
-                        }
+                                pst.setString(1, txtIdConcepto.getText().trim());
+                                pst.setString(2, txtNombre.getText().trim());
+                                pst.setString(3, cbxAfecta.getSelectedItem().toString());
+                                pst.setString(4, cbxTipo.getSelectedItem().toString());
+                                pst.setString(5, txtValorConcepto.getText().trim());
+                                pst.setString(6, "No");
+                                pst.setString(7, cbxAplicaA.getSelectedItem().toString());
+                                pst.setString(8, rs1.getString("Id_Empleado"));
+
+                                pst.executeUpdate();
+
+
+                                JOptionPane.showMessageDialog(null, "GUARDADO CON EXITO");
 
                     }
-
                 }
+                rs1.close();
 
-               
             } else {
                 JOptionPane.showMessageDialog(null, "NO HA COMPLETADO LOS CAMPOS");
             }
+                                txtNombre.setText("");
+                                cbxAfecta.setSelectedIndex(0);
+                                cbxTipo.setSelectedIndex(0);
+                                cbxUsoDeTabla.setSelectedIndex(0);
+                                txtValorConcepto.setText("");
+                                cbxAplicaA.setSelectedIndex(0);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -583,6 +600,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -592,6 +610,7 @@ public class MantenimientoConceptos extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtIdConcepto;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtValorConcepto;
     // End of variables declaration//GEN-END:variables

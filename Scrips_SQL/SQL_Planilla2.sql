@@ -10,15 +10,25 @@ NombreUsuario varchar (30) not null,
 Pass varchar(12) not null
 )Engine = InnoDB Default charset = Latin1;
 
-select * from usuarios;
+#select * from usuarios;
 #drop table DEPARTAMENTO;
+create table usuario_administrador
+(
+Id_Admin int primary key auto_increment,
+Usuario varchar (60) not null,
+pass varchar (60) not null
+
+
+)engine=InnoDB Default charset = Latin1 ;
+#select *  from usuario_administrador;
+insert into usuario_administrador values (1,"geova","123");
 
 create table DEPARTAMENTO
 (
 IdDepartamento int primary key auto_increment,
 NombreDepartamento varchar (30) not null
 )Engine = InnoDB Default charset = Latin1 ;
-select * from DEPARTAMENTO;
+#select * from DEPARTAMENTO;
 
 -- drop table puesto;
 create table PUESTO
@@ -30,23 +40,8 @@ foreign key(CodigoDepartamento) references DEPARTAMENTO (IdDepartamento)
 )Engine = InnoDB Default charset = Latin1 ;
 
 
-use NOMINA_SALARIO;
--- drop table excepciones;
-create table EXCEPCIONES (
-	IdExcepcion int auto_increment ,
-    NombreConcepto varchar(40),
-    CodigoEmpleado int,
-    primary key(IdExcepcion,NombreConcepto,CodigoEmpleado)
 
-)Engine = InnoDB Default charset = Latin1 ;
-select * from excepciones;
-create table IMPUESTO(
-	IdImpuesto int primary key,
-	NombpreConcepto varchar(30),
-    Porcentaje float, 
-    maximo float,
-    minimo float
-)Engine = InnoDB Default charset = Latin1 ;
+
 
 #drop table DATOS_EMPLEADO;
 create table DATOS_EMPLEADO
@@ -63,11 +58,22 @@ foreign key(CodigoDepartamento) references departamento (IdDepartamento)
 
 )Engine = InnoDB Default charset = Latin1 ;
 
+use NOMINA_SALARIO;
+-- drop table excepciones;
+create table EXCEPCIONES (
+	IdExcepcion int auto_increment ,
+    NombreConcepto varchar(40),
+    CodigoEmpleado int,
+    primary key(IdExcepcion,NombreConcepto,CodigoEmpleado),
+	foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
+)Engine = InnoDB Default charset = Latin1 ;
+#select * from excepciones;
+
  use NOMINA_SALARIO;
 -- drop table conceptos;
 create table CONCEPTOS
 (
-Id_Concepto int auto_increment,
+Id_Concepto int ,#1
 NombreConcepto varchar (80) not null, /*si es igss o es isr */
 AfectaConcepto varchar (20) not null,  /*percepcion o deduccion */
 TipoConcepto varchar(20) not null, # A : por porcentaje , B : por cuota
@@ -75,21 +81,30 @@ valorConcepto varchar(20) not null,   #promedio de cuanto es el igss o isr,
 usoTabla varchar(10), #Si usa tabla o no
 aplica varchar(20), #A todos o algunos,
 CodigoEmpleado int,
-primary key(Id_Concepto, NombreConcepto,AfectaConcepto,TipoConcepto, valorConcepto, usoTabla,aplica),
+primary key(Id_Concepto, NombreConcepto,AfectaConcepto,TipoConcepto, valorConcepto, usoTabla,aplica, CodigoEmpleado),
 foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
 )Engine = InnoDB Default charset = Latin1 ;
-<<<<<<< HEAD
 
-=======
-select * from conceptos;
->>>>>>> f313ec3027f18a287d9c1954fb7ad58c04c0752d
+#select * from conceptos;
+
+create table IMPUESTO(
+	IdImpuesto int,
+	NombpreConcepto varchar(30),
+    Porcentaje varchar(20), 
+    maximo float,
+    minimo float,
+    primary key(IdImpuesto)
+
+)Engine = InnoDB Default charset = Latin1 ;
+
+
 create table APLICAR_CONCEPTO(
 Id_Aplicar int primary key auto_increment,
 Id_Empleado int not null,
 Id_Concepto int not null,
 foreign key(Id_Empleado) references DATOS_EMPLEADO(Id_Empleado),
-foreign key(Id_Concepto) references CONCEPTOS (Id_Concepto)
-
+foreign key(Id_Concepto) references CONCEPTOS (Id_Concepto),
+foreign key(Id_Concepto) references IMPUESTO(IdImpuesto)
 )Engine = InnoDB Default charset = Latin1 ;
 
 create table REGISTROS(
@@ -98,61 +113,16 @@ FechaRegistro date not null,
 CodigoUsuario int not null,
 CodigoEmpleado int not null,
 foreign key(CodigoUsuario) references USUARIOS (IdUsuario),
+foreign key(CodigoUsuario) references usuario_administrador (Id_Admin),
 foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
 
 
 )Engine = InnoDB Default charset = Latin1 ;
 
--- drop table sueldos;
-create table SUELDOS
-(
-IdSueldo int primary key auto_increment,
-CodigoEmpleado int,
-IdPuesto int,
-SalarioOrdinario float not null,
-SalarioExtraordinario float not null,
-Bonificacion float not null,
-Comision float not null,
-OtrosDevengados float not null,
-TotalDevengado float not null,
-Igss float not null,
-Isr float not null,
-Anticipos float not null,
-DescuentosJudiciales float not null,
-OtrosDescuentos float not null,
-TotalDescuentos float not null,
-TotalLiquido float not null,
 
-foreign key(IdPuesto) references PUESTO(IdPuesto),
-foreign key(CodigoEmpleado) references DATOS_EMPLEADO(Id_Empleado)
-)Engine = InnoDB Default charset = Latin1 ;
-
-
-
-create table CONTABILIDAD 
-(
-IdContabilidad int primary key,
-Id_Aplicar int not null,
-#ControlEmpleado int not null,
-ControlDescuentos int not null,
-ControlDevengados int not null,
-
-#foreign key(ControlEmpleado) references DATOS_EMPLEADO (IdEmpleado),
-foreign key(Id_Aplicar) references APLICAR_CONCEPTO(Id_Aplicar)
-
-
-)Engine = InnoDB Default charset = Latin1 ;
 
 #drop table usuario_administrador;
-create table usuario_administrador
-(
-Id_Admin int primary key auto_increment,
-Usuario varchar (60) not null,
-pass varchar (60) not null
 
-)engine=InnoDB Default charset = Latin1 ;
-select *  from usuario_administrador;
-insert into usuario_administrador values (1,"geova","123");
 
 
 -- drop database NOMINA_SALARIO;
